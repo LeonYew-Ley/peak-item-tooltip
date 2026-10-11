@@ -87,14 +87,17 @@ if ($manifestItems["Gold Prickleberry"].status -ne "source-conflict; in-game-res
 $unreviewedDirect = @($manifest.items | Where-Object { $_.status -eq "page-found-needs-content-review" -or $_.status -eq "page-revision-changed-needs-review" }).Count
 $sourceConflicts = @($manifest.items | Where-Object { $_.status -like "source-conflict;*" }).Count
 $missingSources = @($manifest.items | Where-Object { $_.status -eq "missing" }).Count
-if ($unreviewedDirect -ne 0 -or $sourceConflicts -ne 1 -or $missingSources -ne 1) {
-    throw "Expected no unreviewed direct pages, one documented source conflict, and one missing source."
+if ($unreviewedDirect -ne 0 -or $sourceConflicts -ne 1 -or $missingSources -ne 0) {
+    throw "Expected no unreviewed direct pages, one documented source conflict, and no items without a source."
 }
-if ($manifestItems["Green Clusterberry"].status -ne "missing") {
-    throw "Green Clusterberry must remain unresolved until a reliable source is found."
+if ($manifestItems["Green Clusterberry"].status -ne "no-direct-item-page; secondary-source-reviewed" -or
+    $manifestItems["Green Clusterberry"].secondarySources[0].revision -ne 11407 -or
+    $manifestItems["Green Clusterberry"].secondarySources[0].section -ne "Green Clusterberry") {
+    throw "Green Clusterberry must cite the reviewed Unused content section."
 }
-if (-not $manifestItems["Green Clusterberry"].reviewNote) {
-    throw "The missing Green Clusterberry source must be recorded explicitly."
+if ($english.items["Green Clusterberry"].description -notmatch "Unused item.*Hunger restoration.*Poison removal.*undocumented" -or
+    $chinese.items["Green Clusterberry"].description -notmatch "未使用物品.*恢复饥饿.*移除中毒.*未说明烹饪效果") {
+    throw "Green Clusterberry's bilingual description must use only the sourced base facts and leave cooking undocumented."
 }
 
 foreach ($key in @("AMULET_CLONE", "AMULET_DOUBLEJUMP", "AMULET_HEALING", "AMULET_INFINITESTAM")) {
@@ -103,8 +106,8 @@ foreach ($key in @("AMULET_CLONE", "AMULET_DOUBLEJUMP", "AMULET_HEALING", "AMULE
 
 $secondaryItems = @($manifest.items | Where-Object { $_.status -like "no-direct-item-page;*" })
 $secondaryReviewed = @($secondaryItems | Where-Object { $_.status -eq "no-direct-item-page; secondary-source-reviewed" })
-if ($secondaryItems.Count -ne 11 -or $secondaryReviewed.Count -ne 11) {
-    throw "All 11 items without direct pages must have reviewed secondary sources."
+if ($secondaryItems.Count -ne 12 -or $secondaryReviewed.Count -ne 12) {
+    throw "All 12 items without direct pages must have reviewed secondary sources."
 }
 foreach ($entry in $secondaryReviewed) {
     if (-not $entry.reviewNote -or -not $entry.secondarySources) {

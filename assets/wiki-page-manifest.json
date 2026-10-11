@@ -697,8 +697,19 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "missing",
-      "reviewNote": "No direct item page or reliable secondary/variant source was found in the current Wiki API or item listings. Do not infer its effects from other Clusterberries."
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page identifies prefab Clusterberry_UNUSED and records 10 Hunger restoration and 30 Poison removal; cooking behavior is not documented.",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Green Clusterberry",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
+        }
+      ]
     },
     {
       "gameKey": "Green Crispberry",

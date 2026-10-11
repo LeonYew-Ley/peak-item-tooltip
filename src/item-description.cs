@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace PeakItemTooltip
 {
@@ -12,18 +13,23 @@ namespace PeakItemTooltip
         public readonly string CookingState;
         public readonly string Modifiers;
         public readonly HashSet<string> ActivePositiveStatuses;
+        public readonly bool SafetySourcesComplete;
 
-        private TooltipItemSnapshot(string cookingState, string modifiers, HashSet<string> activePositiveStatuses)
+        private TooltipItemSnapshot(string cookingState, string modifiers, HashSet<string> activePositiveStatuses,
+            bool safetySourcesComplete)
         {
             CookingState = cookingState;
             Modifiers = modifiers;
             ActivePositiveStatuses = activePositiveStatuses;
+            SafetySourcesComplete = safetySourcesComplete;
         }
 
         public static TooltipItemSnapshot Capture(Item item)
         {
-            if (item == null) return new TooltipItemSnapshot("raw", "", new HashSet<string>(StringComparer.OrdinalIgnoreCase));
-            return new TooltipItemSnapshot(ItemDescription.StateFor(item), ItemModifiers.Format(item), ItemModifiers.ActivePositiveStatuses(item));
+            if (item == null)
+                return new TooltipItemSnapshot("raw", "", new HashSet<string>(StringComparer.OrdinalIgnoreCase), true);
+            return new TooltipItemSnapshot(ItemDescription.StateFor(item), ItemModifiers.Format(item),
+                ItemModifiers.ActivePositiveStatuses(item), ItemModifiers.HasCompleteSafetyCoverage(item));
         }
 
         public bool HasActivePositiveStatus(string status) =>
@@ -32,6 +38,11 @@ namespace PeakItemTooltip
 
     public static class ItemDescription
     {
+        private static readonly FieldInfo OverrideUsabilityField = typeof(Item).GetField(
+            "overrideUsability", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        private static readonly MemberInfo OverrideUsabilityIsNone = FindMember(OverrideUsabilityField?.FieldType, "IsNone");
+        private static readonly MemberInfo OverrideUsabilityValue = FindMember(OverrideUsabilityField?.FieldType, "Value");
+
         public static string Format(Item item, string baseDescription, string context,
             IDictionary<string, string> stateDescriptions)
         {
@@ -50,23 +61,49 @@ namespace PeakItemTooltip
             string state = snapshot.CookingState;
             string stateDescription = null;
             if (stateDescriptions != null) stateDescriptions.TryGetValue(state, out stateDescription);
+            bool hasSafetyClaim = !string.IsNullOrWhiteSpace(stateDescription);
+            bool hasKnownConflict = false;
+            StateCheck check = null;
+            bool hasStateCheck = stateChecks != null && stateChecks.TryGetValue(state, out check);
 
-            if (stateChecks != null && stateChecks.TryGetValue(state, out StateCheck check)
-                && check != null && check.MustNotHaveActive != null)
+            if (hasStateCheck && check != null && check.MustNotHaveActive != null)
             {
                 foreach (string status in check.MustNotHaveActive)
                 {
                     if (snapshot.HasActivePositiveStatus(status))
                     {
                         stateDescription = null;
+                        hasKnownConflict = true;
                         break;
                     }
                 }
+
+                if (!snapshot.SafetySourcesComplete)
+                    stateDescription = null;
             }
 
             bool hasCuratedProfile = !string.IsNullOrWhiteSpace(context)
                 || (stateDescriptions != null && stateDescriptions.Count > 0);
-            return FormatForState(state, baseDescription, context, stateDescription, hasCuratedProfile);
+            string formatted = FormatForState(state, baseDescription, context, stateDescription, hasCuratedProfile);
+            if (hasKnownConflict)
+                return AppendNotice(formatted, Zh.IsActive()
+                    ? (snapshot.SafetySourcesComplete
+                        ? "当前效果与这条说明不一致。"
+                        : "已识别的效果与这条说明不一致，且还有未识别的效果来源。")
+                    : (snapshot.SafetySourcesComplete
+                        ? "Current effects conflict with this item-effect note."
+                        : "Known effects conflict with this item-effect note, and other sources are unrecognized."));
+
+            if (!snapshot.SafetySourcesComplete)
+                return AppendNotice(formatted, Zh.IsActive()
+                    ? (hasSafetyClaim && hasStateCheck
+                        ? "部分效果来源尚未识别，无法核实这条说明。"
+                        : "部分物品效果可能未显示在数值行中。")
+                    : (hasSafetyClaim && hasStateCheck
+                        ? "Some effect sources are unrecognized, so this claim could not be verified."
+                        : "Some item effects may not appear in the modifier rows."));
+
+            return formatted;
         }
 
         private static string FormatForState(string state, string baseDescription, string context,
@@ -98,10 +135,40 @@ namespace PeakItemTooltip
         {
             ItemCooking cooking = item != null ? item.cooking : null;
             if (cooking == null || cooking.timesCookedLocal <= 0) return "raw";
-            if (cooking.wreckWhenCooked) return "unusable";
+            if (cooking.wreckWhenCooked || IsExplicitlyUnusable(item)) return "unusable";
             if (cooking.timesCookedLocal >= 4) return "incinerated";
             if (cooking.timesCookedLocal == 3) return "burnt";
             return "cooked";
+        }
+
+        private static string AppendNotice(string description, string notice)
+        {
+            return string.IsNullOrWhiteSpace(description) ? notice : description.TrimEnd() + " " + notice;
+        }
+
+        private static bool IsExplicitlyUnusable(Item item)
+        {
+            if (item == null || OverrideUsabilityField == null) return false;
+
+            object option = OverrideUsabilityField.GetValue(item);
+            if (option == null || OverrideUsabilityIsNone == null || OverrideUsabilityValue == null) return false;
+            if (!(ReadMember(option, OverrideUsabilityIsNone) is bool isNone) || isNone) return false;
+            return ReadMember(option, OverrideUsabilityValue) is bool canUse && !canUse;
+        }
+
+        private static MemberInfo FindMember(Type type, string name)
+        {
+            if (type == null) return null;
+            const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            return (MemberInfo)type.GetProperty(name, flags) ?? type.GetField(name, flags);
+        }
+
+        private static object ReadMember(object target, MemberInfo member)
+        {
+            if (target == null || member == null) return null;
+            if (member is PropertyInfo property) return property.GetValue(target, null);
+            if (member is FieldInfo field) return field.GetValue(target);
+            return null;
         }
     }
 }

@@ -887,7 +887,7 @@
     },
     "Green Clusterberry": {
       "type": "CONSUMABLE",
-      "description": "在雨林发现"
+      "description": "未使用物品。Wiki 记载其可恢复饥饿并移除中毒，但未说明烹饪效果。"
     },
     "Green Crispberry": {
       "type": "CONSUMABLE",

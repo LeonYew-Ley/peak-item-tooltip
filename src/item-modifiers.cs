@@ -39,6 +39,23 @@ namespace PeakItemTooltip
         // since extra stamina is not a STATUSTYPE, assign its own colour
         private static readonly Color StaminaColour = Hex("#7CD64B");
         private static readonly Color Fallback = Color.white;
+        // These actions are either rendered below or cannot add an adverse item-use effect.
+        // Any other enabled Action_* source makes categorical safety claims unverified.
+        private static readonly HashSet<string> AccountedActionSources = new HashSet<string>(StringComparer.Ordinal)
+        {
+            nameof(Action_RestoreHunger),
+            nameof(Action_InflictPoison),
+            nameof(Action_ModifyStatus),
+            nameof(Action_GiveExtraStamina),
+            "Action_AddOrRemoveThorns",
+            "Action_ClearAllStatus",
+            "Action_Consume",
+            "Action_ReduceUses",
+            "Action_PlayAnimation",
+            "Action_PlayItemAnimation",
+            "Action_IncrementSteamStat",
+            "Action_TryHotDogAchievement",
+        };
 
         /**
          * @brief builds a rich-text block of the item's stat modifiers, one coloured line per modifier, or an empty string if it has none
@@ -78,6 +95,15 @@ namespace PeakItemTooltip
             {
                 if (!EffectEnabled(a, item)) continue;
                 AppendLine(sb, ref first, StaminaColour, a.amount, Zh.IsActive() ? "额外耐力" : "Extra Stamina");
+            }
+
+            // thorns are applied directly to the character rather than through a STATUSTYPE component
+            foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
+            {
+                if (!EffectEnabled(action, item) || action.GetType().Name != "Action_AddOrRemoveThorns") continue;
+                if (TryReadIntField(action, "thornCount", out int thornCount))
+                    AppendPoints(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Thorns), thornCount,
+                        Zh.IsActive() ? "荆棘" : "Thorns");
             }
 
             // ADDED petrify: unlike other statuses, petrify is never applied through Action_ModifyStatus.
@@ -125,7 +151,39 @@ namespace PeakItemTooltip
                     statuses.Add("ExtraStamina");
             }
 
+            foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
+            {
+                if (EffectEnabled(action, item) && action.GetType().Name == "Action_AddOrRemoveThorns"
+                    && TryReadIntField(action, "thornCount", out int thornCount) && thornCount > 0)
+                    statuses.Add(CharacterAfflictions.STATUSTYPE.Thorns.ToString());
+            }
+
             return statuses;
+        }
+
+        /// <summary>
+        /// Returns false when an enabled Action_* component can affect use but is not accounted for
+        /// by the live effect reader. This gates Wiki safety claims without guessing what an unknown
+        /// action does.
+        /// </summary>
+        public static bool HasCompleteSafetyCoverage(Item item)
+        {
+            if (item == null) return true;
+
+            foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
+            {
+                if (!EffectEnabled(action, item)) continue;
+                string typeName = action.GetType().Name;
+                if (!(action is ItemActionBase) && !typeName.StartsWith("Action_", StringComparison.Ordinal)) continue;
+                if (!AccountedActionSources.Contains(typeName)) return false;
+
+                // A status action conditioned on character type is not a universal safety guarantee.
+                if (typeName == nameof(Action_ModifyStatus)
+                    && TryReadBoolField(action, "ifSkeleton", out bool ifSkeleton) && ifSkeleton)
+                    return false;
+            }
+
+            return true;
         }
 
         /**
@@ -181,6 +239,32 @@ namespace PeakItemTooltip
                 if (!branch.gameObject.activeSelf) return false;
             }
             return true;
+        }
+
+        private static bool TryReadIntField(MonoBehaviour component, string name, out int value)
+        {
+            FieldInfo field = component.GetType().GetField(name, BindingFlags.Public | BindingFlags.Instance);
+            if (field != null && field.FieldType == typeof(int))
+            {
+                value = (int)field.GetValue(component);
+                return true;
+            }
+
+            value = 0;
+            return false;
+        }
+
+        private static bool TryReadBoolField(MonoBehaviour component, string name, out bool value)
+        {
+            FieldInfo field = component.GetType().GetField(name, BindingFlags.Public | BindingFlags.Instance);
+            if (field != null && field.FieldType == typeof(bool))
+            {
+                value = (bool)field.GetValue(component);
+                return true;
+            }
+
+            value = false;
+            return false;
         }
 
         /**

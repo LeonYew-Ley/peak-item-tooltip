@@ -1,6 +1,6 @@
 # PEAK Wiki-derived tooltip data
 
-The English and Simplified Chinese defaults contain 67 cooking-state profiles. In total, 118 of 131 direct item pages have been content-reviewed; 51 reviewed pages did not need an additional state-specific sentence. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
+The English and Simplified Chinese defaults contain 67 cooking-state profiles. In total, 118 of 131 direct item pages have been content-reviewed; 51 reviewed pages did not need an additional state-specific sentence. Twelve items without a dedicated page have reviewed secondary sources. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
 
 ## Sources reviewed on 2026-10-11
 
@@ -151,6 +151,7 @@ These items lack a dedicated item page, so their sourced facts are recorded here
 | `Torn Page` | [Scroll § Torn Pages](https://peak.wiki.gg/wiki/Scroll#Torn_Pages) r11890 | Scroll page documents that opening the scroll reveals a page selected from the player's unread pages and progress. |
 | `Warpsketball` | [Unused content § Warpsketball](https://peak.wiki.gg/wiki/Unused_content#Warpsketball) r11407 | Unused content page describes a retextured basketball that teleports players to where it lands and is consumed. |
 | `Weird Shroom` | [Unused content § Weird Shroom](https://peak.wiki.gg/wiki/Unused_content#Weird_Shroom) r11407 | Unused content page describes a non-poisonous mushroom that can be eaten twice; its intended glowing effect does not work. |
+| `Green Clusterberry` | [Unused content § Green Clusterberry](https://peak.wiki.gg/wiki/Unused_content#Green_Clusterberry) r11407 | Names the unused `Clusterberry_UNUSED` prefab and records 10 Hunger restoration and 30 Poison removal; no cooking behavior is documented. |
 
 ## Review status and limits
 
@@ -158,7 +159,7 @@ All 67 profiles have been checked against the cited Wiki pages and the general c
 
 The Wiki states that Cooked and Well-Done food effects are identical and do not stack; cooked poisonous berries become safe, but mushroom poison cannot be cooked out; Shroomberries lose 5 Spores; Burnt food restores less Hunger; and each further Incinerated stage adds Poison. Sports Drink and several other items have exceptions, so the tooltip uses item-specific text only where a page documents the exception.
 
-Gold Prickleberry is deliberately left out of this batch: its page's infobox says cooking removes Poison, while its prose says cooking removes Thorns. That conflict needs an in-game check before adding a state-specific claim. All 11 secondary-source items were reviewed against their cited sections and current revisions. `Green Clusterberry` has no direct or reliable secondary source in the current Wiki; its effects are not inferred from other Clusterberries. Gold Prickleberry remains a separate unresolved source conflict; an indexed title alone is not an accuracy claim.
+Gold Prickleberry is deliberately left out of this batch: its page's infobox says cooking removes Poison, while its prose says cooking removes Thorns. That conflict needs an in-game check before adding a state-specific claim. All 12 secondary-source items were reviewed against their cited sections and recorded revisions. Green Clusterberry is documented only on the unused-content page, so no cooking behavior is inferred from other Clusterberries. Gold Prickleberry remains a separate unresolved source conflict; an indexed title alone is not an accuracy claim.
 
 PEAK Wiki pages are community-maintained. The site identifies Wiki text as CC BY-SA 4.0 unless an individual page says otherwise. This repository keeps source links and revision IDs with each derived profile; confirm the notice on any page added later. The repository's MIT code license does not replace the terms applying to Wiki-derived data.
 

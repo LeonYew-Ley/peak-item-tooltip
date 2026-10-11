@@ -47,6 +47,7 @@ $secondarySources = @{
         [ordered]@{ title = "Yellow Berrynana Peel"; revision = 11240; section = "Yellow Berrynana Peel" }
     )
     "Climbing Chalk" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Climbing Chalk" })
+    "Green Clusterberry" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Green Clusterberry" })
     "SCOUTMASTERSOUL" = @(
         [ordered]@{ title = "Nadir"; revision = 11745; section = "Scoutmaster's Soul" }
         [ordered]@{ title = "Scoutmaster Myres"; revision = 11913; section = "Gameplay" }
@@ -65,6 +66,7 @@ $secondaryReviewNotes = @{
     "AUTOPARACHUTE" = "Unused content page documents a one-use parachute that deploys from inventory during a fall to prevent fall damage."
     "Berrynana Peel" = "The four color-variant pages share the slipping effect; their source biome and acquisition vary by Berrynana color."
     "Climbing Chalk" = "Unused content page says it has no model or texture and records a temporary reduction in climbing stamina use."
+    "Green Clusterberry" = "Unused content page identifies prefab Clusterberry_UNUSED and records 10 Hunger restoration and 30 Poison removal; cooking behavior is not documented."
     "SCOUTMASTERSOUL" = "Nadir and Scoutmaster Myres pages describe communing with the soul, following it to the Peak, and restoring Myres in the ending."
     "Skull" = "Unused content page distinguishes this plain, non-functional skull from Cursed Skull."
     "Megaphone" = "Unused content page describes voice-range amplification as a possibility, not a confirmed effect."
@@ -78,9 +80,7 @@ $secondaryReviewNotes = @{
 $sourceConflicts = @{
     "Gold Prickleberry" = "The infobox says cooking removes Poison, while the article prose and patch history say cooking removes Thorns. Do not publish a state claim until reconciled with PEAK 2.6.b behavior."
 }
-$missingSourceNotes = @{
-    "Green Clusterberry" = "No direct item page or reliable secondary/variant source was found in the current Wiki API or item listings. Do not infer its effects from other Clusterberries."
-}
+$missingSourceNotes = @{}
 
 $secondaryTitleSet = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
 foreach ($sourceSet in $secondarySources.Values) {
