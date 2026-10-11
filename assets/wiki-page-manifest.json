@@ -679,7 +679,7 @@
       "timestamp": "2026-08-23T10:52:47Z",
       "status": "source-conflict; in-game-resolution-required",
       "reviewStatus": null,
-      "reviewNote": "The infobox says cooking removes Poison, while the article prose and patch history say cooking removes Thorns. Do not publish a state claim until reconciled with PEAK 2.6.b behavior."
+      "reviewNote": "Pinned revision 11109 has conflicting cooked-effect data: its infobox says cooking removes Poison while its prose and patch history say Thorns. The current search-indexed page text (crawled last month) now shows no cooked Poison bonus and says cooking removes Thorns, consistent with patch 1.40.a. Direct page and API requests return 403, so the current revision ID cannot yet be pinned. Keep the cooked-state claim withheld until a revision is retrievable and PEAK 2.6.b behavior is checked."
     },
     {
       "gameKey": "Granola Bar",
