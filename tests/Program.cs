@@ -124,6 +124,38 @@ static class Program
         Equal(TooltipItemSnapshot.Capture(parsedAffliction).SafetySourcesComplete, true,
             "fully parsed direct and extra afflictions count as supported sources");
 
+        var extendedAfflictions = new Item();
+        extendedAfflictions.Add(new Action_ApplyAffliction
+        {
+            affliction = new Peak.Afflictions.Affliction_AdjustColdOverTime
+            {
+                statusPerSecond = -.02f,
+                totalTime = 5f
+            },
+            extraAfflictions = new Peak.Afflictions.Affliction[]
+            {
+                new Peak.Afflictions.Affliction_AdjustDrowsyOverTime
+                {
+                    statusPerSecond = .01f,
+                    totalTime = 4f
+                },
+                new Peak.Afflictions.Affliction_AddBonusStamina
+                {
+                    staminaAmount = .1f,
+                    totalTime = 6f
+                }
+            }
+        });
+        Has(ItemModifiers.Format(extendedAfflictions), "-10 Cold (over 5s)", "cold affliction shows signed aggregate and duration");
+        Has(ItemModifiers.Format(extendedAfflictions), "+4 Drowsy (over 4s)", "drowsy affliction shows signed aggregate and duration");
+        Has(ItemModifiers.Format(extendedAfflictions), "+10 Extra Stamina (over 6s)", "bonus stamina affliction shows amount and duration");
+        Equal(TooltipItemSnapshot.Capture(extendedAfflictions).SafetySourcesComplete, true,
+            "supported cold, drowsy, and stamina afflictions count as covered");
+        Has(string.Join(",", ItemModifiers.ActivePositiveStatuses(extendedAfflictions)), "Drowsy",
+            "positive timed drowsy affliction participates in safety checks");
+        Has(string.Join(",", ItemModifiers.ActivePositiveStatuses(extendedAfflictions)), "ExtraStamina",
+            "bonus stamina affliction participates in safety checks");
+
         var removedStatusAffliction = new Item();
         removedStatusAffliction.Add(new Action_ApplyAffliction
         {
@@ -222,6 +254,7 @@ static class Program
         Zh.Active = true;
         Has(ItemModifiers.Format(berry), "+10 中毒", "localized live effects");
         Has(ItemModifiers.Format(parsedAffliction), "+10 中毒（延迟 2 秒，持续 4 秒）", "localized ApplyAffliction timing");
+        Has(ItemModifiers.Format(extendedAfflictions), "-10 寒冷（持续 5 秒）", "localized timed cold affliction");
         Has(ItemDescription.Format(berry, "生食会中毒", "在雨林发现。", new System.Collections.Generic.Dictionary<string, string> { ["incinerated"] = "烧毁后再次中毒。" }), "烧毁后再次中毒", "localized state description");
         Equal(ItemDescription.Format(new Item { cooking = new ItemCooking() }, "自定义描述", "", states), "自定义描述 Raw poison starts later.", "custom raw description preserved with the selected state description");
         Equal(ItemDescription.Format(new Item { cooking = new ItemCooking { timesCookedLocal = 1 } }, "旧版条目描述", "", null), "旧版条目描述", "unreviewed item retains its legacy description");

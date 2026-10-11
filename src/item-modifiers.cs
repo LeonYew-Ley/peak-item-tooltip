@@ -228,6 +228,28 @@ namespace PeakItemTooltip
                         AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Poison), perSecond * duration,
                             PoisonLabel(delay, duration));
                     }
+                    else if (typeName == "Affliction_AdjustColdOverTime"
+                        && TryReadFloatField(affliction, "statusPerSecond", out float coldPerSecond)
+                        && TryReadFloatField(affliction, "totalTime", out float coldDuration))
+                    {
+                        AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Cold), coldPerSecond * coldDuration,
+                            TimedStatusLabel(CharacterAfflictions.STATUSTYPE.Cold, coldDuration));
+                    }
+                    else if (typeName == "Affliction_AdjustDrowsyOverTime"
+                        && TryReadFloatField(affliction, "statusPerSecond", out float drowsyPerSecond)
+                        && TryReadFloatField(affliction, "totalTime", out float drowsyDuration))
+                    {
+                        AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Drowsy), drowsyPerSecond * drowsyDuration,
+                            TimedStatusLabel(CharacterAfflictions.STATUSTYPE.Drowsy, drowsyDuration));
+                    }
+                    else if (typeName == "Affliction_AddBonusStamina"
+                        && TryReadFloatField(affliction, "staminaAmount", out float staminaAmount)
+                        && TryReadFloatField(affliction, "totalTime", out float staminaDuration))
+                    {
+                        string label = Zh.IsActive() ? "额外耐力" : "Extra Stamina";
+                        if (staminaDuration > 0f) label = TimedStatusLabel(label, staminaDuration);
+                        AppendLine(sb, ref first, StaminaColour, staminaAmount, label);
+                    }
                 }
             }
         }
@@ -248,6 +270,15 @@ namespace PeakItemTooltip
                     && TryReadFloatField(affliction, "totalTime", out float _)
                     && TryReadFloatField(affliction, "delayBeforeEffect", out float _)
                     && TryReadFloatField(affliction, "statusPerSecond", out float _)) continue;
+                if (typeName == "Affliction_AdjustColdOverTime"
+                    && TryReadFloatField(affliction, "totalTime", out float _)
+                    && TryReadFloatField(affliction, "statusPerSecond", out float _)) continue;
+                if (typeName == "Affliction_AdjustDrowsyOverTime"
+                    && TryReadFloatField(affliction, "totalTime", out float _)
+                    && TryReadFloatField(affliction, "statusPerSecond", out float _)) continue;
+                if (typeName == "Affliction_AddBonusStamina"
+                    && TryReadFloatField(affliction, "totalTime", out float _)
+                    && TryReadFloatField(affliction, "staminaAmount", out float _)) continue;
                 return false;
             }
 
@@ -291,6 +322,19 @@ namespace PeakItemTooltip
                 && TryReadFloatField(affliction, "statusPerSecond", out float perSecond)
                 && perSecond * Math.Max(0f, totalTime - delay) > 0f)
                 statuses.Add(CharacterAfflictions.STATUSTYPE.Poison.ToString());
+            else if (typeName == "Affliction_AdjustColdOverTime"
+                && TryReadFloatField(affliction, "totalTime", out float coldDuration)
+                && TryReadFloatField(affliction, "statusPerSecond", out float coldPerSecond)
+                && coldDuration > 0f && coldPerSecond > 0f)
+                statuses.Add(CharacterAfflictions.STATUSTYPE.Cold.ToString());
+            else if (typeName == "Affliction_AdjustDrowsyOverTime"
+                && TryReadFloatField(affliction, "totalTime", out float drowsyDuration)
+                && TryReadFloatField(affliction, "statusPerSecond", out float drowsyPerSecond)
+                && drowsyDuration > 0f && drowsyPerSecond > 0f)
+                statuses.Add(CharacterAfflictions.STATUSTYPE.Drowsy.ToString());
+            else if (typeName == "Affliction_AddBonusStamina"
+                && TryReadFloatField(affliction, "staminaAmount", out float staminaAmount) && staminaAmount > 0f)
+                statuses.Add("ExtraStamina");
         }
 
         /**
@@ -414,6 +458,19 @@ namespace PeakItemTooltip
             if (delay > 0f && duration > 0f) label += ", over " + FormatSeconds(duration) + "s";
             if (delay > 0f || duration > 0f) label += ")";
             return label;
+        }
+
+        private static string TimedStatusLabel(CharacterAfflictions.STATUSTYPE status, float duration)
+        {
+            return TimedStatusLabel(StatusName(status), duration);
+        }
+
+        private static string TimedStatusLabel(string label, float duration)
+        {
+            if (duration <= 0f) return label;
+            return Zh.IsActive()
+                ? label + "（持续 " + FormatSeconds(duration) + " 秒）"
+                : label + " (over " + FormatSeconds(duration) + "s)";
         }
 
         private static string FormatSeconds(float seconds)

@@ -109,6 +109,21 @@ namespace Peak.Afflictions
         public float delayBeforeEffect;
         public float statusPerSecond;
     }
+    public class Affliction_AdjustColdOverTime : Affliction
+    {
+        public float statusPerSecond;
+        public float totalTime;
+    }
+    public class Affliction_AdjustDrowsyOverTime : Affliction
+    {
+        public float statusPerSecond;
+        public float totalTime;
+    }
+    public class Affliction_AddBonusStamina : Affliction
+    {
+        public float staminaAmount;
+        public float totalTime;
+    }
     public class Affliction_InfiniteStamina : Affliction { }
 }
 namespace Peak
