@@ -41,18 +41,57 @@
         "MYSTICAL",
         "DEPLOYABLE"
       ],
-      "description": "Attaches a 7.25 metre anti-rope which spools upwards. It has zero weight and will float when dropped"
+      "description": "Attaches a 7.25 metre anti-rope which spools upwards. It has zero weight and will float when dropped",
+      "context": "Deploys a floating anti-gravity rope.",
+      "stateDescriptions": {
+        "incinerated": "Incinerating this item makes it unusable.",
+        "unusable": "This item has been incinerated and can no longer be used."
+      },
+      "wiki": {
+        "title": "Anti-Rope Cannon",
+        "revision": 7368,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "anti-rope spool": {
       "type": [
         "MYSTICAL",
         "DEPLOYABLE"
       ],
-      "description": "Provides a total of 12.5 metres climbable anti gravity rope, placeable in custom lengths from 0.75m to 10m long. The rope will float upwards. It has negative weight and will float when dropped"
+      "description": "Provides a total of 12.5 metres climbable anti gravity rope, placeable in custom lengths from 0.75m to 10m long. The rope will float upwards. It has negative weight and will float when dropped",
+      "context": "Deploys a climbable anti-gravity rope.",
+      "stateDescriptions": {
+        "incinerated": "Incinerating this item makes it unusable.",
+        "unusable": "This item has been incinerated and can no longer be used."
+      },
+      "wiki": {
+        "title": "Anti-Rope Spool",
+        "revision": 12044,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Antidote": {
       "type": "CONSUMABLE",
-      "description": "Can be used up to 3 times. Cooking or throwing will cause it to shatter, removing up to 20 Poison and Spores from players within 4.8 metres depending on distance"
+      "description": "Can be used up to 3 times. Cooking or throwing will cause it to shatter, removing up to 20 Poison and Spores from players within 4.8 metres depending on distance",
+      "stateDescriptions": {
+        "cooked": "Cooking shatters it; cooked use releases a small Poison-healing cloud without knockback.",
+        "burnt": "Cooking shatters it; cooked use releases a small Poison-healing cloud without knockback.",
+        "incinerated": "Cooking shatters it; cooked use releases a small Poison-healing cloud without knockback."
+      },
+      "wiki": {
+        "title": "Antidote",
+        "revision": 12007,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "AUTOPARACHUTE": {
       "type": "UNUSED",
@@ -60,19 +99,71 @@
     },
     "Backpack": {
       "type": "EQUIPMENT",
-      "description": "Occupies the player's fourth inventory slot and provides four additional storage slots"
+      "description": "Occupies the player's fourth inventory slot and provides four additional storage slots",
+      "context": "Provides four additional storage slots.",
+      "stateDescriptions": {
+        "cooked": "Cooking changes its appearance only; it can still hold items, even after repeated incineration.",
+        "burnt": "Cooking changes its appearance only; it can still hold items, even after repeated incineration.",
+        "incinerated": "It can still hold items after repeated incineration."
+      },
+      "wiki": {
+        "title": "Backpack",
+        "revision": 11786,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Balloon": {
       "type": "CONSUMABLE",
-      "description": "On use, attaches a single ballon to the player. Dropping it causes it to fly away. Each attached ballon reduces gravity by 18%, with 6 or more granting an additional 100% reduction, causing them to fly upwards until popped (2 minutes or until the player ascends 160 metres)"
+      "description": "On use, attaches a single ballon to the player. Dropping it causes it to fly away. Each attached ballon reduces gravity by 18%, with 6 or more granting an additional 100% reduction, causing them to fly upwards until popped (2 minutes or until the player ascends 160 metres)",
+      "stateDescriptions": {
+        "cooked": "Cooking pops the balloon.",
+        "unusable": "The balloon has popped and can no longer be used."
+      },
+      "wiki": {
+        "title": "Balloon",
+        "revision": 10913,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Balloon Bunch": {
       "type": "CONSUMABLE",
-      "description": "On use, attaches a bunch of balloons to the player, reducing gravity by 54% for 2 minutes or until 100 metres have been ascended. Dropping it causes it to fly away"
+      "description": "On use, attaches a bunch of balloons to the player, reducing gravity by 54% for 2 minutes or until 100 metres have been ascended. Dropping it causes it to fly away",
+      "stateDescriptions": {
+        "cooked": "Cooking pops the balloons.",
+        "unusable": "The balloons have popped and can no longer be used."
+      },
+      "wiki": {
+        "title": "Balloon Bunch",
+        "revision": 9047,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Bandages": {
       "type": "CONSUMABLE",
-      "description": "Single-use. Heals injury on the user"
+      "description": "Single-use. Heals injury on the user",
+      "context": "Single-use healing item.",
+      "stateDescriptions": {
+        "cooked": "Cooking changes its appearance only; its use effect is unchanged.",
+        "burnt": "Cooking changes its appearance only; its use effect is unchanged.",
+        "incinerated": "Cooking changes its appearance only; its use effect is unchanged."
+      },
+      "wiki": {
+        "title": "Bandages",
+        "revision": 11408,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Beehive": {
       "type": "MISC",
@@ -98,12 +189,25 @@
         "revision": 10558,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Bing Bong": {
       "type": "MISC",
-      "description": "BING BONG!"
+      "description": "BING BONG!",
+      "stateDescriptions": {
+        "cooked": "Cooking lowers the pitch and volume of its voice lines.",
+        "incinerated": "When incinerated, it stops playing voice lines."
+      },
+      "wiki": {
+        "title": "Bing Bong",
+        "revision": 12099,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Binoculars": {
       "type": "EQUIPMENT",
@@ -119,7 +223,21 @@
     },
     "Blowgun": {
       "type": "MISC",
-      "description": "Fires darts at other scouts. Does not spawn in solo play"
+      "description": "Fires darts at other scouts. Does not spawn in solo play",
+      "context": "Fires darts at other scouts.",
+      "stateDescriptions": {
+        "cooked": "Cooking changes its effect from Drowsy to Heat.",
+        "burnt": "Its cooked effect applies Heat instead of Drowsy.",
+        "incinerated": "Its cooked effect applies Heat instead of Drowsy."
+      },
+      "wiki": {
+        "title": "Blowgun",
+        "revision": 11563,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Blue Berrynana": {
       "type": "CONSUMABLE",
@@ -138,7 +256,8 @@
         "revision": 10680,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -158,7 +277,21 @@
     },
     "Bugle": {
       "type": "EQUIPMENT",
-      "description": "Found at the photobooth and crash site. Plays a musical note when used"
+      "description": "Found at the photobooth and crash site. Plays a musical note when used",
+      "context": "Plays a musical note when used.",
+      "stateDescriptions": {
+        "cooked": "Each cooking makes its pitch wobble more.",
+        "burnt": "Each cooking makes its pitch wobble more.",
+        "incinerated": "Each cooking makes its pitch wobble more."
+      },
+      "wiki": {
+        "title": "Bugle",
+        "revision": 11284,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Bugle of Friendship": {
       "type": "MYSTICAL",
@@ -176,7 +309,8 @@
         "revision": 11906,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Button Shroom": {
@@ -191,7 +325,8 @@
         "revision": 11909,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Cactus": {
@@ -204,7 +339,20 @@
     },
     "Chain Launcher": {
       "type": "DEPLOYABLE",
-      "description": "Creates a climbable chain between two points"
+      "description": "Creates a climbable chain between two points",
+      "context": "Creates a climbable chain between two points.",
+      "stateDescriptions": {
+        "incinerated": "Incinerating this item makes it unusable.",
+        "unusable": "This item has been incinerated and can no longer be used."
+      },
+      "wiki": {
+        "title": "Chain Launcher",
+        "revision": 7654,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Checkpoint Flag": {
       "type": "DEPLOYABLE",
@@ -234,12 +382,25 @@
         "revision": 11908,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Coconut": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics and mesa. Breaking it yields two Coconut Halves"
+      "description": "Found on the shore, tropics and mesa. Breaking it yields two Coconut Halves",
+      "context": "Found in the Shore, Tropics, and Mesa; breaking it produces two Half-Coconuts.",
+      "stateDescriptions": {
+        "cooked": "Cooking it produces cooked Half-Coconuts."
+      },
+      "wiki": {
+        "title": "Coconut",
+        "revision": 12013,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Coconut Half": {
       "type": "CONSUMABLE",
@@ -255,15 +416,51 @@
     },
     "Cure-All": {
       "type": "CONSUMABLE",
-      "description": "On use, removes nearly every negative status effect from the user"
+      "description": "On use, removes nearly every negative status effect from the user",
+      "stateDescriptions": {
+        "cooked": "When used after cooking, it explodes into a small healing cloud without knockback.",
+        "burnt": "When used after cooking, it explodes into a small healing cloud without knockback.",
+        "incinerated": "When used after cooking, it explodes into a small healing cloud without knockback."
+      },
+      "wiki": {
+        "title": "Cure-All",
+        "revision": 12012,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Cursed Skull": {
       "type": "MYSTICAL",
-      "description": "On use, instantly kills the scout holding it and grants bonus stamina to other players"
+      "description": "On use, instantly kills the scout holding it and grants bonus stamina to other players",
+      "stateDescriptions": {
+        "cooked": "Cooking activates it immediately, then triggers a dynamite-like explosion."
+      },
+      "wiki": {
+        "title": "Cursed Skull",
+        "revision": 11558,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Dynamite": {
       "type": "MISC",
-      "description": "Found on the ground and in luggage in the mesa. Detonates after a short fuse, afflicting injury to nearby scouts"
+      "description": "Found on the ground and in luggage in the mesa. Detonates after a short fuse, afflicting injury to nearby scouts",
+      "stateDescriptions": {
+        "cooked": "Cooking makes it explode immediately.",
+        "unusable": "It detonates immediately when cooked."
+      },
+      "wiki": {
+        "title": "Dynamite",
+        "revision": 11396,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "EARLYWORM": {
       "type": "CONSUMABLE",
@@ -285,7 +482,8 @@
         "revision": 11234,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -297,7 +495,20 @@
     },
     "Faerie Lantern": {
       "type": "MYSTICAL",
-      "description": "Removes several negative status effects from the user over 30 seconds"
+      "description": "Removes several negative status effects from the user over 30 seconds",
+      "stateDescriptions": {
+        "cooked": "When used after cooking, it explodes into a small healing cloud.",
+        "burnt": "When used after cooking, it explodes into a small healing cloud.",
+        "incinerated": "When used after cooking, it explodes into a small healing cloud."
+      },
+      "wiki": {
+        "title": "Faerie Lantern",
+        "revision": 11089,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Fannypack": {
       "type": "EQUIPMENT",
@@ -305,11 +516,37 @@
     },
     "First Aid Kit": {
       "type": "CONSUMABLE",
-      "description": "Takes 5 seconds to use. Removes poison and spores, and heals injury"
+      "description": "Takes 5 seconds to use. Removes poison and spores, and heals injury",
+      "context": "Removes Poison and Spores and heals Injury.",
+      "stateDescriptions": {
+        "cooked": "Cooking changes its appearance only; its use effect is unchanged.",
+        "burnt": "Cooking changes its appearance only; its use effect is unchanged.",
+        "incinerated": "Cooking changes its appearance only; its use effect is unchanged."
+      },
+      "wiki": {
+        "title": "First Aid Kit",
+        "revision": 11223,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Flare": {
       "type": "EQUIPMENT",
-      "description": "Found at the crash site and peak. Summons the rescue helicopter when used at the PEAK"
+      "description": "Found at the crash site and peak. Summons the rescue helicopter when used at the PEAK",
+      "context": "Summons the rescue helicopter when used at the Peak.",
+      "stateDescriptions": {
+        "cooked": "Cooking makes it explode, injuring scouts in a small radius."
+      },
+      "wiki": {
+        "title": "Flare",
+        "revision": 9540,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Fortified Milk": {
       "type": "CONSUMABLE",
@@ -323,7 +560,8 @@
         "revision": 11633,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Frisbee": {
@@ -369,7 +607,8 @@
         "revision": 10035,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-and-game-code-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-and-game-code-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -397,7 +636,8 @@
         "revision": 10039,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -420,7 +660,8 @@
         "revision": 10678,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -432,11 +673,36 @@
     },
     "Guidebook": {
       "type": "EQUIPMENT",
-      "description": "Found at the shore crash site. Teaches basic gameplay"
+      "description": "Found at the shore crash site. Teaches basic gameplay",
+      "context": "Teaches basic gameplay.",
+      "stateDescriptions": {
+        "incinerated": "Incinerating this item makes it unusable.",
+        "unusable": "This item has been incinerated and can no longer be used."
+      },
+      "wiki": {
+        "title": "Guidebook",
+        "revision": 11331,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Heat Pack": {
       "type": "CONSUMABLE",
-      "description": "Found in the alpine. Removes cold from the user"
+      "description": "Found in the alpine. Removes cold from the user",
+      "context": "Removes Cold from the user.",
+      "stateDescriptions": {
+        "cooked": "Cooking makes it explode, injuring scouts in a small radius."
+      },
+      "wiki": {
+        "title": "Heat Pack",
+        "revision": 10957,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Honeycomb": {
       "type": "CONSUMABLE",
@@ -452,7 +718,19 @@
     },
     "Lantern": {
       "type": "EQUIPMENT",
-      "description": "Found in the tropics and alpine. Provides light and removes cold"
+      "description": "Found in the tropics and alpine. Provides light and removes cold",
+      "context": "Provides light and removes Cold.",
+      "stateDescriptions": {
+        "cooked": "Cooking makes it explode, injuring scouts in a small radius."
+      },
+      "wiki": {
+        "title": "Lantern",
+        "revision": 11374,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Magic Bean": {
       "type": "CONSUMABLE",
@@ -471,7 +749,8 @@
         "revision": 11458,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Marshmallow": {
@@ -490,7 +769,8 @@
         "revision": 11876,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Megaphone": {
@@ -507,7 +787,20 @@
     },
     "Pandora's Lunchbox": {
       "type": "CONSUMABLE",
-      "description": "Can be used 3 times. Each use randomizes the user's status effects"
+      "description": "Can be used 3 times. Each use randomizes the user's status effects",
+      "stateDescriptions": {
+        "cooked": "When cooked, it explodes and applies its random effects to nearby players without knockback.",
+        "burnt": "When cooked, it explodes and applies its random effects to nearby players without knockback.",
+        "incinerated": "When cooked, it explodes and applies its random effects to nearby players without knockback."
+      },
+      "wiki": {
+        "title": "Pandora's Lunchbox",
+        "revision": 11410,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Parasol": {
       "type": "EQUIPMENT",
@@ -526,7 +819,8 @@
         "revision": 10041,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -542,11 +836,36 @@
     },
     "Piton": {
       "type": "DEPLOYABLE",
-      "description": "Attaches to a climbable surface, providing a point for scouts to grab and rest"
+      "description": "Attaches to a climbable surface, providing a point for scouts to grab and rest",
+      "context": "Attaches to climbable surfaces as a point to grab and rest.",
+      "stateDescriptions": {
+        "incinerated": "Incinerating this item makes it unusable.",
+        "unusable": "This item has been incinerated and can no longer be used."
+      },
+      "wiki": {
+        "title": "Piton",
+        "revision": 10767,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Portable Stove": {
       "type": "DEPLOYABLE",
-      "description": "Placed to cook items. Lasts 60 seconds after being placed"
+      "description": "Placed to cook items. Lasts 60 seconds after being placed",
+      "context": "Can be placed to cook items.",
+      "stateDescriptions": {
+        "cooked": "Cooking makes it explode, injuring scouts in a small radius."
+      },
+      "wiki": {
+        "title": "Portable Stove",
+        "revision": 10988,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Purple Kingberry": {
       "type": "CONSUMABLE",
@@ -565,7 +884,8 @@
         "revision": 11164,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -596,7 +916,8 @@
         "revision": 10057,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -619,7 +940,8 @@
         "revision": 10677,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -635,7 +957,20 @@
     },
     "Rescue Claw": {
       "type": "EQUIPMENT",
-      "description": "Can be used 3 times. Pulls the wielder toward terrain, or pulls other scouts toward them"
+      "description": "Can be used 3 times. Pulls the wielder toward terrain, or pulls other scouts toward them",
+      "context": "Pulls the wielder toward terrain or pulls other scouts toward them.",
+      "stateDescriptions": {
+        "incinerated": "Incinerating this item makes it unusable.",
+        "unusable": "This item has been incinerated and can no longer be used."
+      },
+      "wiki": {
+        "title": "Rescue Claw",
+        "revision": 11988,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "RitualDagger": {
       "type": "MYSTICAL",
@@ -647,11 +982,37 @@
     },
     "rope cannon": {
       "type": "DEPLOYABLE",
-      "description": "Fires a harpoon that drops a climbable rope where it strikes a compatible surface"
+      "description": "Fires a harpoon that drops a climbable rope where it strikes a compatible surface",
+      "context": "Fires a harpoon that drops a climbable rope where it strikes a compatible surface.",
+      "stateDescriptions": {
+        "incinerated": "Incinerating this item makes it unusable.",
+        "unusable": "This item has been incinerated and can no longer be used."
+      },
+      "wiki": {
+        "title": "Rope Cannon",
+        "revision": 8625,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "rope spool": {
       "type": "DEPLOYABLE",
-      "description": "Deploys climbable rope up to 10 metres long, attachable to any climbable surface"
+      "description": "Deploys climbable rope up to 10 metres long, attachable to any climbable surface",
+      "context": "Deploys climbable rope up to 10 metres long.",
+      "stateDescriptions": {
+        "incinerated": "Incinerating this item makes it unusable.",
+        "unusable": "This item has been incinerated and can no longer be used."
+      },
+      "wiki": {
+        "title": "Rope Spool",
+        "revision": 7363,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Scorchberry": {
       "type": "CONSUMABLE",
@@ -663,7 +1024,19 @@
     },
     "Scout Cannon": {
       "type": "DEPLOYABLE",
-      "description": "Places a cannon that launches scouts across the map. Afflicts injury on launch"
+      "description": "Places a cannon that launches scouts across the map. Afflicts injury on launch",
+      "context": "Launches scouts across the map.",
+      "stateDescriptions": {
+        "cooked": "Cooking makes it explode in a manner similar to Dynamite."
+      },
+      "wiki": {
+        "title": "Scout Cannon",
+        "revision": 11987,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Scout Cookies": {
       "type": "CONSUMABLE",
@@ -719,7 +1092,8 @@
         "revision": 11351,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Stick": {
@@ -736,11 +1110,39 @@
     },
     "Sunscreen": {
       "type": "CONSUMABLE",
-      "description": "Can be used 3 times. Each spray grants sun protection for 90 seconds"
+      "description": "Can be used 3 times. Each spray grants sun protection for 90 seconds",
+      "context": "Provides sun protection when sprayed.",
+      "stateDescriptions": {
+        "cooked": "When used after cooking, it explodes into a large sunscreen cloud without knockback.",
+        "burnt": "When used after cooking, it explodes into a large sunscreen cloud without knockback.",
+        "incinerated": "When used after cooking, it explodes into a large sunscreen cloud without knockback."
+      },
+      "wiki": {
+        "title": "Sunscreen",
+        "revision": 10959,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "THEBOOKOFBONES": {
       "type": "MYSTICAL",
-      "description": "On use, afflicts curse onto the holder"
+      "description": "On use, afflicts curse onto the holder",
+      "context": "Afflicts Curse on the holder when used.",
+      "stateDescriptions": {
+        "cooked": "Cooking changes its appearance only; its use effect is unchanged.",
+        "burnt": "Cooking changes its appearance only; its use effect is unchanged.",
+        "incinerated": "Cooking changes its appearance only; its use effect is unchanged."
+      },
+      "wiki": {
+        "title": "The Book of Bones",
+        "revision": 12107,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Tick": {
       "type": "CONSUMABLE",
@@ -763,7 +1165,19 @@
         "MYSTICAL",
         "DEPLOYABLE"
       ],
-      "description": "Found in ancient luggage and statues. Shoots an anti-sphere up to 40 metres away that reverses gravity where it lands"
+      "description": "Found in ancient luggage and statues. Shoots an anti-sphere up to 40 metres away that reverses gravity where it lands",
+      "context": "Shoots an Anti-Sphere that reverses gravity where it lands.",
+      "stateDescriptions": {
+        "cooked": "Cooking makes it explode and creates a larger Anti-Sphere at its location."
+      },
+      "wiki": {
+        "title": "Anti-Zooka",
+        "revision": 11225,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "WARP COMPASS": {
       "type": "MYSTICAL",
@@ -810,7 +1224,8 @@
         "revision": 10038,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -833,7 +1248,8 @@
         "revision": 10679,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {

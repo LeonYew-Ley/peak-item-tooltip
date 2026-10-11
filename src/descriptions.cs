@@ -49,6 +49,9 @@ namespace PeakItemTooltip
         [JsonProperty("revision")]
         public int Revision;
 
+        [JsonProperty("cookingRevision")]
+        public int CookingRevision;
+
         [JsonProperty("checkedAt")]
         public string CheckedAt = "";
 
@@ -228,6 +231,17 @@ namespace PeakItemTooltip
                                     {
                                         existing[field] = incoming.DeepClone();
                                         added.Add(item.Name + "." + field);
+                                        continue;
+                                    }
+
+                                    if (field == "wiki" && incoming is JObject incomingWiki && currentField.Value is JObject existingWiki)
+                                    {
+                                        foreach (JProperty metadata in incomingWiki.Properties())
+                                        {
+                                            if (existingWiki.Properties().Any(p => string.Equals(p.Name, metadata.Name, StringComparison.OrdinalIgnoreCase))) continue;
+                                            existingWiki[metadata.Name] = metadata.Value.DeepClone();
+                                            added.Add(item.Name + ".wiki." + metadata.Name);
+                                        }
                                         continue;
                                     }
 

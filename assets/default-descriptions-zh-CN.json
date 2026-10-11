@@ -41,18 +41,57 @@
         "MYSTICAL",
         "DEPLOYABLE"
       ],
-      "description": "发射一根向上卷绕的7.25米反重力绳索。零重量，丢弃后会漂浮"
+      "description": "发射一根向上卷绕的7.25米反重力绳索。零重量，丢弃后会漂浮",
+      "context": "部署会向上漂浮的反重力绳索。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后无法使用。",
+        "unusable": "该物品已烧毁，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Anti-Rope Cannon",
+        "revision": 7368,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "anti-rope spool": {
       "type": [
         "MYSTICAL",
         "DEPLOYABLE"
       ],
-      "description": "提供共12.5米可攀爬的反重力绳索，可自定义铺设0.75米至10米长度。绳索会向上漂浮。负重量，丢弃后会漂浮"
+      "description": "提供共12.5米可攀爬的反重力绳索，可自定义铺设0.75米至10米长度。绳索会向上漂浮。负重量，丢弃后会漂浮",
+      "context": "部署可攀爬的反重力绳索。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后无法使用。",
+        "unusable": "该物品已烧毁，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Anti-Rope Spool",
+        "revision": 12044,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Antidote": {
       "type": "CONSUMABLE",
-      "description": "最多可使用3次。烹饪或投掷会使其碎裂，根据距离清除4.8米内玩家身上最多20点中毒与孢子"
+      "description": "最多可使用3次。烹饪或投掷会使其碎裂，根据距离清除4.8米内玩家身上最多20点中毒与孢子",
+      "stateDescriptions": {
+        "cooked": "烹饪会使其碎裂；烹饪后使用会释放小范围解毒云雾，不会造成击退。",
+        "burnt": "烹饪会使其碎裂；烹饪后使用会释放小范围解毒云雾，不会造成击退。",
+        "incinerated": "烹饪会使其碎裂；烹饪后使用会释放小范围解毒云雾，不会造成击退。"
+      },
+      "wiki": {
+        "title": "Antidote",
+        "revision": 12007,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "AUTOPARACHUTE": {
       "type": "UNUSED",
@@ -60,19 +99,71 @@
     },
     "Backpack": {
       "type": "EQUIPMENT",
-      "description": "占用玩家第四个物品栏位，提供四个额外储存栏位"
+      "description": "占用玩家第四个物品栏位，提供四个额外储存栏位",
+      "context": "提供四个额外储存栏位。",
+      "stateDescriptions": {
+        "cooked": "烹饪只会改变外观；即使反复烧毁，背包仍可存放物品。",
+        "burnt": "烹饪只会改变外观；即使反复烧毁，背包仍可存放物品。",
+        "incinerated": "反复烧毁后，背包仍可存放物品。"
+      },
+      "wiki": {
+        "title": "Backpack",
+        "revision": 11786,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Balloon": {
       "type": "CONSUMABLE",
-      "description": "使用后为玩家系上一只气球。丢弃后气球会飞走。每只气球降低18%重力，6只及以上额外降低100%，使其向上飞升直至破裂（2分钟或玩家上升160米）"
+      "description": "使用后为玩家系上一只气球。丢弃后气球会飞走。每只气球降低18%重力，6只及以上额外降低100%，使其向上飞升直至破裂（2分钟或玩家上升160米）",
+      "stateDescriptions": {
+        "cooked": "烹饪会使气球爆裂。",
+        "unusable": "气球已爆裂，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Balloon",
+        "revision": 10913,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Balloon Bunch": {
       "type": "CONSUMABLE",
-      "description": "使用后为玩家系上一串气球，在2分钟内或上升100米前降低54%重力。丢弃后气球会飞走"
+      "description": "使用后为玩家系上一串气球，在2分钟内或上升100米前降低54%重力。丢弃后气球会飞走",
+      "stateDescriptions": {
+        "cooked": "烹饪会使气球爆裂。",
+        "unusable": "气球已爆裂，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Balloon Bunch",
+        "revision": 9047,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Bandages": {
       "type": "CONSUMABLE",
-      "description": "一次性使用。治愈使用者的受伤"
+      "description": "一次性使用。治愈使用者的受伤",
+      "context": "一次性治疗用品。",
+      "stateDescriptions": {
+        "cooked": "烹饪只会改变外观，使用效果不变。",
+        "burnt": "烹饪只会改变外观，使用效果不变。",
+        "incinerated": "烹饪只会改变外观，使用效果不变。"
+      },
+      "wiki": {
+        "title": "Bandages",
+        "revision": 11408,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Beehive": {
       "type": "MISC",
@@ -98,12 +189,25 @@
         "revision": 10558,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Bing Bong": {
       "type": "MISC",
-      "description": "叮——咚！"
+      "description": "叮——咚！",
+      "stateDescriptions": {
+        "cooked": "烹饪会降低语音的音调和音量。",
+        "incinerated": "烧毁后会停止播放语音。"
+      },
+      "wiki": {
+        "title": "Bing Bong",
+        "revision": 12099,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Binoculars": {
       "type": "EQUIPMENT",
@@ -119,7 +223,21 @@
     },
     "Blowgun": {
       "type": "MISC",
-      "description": "向其他侦察兵发射飞镖。单人游戏中不会生成"
+      "description": "向其他侦察兵发射飞镖。单人游戏中不会生成",
+      "context": "向其他侦察兵发射飞镖。",
+      "stateDescriptions": {
+        "cooked": "烹饪会将效果从困倦改为炎热。",
+        "burnt": "烧熟后施加炎热，而非困倦。",
+        "incinerated": "烧毁后施加炎热，而非困倦。"
+      },
+      "wiki": {
+        "title": "Blowgun",
+        "revision": 11563,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Blue Berrynana": {
       "type": "CONSUMABLE",
@@ -138,7 +256,8 @@
         "revision": 10680,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -158,7 +277,21 @@
     },
     "Bugle": {
       "type": "EQUIPMENT",
-      "description": "在拍照点和坠机点发现。使用时发出音符"
+      "description": "在拍照点和坠机点发现。使用时发出音符",
+      "context": "使用时会发出音符。",
+      "stateDescriptions": {
+        "cooked": "每次烹饪都会让音调更加摇摆。",
+        "burnt": "每次烹饪都会让音调更加摇摆。",
+        "incinerated": "每次烹饪都会让音调更加摇摆。"
+      },
+      "wiki": {
+        "title": "Bugle",
+        "revision": 11284,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Bugle of Friendship": {
       "type": "MYSTICAL",
@@ -176,7 +309,8 @@
         "revision": 11906,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Button Shroom": {
@@ -191,7 +325,8 @@
         "revision": 11909,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Cactus": {
@@ -204,7 +339,20 @@
     },
     "Chain Launcher": {
       "type": "DEPLOYABLE",
-      "description": "在两点之间创造可攀爬的链条"
+      "description": "在两点之间创造可攀爬的链条",
+      "context": "在两点之间创造可攀爬的链条。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后无法使用。",
+        "unusable": "该物品已烧毁，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Chain Launcher",
+        "revision": 7654,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Checkpoint Flag": {
       "type": "DEPLOYABLE",
@@ -234,12 +382,25 @@
         "revision": 11908,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Coconut": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林和方山发现。打破后获得两半椰子"
+      "description": "在海岸、雨林和方山发现。打破后获得两半椰子",
+      "context": "在海岸、热带雨林和方山发现；打破后会获得两半椰子。",
+      "stateDescriptions": {
+        "cooked": "烹饪后会变成烤熟的半个椰子。"
+      },
+      "wiki": {
+        "title": "Coconut",
+        "revision": 12013,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Coconut Half": {
       "type": "CONSUMABLE",
@@ -255,15 +416,51 @@
     },
     "Cure-All": {
       "type": "CONSUMABLE",
-      "description": "使用后清除使用者身上几乎所有的负面状态效果"
+      "description": "使用后清除使用者身上几乎所有的负面状态效果",
+      "stateDescriptions": {
+        "cooked": "烹饪后使用会爆炸并释放小范围治疗云雾，不会造成击退。",
+        "burnt": "烹饪后使用会爆炸并释放小范围治疗云雾，不会造成击退。",
+        "incinerated": "烹饪后使用会爆炸并释放小范围治疗云雾，不会造成击退。"
+      },
+      "wiki": {
+        "title": "Cure-All",
+        "revision": 12012,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Cursed Skull": {
       "type": "MYSTICAL",
-      "description": "使用后立即杀死持有它的侦察兵，并为其他玩家提供额外耐力"
+      "description": "使用后立即杀死持有它的侦察兵，并为其他玩家提供额外耐力",
+      "stateDescriptions": {
+        "cooked": "烹饪会立即激活它，随后引发类似炸药的爆炸。"
+      },
+      "wiki": {
+        "title": "Cursed Skull",
+        "revision": 11558,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Dynamite": {
       "type": "MISC",
-      "description": "在方山的地面和行李中发现。短暂引信后引爆，使附近侦察兵受伤"
+      "description": "在方山的地面和行李中发现。短暂引信后引爆，使附近侦察兵受伤",
+      "stateDescriptions": {
+        "cooked": "烹饪会使其立即爆炸。",
+        "unusable": "烹饪时会立即引爆。"
+      },
+      "wiki": {
+        "title": "Dynamite",
+        "revision": 11396,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "EARLYWORM": {
       "type": "CONSUMABLE",
@@ -285,7 +482,8 @@
         "revision": 11234,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -297,7 +495,20 @@
     },
     "Faerie Lantern": {
       "type": "MYSTICAL",
-      "description": "在30秒内清除使用者身上的多种负面状态效果"
+      "description": "在30秒内清除使用者身上的多种负面状态效果",
+      "stateDescriptions": {
+        "cooked": "烹饪后使用会爆炸并释放小范围治疗云雾。",
+        "burnt": "烹饪后使用会爆炸并释放小范围治疗云雾。",
+        "incinerated": "烹饪后使用会爆炸并释放小范围治疗云雾。"
+      },
+      "wiki": {
+        "title": "Faerie Lantern",
+        "revision": 11089,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Fannypack": {
       "type": "EQUIPMENT",
@@ -305,11 +516,37 @@
     },
     "First Aid Kit": {
       "type": "CONSUMABLE",
-      "description": "使用需要5秒。清除中毒和孢子，并治愈受伤"
+      "description": "使用需要5秒。清除中毒和孢子，并治愈受伤",
+      "context": "清除中毒和孢子，并治愈受伤。",
+      "stateDescriptions": {
+        "cooked": "烹饪只会改变外观，使用效果不变。",
+        "burnt": "烹饪只会改变外观，使用效果不变。",
+        "incinerated": "烹饪只会改变外观，使用效果不变。"
+      },
+      "wiki": {
+        "title": "First Aid Kit",
+        "revision": 11223,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Flare": {
       "type": "EQUIPMENT",
-      "description": "在坠机点和峰顶发现。在峰顶使用时召唤救援直升机"
+      "description": "在坠机点和峰顶发现。在峰顶使用时召唤救援直升机",
+      "context": "在峰顶使用时会召唤救援直升机。",
+      "stateDescriptions": {
+        "cooked": "烹饪会使其爆炸，对小范围内的侦察兵造成受伤效果。"
+      },
+      "wiki": {
+        "title": "Flare",
+        "revision": 9540,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Fortified Milk": {
       "type": "CONSUMABLE",
@@ -323,7 +560,8 @@
         "revision": 11633,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Frisbee": {
@@ -369,7 +607,8 @@
         "revision": 10035,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-and-game-code-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-and-game-code-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -397,7 +636,8 @@
         "revision": 10039,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -420,7 +660,8 @@
         "revision": 10678,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -432,11 +673,36 @@
     },
     "Guidebook": {
       "type": "EQUIPMENT",
-      "description": "在海岸坠机点发现。教授基础玩法"
+      "description": "在海岸坠机点发现。教授基础玩法",
+      "context": "教授基础玩法。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后无法使用。",
+        "unusable": "该物品已烧毁，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Guidebook",
+        "revision": 11331,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Heat Pack": {
       "type": "CONSUMABLE",
-      "description": "在雪山发现。清除使用者的寒冷"
+      "description": "在雪山发现。清除使用者的寒冷",
+      "context": "清除使用者的寒冷。",
+      "stateDescriptions": {
+        "cooked": "烹饪会使其爆炸，对小范围内的侦察兵造成受伤效果。"
+      },
+      "wiki": {
+        "title": "Heat Pack",
+        "revision": 10957,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Honeycomb": {
       "type": "CONSUMABLE",
@@ -452,7 +718,19 @@
     },
     "Lantern": {
       "type": "EQUIPMENT",
-      "description": "在雨林和雪山发现。提供光线并清除寒冷"
+      "description": "在雨林和雪山发现。提供光线并清除寒冷",
+      "context": "提供光线并清除寒冷。",
+      "stateDescriptions": {
+        "cooked": "烹饪会使其爆炸，对小范围内的侦察兵造成受伤效果。"
+      },
+      "wiki": {
+        "title": "Lantern",
+        "revision": 11374,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Magic Bean": {
       "type": "CONSUMABLE",
@@ -471,7 +749,8 @@
         "revision": 11458,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Marshmallow": {
@@ -490,7 +769,8 @@
         "revision": 11876,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Megaphone": {
@@ -507,7 +787,20 @@
     },
     "Pandora's Lunchbox": {
       "type": "CONSUMABLE",
-      "description": "可使用3次。每次使用随机化使用者的状态效果"
+      "description": "可使用3次。每次使用随机化使用者的状态效果",
+      "stateDescriptions": {
+        "cooked": "烹饪后会爆炸，并对附近玩家施加随机效果，不会造成击退。",
+        "burnt": "烹饪后会爆炸，并对附近玩家施加随机效果，不会造成击退。",
+        "incinerated": "烹饪后会爆炸，并对附近玩家施加随机效果，不会造成击退。"
+      },
+      "wiki": {
+        "title": "Pandora's Lunchbox",
+        "revision": 11410,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Parasol": {
       "type": "EQUIPMENT",
@@ -519,11 +812,36 @@
     },
     "Piton": {
       "type": "DEPLOYABLE",
-      "description": "附着在可攀爬表面上，为侦察兵提供抓握和休息的支点"
+      "description": "附着在可攀爬表面上，为侦察兵提供抓握和休息的支点",
+      "context": "附着在可攀爬表面上，为侦察兵提供抓握和休息的支点。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后无法使用。",
+        "unusable": "该物品已烧毁，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Piton",
+        "revision": 10767,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Portable Stove": {
       "type": "DEPLOYABLE",
-      "description": "放置后用于烹饪物品。放置后持续60秒"
+      "description": "放置后用于烹饪物品。放置后持续60秒",
+      "context": "放置后可用于烹饪物品。",
+      "stateDescriptions": {
+        "cooked": "烹饪会使其爆炸，对小范围内的侦察兵造成受伤效果。"
+      },
+      "wiki": {
+        "title": "Portable Stove",
+        "revision": 10988,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Purple Kingberry": {
       "type": "CONSUMABLE",
@@ -542,7 +860,8 @@
         "revision": 11164,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -573,7 +892,8 @@
         "revision": 10057,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -596,7 +916,8 @@
         "revision": 10677,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -612,7 +933,20 @@
     },
     "Rescue Claw": {
       "type": "EQUIPMENT",
-      "description": "可使用3次。将使用者拉向地形，或将其他侦察兵拉向使用者"
+      "description": "可使用3次。将使用者拉向地形，或将其他侦察兵拉向使用者",
+      "context": "将使用者拉向地形，或将其他侦察兵拉向使用者。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后无法使用。",
+        "unusable": "该物品已烧毁，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Rescue Claw",
+        "revision": 11988,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "RitualDagger": {
       "type": "MYSTICAL",
@@ -624,11 +958,37 @@
     },
     "rope cannon": {
       "type": "DEPLOYABLE",
-      "description": "发射鱼叉，命中可攀爬表面时垂下可攀爬绳索"
+      "description": "发射鱼叉，命中可攀爬表面时垂下可攀爬绳索",
+      "context": "发射鱼叉，命中可攀爬表面时垂下可攀爬绳索。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后无法使用。",
+        "unusable": "该物品已烧毁，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Rope Cannon",
+        "revision": 8625,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "rope spool": {
       "type": "DEPLOYABLE",
-      "description": "部署最长10米的可攀爬绳索，可附着在任何可攀爬表面"
+      "description": "部署最长10米的可攀爬绳索，可附着在任何可攀爬表面",
+      "context": "部署最长10米的可攀爬绳索。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后无法使用。",
+        "unusable": "该物品已烧毁，无法继续使用。"
+      },
+      "wiki": {
+        "title": "Rope Spool",
+        "revision": 7363,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Scorchberry": {
       "type": "CONSUMABLE",
@@ -640,7 +1000,19 @@
     },
     "Scout Cannon": {
       "type": "DEPLOYABLE",
-      "description": "放置一门大炮，将侦察兵发射到地图各处。发射时造成受伤"
+      "description": "放置一门大炮，将侦察兵发射到地图各处。发射时造成受伤",
+      "context": "将侦察兵发射到地图各处。",
+      "stateDescriptions": {
+        "cooked": "烹饪会使其以类似炸药的方式爆炸。"
+      },
+      "wiki": {
+        "title": "Scout Cannon",
+        "revision": 11987,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Scout Cookies": {
       "type": "CONSUMABLE",
@@ -696,7 +1068,8 @@
         "revision": 11351,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       }
     },
     "Stick": {
@@ -713,11 +1086,39 @@
     },
     "Sunscreen": {
       "type": "CONSUMABLE",
-      "description": "可使用3次。每次喷雾提供90秒防晒"
+      "description": "可使用3次。每次喷雾提供90秒防晒",
+      "context": "喷洒后可提供防晒效果。",
+      "stateDescriptions": {
+        "cooked": "烹饪后使用会爆炸并释放大范围防晒云雾，不会造成击退。",
+        "burnt": "烹饪后使用会爆炸并释放大范围防晒云雾，不会造成击退。",
+        "incinerated": "烹饪后使用会爆炸并释放大范围防晒云雾，不会造成击退。"
+      },
+      "wiki": {
+        "title": "Sunscreen",
+        "revision": 10959,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "THEBOOKOFBONES": {
       "type": "MYSTICAL",
-      "description": "使用后对持有者施加诅咒"
+      "description": "使用后对持有者施加诅咒",
+      "context": "使用后会对持有者施加诅咒。",
+      "stateDescriptions": {
+        "cooked": "烹饪只会改变外观，使用效果不变。",
+        "burnt": "烹饪只会改变外观，使用效果不变。",
+        "incinerated": "烹饪只会改变外观，使用效果不变。"
+      },
+      "wiki": {
+        "title": "The Book of Bones",
+        "revision": 12107,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Tick": {
       "type": "CONSUMABLE",
@@ -740,7 +1141,19 @@
         "MYSTICAL",
         "DEPLOYABLE"
       ],
-      "description": "在远古行李和雕像中发现。发射一颗最远40米的虚空球，在其落点反转重力"
+      "description": "在远古行李和雕像中发现。发射一颗最远40米的虚空球，在其落点反转重力",
+      "context": "发射反重力球，落点会出现反转重力的区域。",
+      "stateDescriptions": {
+        "cooked": "烹饪会使其爆炸，并在原地生成更大的反重力球。"
+      },
+      "wiki": {
+        "title": "Anti-Zooka",
+        "revision": 11225,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "WARP COMPASS": {
       "type": "MYSTICAL",
@@ -787,7 +1200,8 @@
         "revision": 10038,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -810,7 +1224,8 @@
         "revision": 10679,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {
@@ -837,7 +1252,8 @@
         "revision": 10041,
         "checkedAt": "2026-10-11",
         "gameVersion": "2.6.b",
-        "reviewStatus": "wiki-reviewed; in-game validation pending"
+        "reviewStatus": "wiki-reviewed; in-game validation pending",
+        "cookingRevision": 11785
       },
       "stateChecks": {
         "cooked": {

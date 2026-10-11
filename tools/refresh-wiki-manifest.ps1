@@ -28,6 +28,7 @@ $aliases = @{
     "ScoutsHonor" = "Scout's Honor"
     "SNOWBALL" = "Snowball"
     "THEBOOKOFBONES" = "The Book of Bones"
+    "VOIDLAUNCHER" = "Anti-Zooka"
 }
 
 $entries = [System.Collections.Generic.List[object]]::new()

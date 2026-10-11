@@ -10,11 +10,25 @@ if ($english.items.Count -ne 131 -or $chinese.items.Count -ne 131) {
 
 $englishProfiles = @($english.items.Keys | Where-Object { $english.items[$_].wiki })
 $chineseProfiles = @($chinese.items.Keys | Where-Object { $chinese.items[$_].wiki })
-if ($englishProfiles.Count -ne 19 -or $chineseProfiles.Count -ne 19) {
-    throw "Expected 19 reviewed state profiles in each language file."
+if ($englishProfiles.Count -ne 50 -or $chineseProfiles.Count -ne 50) {
+    throw "Expected 50 reviewed state profiles in each language file."
 }
 if (Compare-Object $englishProfiles $chineseProfiles -CaseSensitive) {
     throw "English and Chinese state profile keys differ."
+}
+
+$cookingSpecialKeys = @(
+    "anti-rope cannon", "anti-rope spool", "VOIDLAUNCHER", "Antidote", "Backpack", "Balloon",
+    "Balloon Bunch", "Bandages", "Big Lollipop", "Bing Bong", "Blowgun", "Bugle", "Chain Launcher",
+    "Cure-All", "Cursed Skull", "Dynamite", "Energy Drink", "Faerie Lantern", "First Aid Kit", "Flare",
+    "Fortified Milk", "Guidebook", "Heat Pack", "Lantern", "Mandrake", "Medicinal Root", "Pandora's Lunchbox",
+    "Piton", "Portable Stove", "Rescue Claw", "rope cannon", "rope spool", "Scout Cannon", "Sports Drink",
+    "Sunscreen", "THEBOOKOFBONES"
+)
+foreach ($key in $cookingSpecialKeys) {
+    if (-not $english.items[$key].wiki -or -not $english.items[$key].stateDescriptions) {
+        throw "Cooking special item '$key' has no sourced state profile."
+    }
 }
 
 $manifestItems = [System.Collections.Generic.Dictionary[string, object]]::new([StringComparer]::Ordinal)
@@ -33,7 +47,10 @@ foreach ($key in $englishProfiles) {
     if ($checkKeysMissingFromZh.Count -gt 0 -or $checkKeysMissingFromEn.Count -gt 0) {
         throw "State checks differ by language for '$key'."
     }
-    if ($en.wiki.revision -ne $zh.wiki.revision -or -not $en.wiki.reviewStatus -or -not $zh.wiki.reviewStatus) {
+    if (($en.wiki.revision -ne $zh.wiki.revision) -or
+        ($en.wiki.cookingRevision -ne 11785) -or
+        ($zh.wiki.cookingRevision -ne 11785) -or
+        (-not $en.wiki.reviewStatus) -or (-not $zh.wiki.reviewStatus)) {
         throw "Wiki provenance is missing or inconsistent for '$key'."
     }
     if (-not $manifestItems.ContainsKey($key) -or $manifestItems[$key].revision -ne $en.wiki.revision) {
