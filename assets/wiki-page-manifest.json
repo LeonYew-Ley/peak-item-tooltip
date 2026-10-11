@@ -6,20 +6,25 @@
   "reuseNotice": "Wiki page text is CC BY-SA 4.0 unless the individual page states otherwise; verify each source page.",
   "reviewPolicy": "A page lookup is only a candidate. Read and compare its item facts and cooking notes before using it in a tooltip.",
   "aliases": {
-    "RitualDagger": "Ritual Dagger",
-    "anti-rope cannon": "Anti-Rope Cannon",
-    "Bird": "Cooked Bird",
-    "rope cannon": "Rope Cannon",
-    "anti-rope spool": "Anti-Rope Spool",
-    "THEBOOKOFBONES": "The Book of Bones",
-    "rope spool": "Rope Spool",
     "FrogLegs": "Frog Legs",
-    "Coconut Half": "Half-Coconut",
-    "ScoutsHonor": "Scout's Honor",
+    "rope cannon": "Rope Cannon",
     "SNOWBALL": "Snowball",
-    "VOIDLAUNCHER": "Anti-Zooka",
     "EARLYWORM": "The Early Worm",
-    "Small Egg": "Egg"
+    "AMULET_INFINITESTAM": "Scout's Ambition",
+    "Frisbee": "Flying Disc",
+    "Coconut Half": "Half-Coconut",
+    "rope spool": "Rope Spool",
+    "RitualDagger": "Ritual Dagger",
+    "ScoutsHonor": "Scout's Honor",
+    "THEBOOKOFBONES": "The Book of Bones",
+    "AMULET_HEALING": "Scout's Tenacity",
+    "VOIDLAUNCHER": "Anti-Zooka",
+    "Bird": "Cooked Bird",
+    "Fannypack": "Fanny Pack",
+    "AMULET_DOUBLEJUMP": "Scout's Initiative",
+    "anti-rope cannon": "Anti-Rope Cannon",
+    "anti-rope spool": "Anti-Rope Spool",
+    "AMULET_CLONE": "Scout's Generosity"
   },
   "items": [
     {
@@ -42,35 +47,39 @@
     },
     {
       "gameKey": "AMULET_CLONE",
-      "requestedTitle": "AMULET_CLONE",
-      "wikiTitle": null,
-      "revision": null,
-      "timestamp": null,
-      "status": "missing"
+      "requestedTitle": "Scout's Generosity",
+      "wikiTitle": "Scout's Generosity",
+      "revision": 11880,
+      "timestamp": "2026-09-14T19:44:03Z",
+      "status": "page-found-needs-content-review",
+      "reviewStatus": null
     },
     {
       "gameKey": "AMULET_DOUBLEJUMP",
-      "requestedTitle": "AMULET_DOUBLEJUMP",
-      "wikiTitle": null,
-      "revision": null,
-      "timestamp": null,
-      "status": "missing"
+      "requestedTitle": "Scout's Initiative",
+      "wikiTitle": "Scout's Initiative",
+      "revision": 11881,
+      "timestamp": "2026-09-14T19:44:35Z",
+      "status": "page-found-needs-content-review",
+      "reviewStatus": null
     },
     {
       "gameKey": "AMULET_HEALING",
-      "requestedTitle": "AMULET_HEALING",
-      "wikiTitle": null,
-      "revision": null,
-      "timestamp": null,
-      "status": "missing"
+      "requestedTitle": "Scout's Tenacity",
+      "wikiTitle": "Scout's Tenacity",
+      "revision": 11882,
+      "timestamp": "2026-09-14T19:44:51Z",
+      "status": "page-found-needs-content-review",
+      "reviewStatus": null
     },
     {
       "gameKey": "AMULET_INFINITESTAM",
-      "requestedTitle": "AMULET_INFINITESTAM",
-      "wikiTitle": null,
-      "revision": null,
-      "timestamp": null,
-      "status": "missing"
+      "requestedTitle": "Scout's Ambition",
+      "wikiTitle": "Scout's Ambition",
+      "revision": 11879,
+      "timestamp": "2026-09-14T19:43:43Z",
+      "status": "page-found-needs-content-review",
+      "reviewStatus": null
     },
     {
       "gameKey": "Ancient Idol",
@@ -114,7 +123,14 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "missing"
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Auto-Parachute"
+        }
+      ]
     },
     {
       "gameKey": "Backpack",
@@ -158,8 +174,8 @@
       "wikiTitle": "Beehive",
       "revision": 11925,
       "timestamp": "2026-09-21T02:41:00Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Berrynana Peel",
@@ -167,7 +183,29 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "missing"
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Blue Berrynana Peel",
+          "revision": 11170,
+          "section": "Blue Berrynana Peel"
+        },
+        {
+          "title": "Brown Berrynana Peel",
+          "revision": 11313,
+          "section": "Brown Berrynana Peel"
+        },
+        {
+          "title": "Pink Berrynana Peel",
+          "revision": 11168,
+          "section": "Pink Berrynana Peel"
+        },
+        {
+          "title": "Yellow Berrynana Peel",
+          "revision": 11240,
+          "section": "Yellow Berrynana Peel"
+        }
+      ]
     },
     {
       "gameKey": "Big Egg",
@@ -175,8 +213,8 @@
       "wikiTitle": "Big Egg",
       "revision": 11612,
       "timestamp": "2026-09-03T21:29:38Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Big Lollipop",
@@ -211,8 +249,8 @@
       "wikiTitle": "Cooked Bird",
       "revision": 11126,
       "timestamp": "2026-08-23T17:09:47Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Black Clusterberry",
@@ -337,8 +375,8 @@
       "wikiTitle": "Checkpoint Flag",
       "revision": 11239,
       "timestamp": "2026-08-26T10:57:45Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Chubby Shroom",
@@ -355,7 +393,14 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "missing"
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Climbing Chalk"
+        }
+      ]
     },
     {
       "gameKey": "Cloud Fungus",
@@ -390,8 +435,8 @@
       "wikiTitle": "Half-Coconut",
       "revision": 9542,
       "timestamp": "2026-08-12T14:58:19Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Compass",
@@ -444,8 +489,8 @@
       "wikiTitle": "The Early Worm",
       "revision": 11896,
       "timestamp": "2026-09-15T22:52:13Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Egg",
@@ -476,11 +521,12 @@
     },
     {
       "gameKey": "Fannypack",
-      "requestedTitle": "Fannypack",
-      "wikiTitle": null,
-      "revision": null,
-      "timestamp": null,
-      "status": "missing"
+      "requestedTitle": "Fanny Pack",
+      "wikiTitle": "Fanny Pack",
+      "revision": 12084,
+      "timestamp": "2026-09-27T16:44:51Z",
+      "status": "page-found-needs-content-review",
+      "reviewStatus": null
     },
     {
       "gameKey": "First Aid Kit",
@@ -511,10 +557,10 @@
     },
     {
       "gameKey": "Frisbee",
-      "requestedTitle": "Frisbee",
-      "wikiTitle": "Frisbee",
-      "revision": 2522,
-      "timestamp": "2025-08-24T03:20:06Z",
+      "requestedTitle": "Flying Disc",
+      "wikiTitle": "Flying Disc",
+      "revision": 12008,
+      "timestamp": "2026-09-24T00:03:42Z",
       "status": "page-found-needs-content-review",
       "reviewStatus": null
     },
@@ -691,11 +737,17 @@
     {
       "gameKey": "Megaphone",
       "requestedTitle": "Megaphone",
-      "wikiTitle": "Megaphone",
-      "revision": 3880,
-      "timestamp": "2025-09-07T09:39:52Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "wikiTitle": null,
+      "revision": null,
+      "timestamp": null,
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Megaphone"
+        }
+      ]
     },
     {
       "gameKey": "Napberry",
@@ -892,8 +944,8 @@
       "wikiTitle": "Scorpion",
       "revision": 12098,
       "timestamp": "2026-10-01T01:49:13Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Scout Cannon",
@@ -919,8 +971,8 @@
       "wikiTitle": "Scout Effigy",
       "revision": 11968,
       "timestamp": "2026-09-23T17:41:26Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Scoutmaster's Bugle",
@@ -928,8 +980,8 @@
       "wikiTitle": "Scoutmaster's Bugle",
       "revision": 11283,
       "timestamp": "2026-08-27T14:12:58Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "SCOUTMASTERSOUL",
@@ -937,7 +989,14 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "missing"
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "The Lost Souls",
+          "revision": 11150,
+          "section": "Scoutmaster's Soul"
+        }
+      ]
     },
     {
       "gameKey": "ScoutsHonor",
@@ -945,8 +1004,8 @@
       "wikiTitle": "Scout's Honor",
       "revision": 11889,
       "timestamp": "2026-09-15T00:59:58Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Scroll",
@@ -954,8 +1013,8 @@
       "wikiTitle": "Scroll",
       "revision": 11890,
       "timestamp": "2026-09-15T04:25:23Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Shelf Fungus",
@@ -969,18 +1028,24 @@
     {
       "gameKey": "Skull",
       "requestedTitle": "Skull",
-      "wikiTitle": "Skull",
-      "revision": 2556,
-      "timestamp": "2025-08-24T03:35:15Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "wikiTitle": null,
+      "revision": null,
+      "timestamp": null,
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Skull"
+        }
+      ]
     },
     {
       "gameKey": "Small Egg",
-      "requestedTitle": "Egg",
-      "wikiTitle": "Egg",
-      "revision": 11625,
-      "timestamp": "2026-09-04T13:52:38Z",
+      "requestedTitle": "Small Egg",
+      "wikiTitle": "Small Egg",
+      "revision": 12075,
+      "timestamp": "2026-09-27T06:06:37Z",
       "status": "page-found-needs-content-review",
       "reviewStatus": null
     },
@@ -990,8 +1055,8 @@
       "wikiTitle": "Snowball",
       "revision": 12024,
       "timestamp": "2026-09-24T00:11:16Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Sports Drink",
@@ -1005,11 +1070,17 @@
     {
       "gameKey": "Stick",
       "requestedTitle": "Stick",
-      "wikiTitle": "Stick",
-      "revision": 5270,
-      "timestamp": "2025-10-26T22:42:50Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "wikiTitle": null,
+      "revision": null,
+      "timestamp": null,
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Stick"
+        }
+      ]
     },
     {
       "gameKey": "Stone",
@@ -1017,7 +1088,14 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "missing"
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Stone"
+        }
+      ]
     },
     {
       "gameKey": "Strange Gem",
@@ -1025,8 +1103,8 @@
       "wikiTitle": "Strange Gem",
       "revision": 11883,
       "timestamp": "2026-09-14T19:47:04Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
     },
     {
       "gameKey": "Sunscreen",
@@ -1067,11 +1145,17 @@
     {
       "gameKey": "Torn Page",
       "requestedTitle": "Torn Page",
-      "wikiTitle": "Torn Page",
-      "revision": 2449,
-      "timestamp": "2025-08-23T20:35:09Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "wikiTitle": null,
+      "revision": null,
+      "timestamp": null,
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Scroll",
+          "revision": 11890,
+          "section": "Torn Pages"
+        }
+      ]
     },
     {
       "gameKey": "Trail Mix",
@@ -1124,16 +1208,29 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "missing"
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Warpsketball"
+        }
+      ]
     },
     {
       "gameKey": "Weird Shroom",
       "requestedTitle": "Weird Shroom",
-      "wikiTitle": "Weird Shroom",
-      "revision": 6053,
-      "timestamp": "2025-11-07T15:12:44Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "wikiTitle": null,
+      "revision": null,
+      "timestamp": null,
+      "status": "no-direct-item-page; secondary-source-needs-review",
+      "secondarySources": [
+        {
+          "title": "Unused content",
+          "revision": 11407,
+          "section": "Weird Shroom"
+        }
+      ]
     },
     {
       "gameKey": "Yellow Berrynana",

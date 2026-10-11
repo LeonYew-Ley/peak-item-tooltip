@@ -15,11 +15,16 @@ $keys = @($defaults.items.Keys | Sort-Object)
 
 # Wiki display/page names that intentionally differ from the game's internal keys.
 $aliases = @{
+    "AMULET_CLONE" = "Scout's Generosity"
+    "AMULET_DOUBLEJUMP" = "Scout's Initiative"
+    "AMULET_HEALING" = "Scout's Tenacity"
+    "AMULET_INFINITESTAM" = "Scout's Ambition"
+    "Fannypack" = "Fanny Pack"
+    "Frisbee" = "Flying Disc"
     "Bird" = "Cooked Bird"
     "Coconut Half" = "Half-Coconut"
     "EARLYWORM" = "The Early Worm"
     "FrogLegs" = "Frog Legs"
-    "Small Egg" = "Egg"
     "anti-rope cannon" = "Anti-Rope Cannon"
     "anti-rope spool" = "Anti-Rope Spool"
     "RitualDagger" = "Ritual Dagger"
@@ -29,6 +34,27 @@ $aliases = @{
     "SNOWBALL" = "Snowball"
     "THEBOOKOFBONES" = "The Book of Bones"
     "VOIDLAUNCHER" = "Anti-Zooka"
+}
+
+# Some game keys have no dedicated item page. Keep a cited secondary page or variant set
+# without pretending that a redirect to an unrelated item is a direct match.
+$secondarySources = @{
+    "AUTOPARACHUTE" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Auto-Parachute" })
+    "Berrynana Peel" = @(
+        [ordered]@{ title = "Blue Berrynana Peel"; revision = 11170; section = "Blue Berrynana Peel" }
+        [ordered]@{ title = "Brown Berrynana Peel"; revision = 11313; section = "Brown Berrynana Peel" }
+        [ordered]@{ title = "Pink Berrynana Peel"; revision = 11168; section = "Pink Berrynana Peel" }
+        [ordered]@{ title = "Yellow Berrynana Peel"; revision = 11240; section = "Yellow Berrynana Peel" }
+    )
+    "Climbing Chalk" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Climbing Chalk" })
+    "SCOUTMASTERSOUL" = @([ordered]@{ title = "The Lost Souls"; revision = 11150; section = "Scoutmaster's Soul" })
+    "Skull" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Skull" })
+    "Megaphone" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Megaphone" })
+    "Stick" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Stick" })
+    "Weird Shroom" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Weird Shroom" })
+    "Stone" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Stone" })
+    "Torn Page" = @([ordered]@{ title = "Scroll"; revision = 11890; section = "Torn Pages" })
+    "Warpsketball" = @([ordered]@{ title = "Unused content"; revision = 11407; section = "Warpsketball" })
 }
 
 $entries = [System.Collections.Generic.List[object]]::new()
@@ -41,6 +67,7 @@ for ($offset = 0; $offset -lt $keys.Count; $offset += $BatchSize) {
         format = "json"
         formatversion = "2"
         prop = "info|revisions"
+        redirects = "1"
         rvprop = "ids|timestamp"
         rvslots = "main"
         titles = ($requestedTitles -join "|")
@@ -68,6 +95,18 @@ for ($offset = 0; $offset -lt $keys.Count; $offset += $BatchSize) {
 
     foreach ($gameKey in $batch) {
         $requestedTitle = if ($aliases.ContainsKey($gameKey)) { $aliases[$gameKey] } else { $gameKey }
+        if ($secondarySources.ContainsKey($gameKey)) {
+            $entries.Add([ordered]@{
+                gameKey = $gameKey
+                requestedTitle = $requestedTitle
+                wikiTitle = $null
+                revision = $null
+                timestamp = $null
+                status = "no-direct-item-page; secondary-source-needs-review"
+                secondarySources = $secondarySources[$gameKey]
+            })
+            continue
+        }
         $resolvedTitle = $requestedTitle
         if ($canonicalByAlias.ContainsKey($resolvedTitle)) { $resolvedTitle = $canonicalByAlias[$resolvedTitle] }
         $page = if ($pageByTitle.ContainsKey($resolvedTitle)) { $pageByTitle[$resolvedTitle] } else { $null }
@@ -119,4 +158,14 @@ $json = ConvertTo-Json -InputObject $manifest -Depth 8
 $unreviewed = @($entries | Where-Object { $_.status -eq "page-found-needs-content-review" }).Count
 $reviewed = @($entries | Where-Object { $_.status -eq "facts-reviewed; in-game-validation-pending" }).Count
 $missing = @($entries | Where-Object { $_.status -eq "missing" }).Count
-[PSCustomObject]@{ Path = $manifestPath; GameItems = $entries.Count; FactReviewedPages = $reviewed; UnreviewedCandidatePages = $unreviewed; MissingPages = $missing; InGameValidationPending = $true } | ConvertTo-Json
+$secondaryOnly = @($entries | Where-Object { $_.status -like "no-direct-item-page;*" }).Count
+[PSCustomObject]@{
+    Path = $manifestPath
+    GameItems = $entries.Count
+    FactReviewedPages = $reviewed
+    UnreviewedCandidatePages = $unreviewed
+    SecondarySourceOnlyItems = $secondaryOnly
+    MissingWithoutSecondarySource = $missing
+    NoDirectItemPages = $secondaryOnly + $missing
+    InGameValidationPending = $true
+} | ConvertTo-Json

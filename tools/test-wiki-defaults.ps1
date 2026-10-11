@@ -10,8 +10,8 @@ if ($english.items.Count -ne 131 -or $chinese.items.Count -ne 131) {
 
 $englishProfiles = @($english.items.Keys | Where-Object { $english.items[$_].wiki })
 $chineseProfiles = @($chinese.items.Keys | Where-Object { $chinese.items[$_].wiki })
-if ($englishProfiles.Count -ne 50 -or $chineseProfiles.Count -ne 50) {
-    throw "Expected 50 reviewed state profiles in each language file."
+if ($englishProfiles.Count -ne 63 -or $chineseProfiles.Count -ne 63) {
+    throw "Expected 63 reviewed state profiles in each language file."
 }
 if (Compare-Object $englishProfiles $chineseProfiles -CaseSensitive) {
     throw "English and Chinese state profile keys differ."
@@ -23,7 +23,8 @@ $cookingSpecialKeys = @(
     "Cure-All", "Cursed Skull", "Dynamite", "Energy Drink", "Faerie Lantern", "First Aid Kit", "Flare",
     "Fortified Milk", "Guidebook", "Heat Pack", "Lantern", "Mandrake", "Medicinal Root", "Pandora's Lunchbox",
     "Piton", "Portable Stove", "Rescue Claw", "rope cannon", "rope spool", "Scout Cannon", "Sports Drink",
-    "Sunscreen", "THEBOOKOFBONES"
+    "Sunscreen", "THEBOOKOFBONES", "Big Egg", "Beehive", "Bird", "Checkpoint Flag", "Coconut Half",
+    "Scoutmaster's Bugle", "Scroll", "Scout Effigy", "ScoutsHonor", "Scorpion", "Strange Gem", "SNOWBALL", "EARLYWORM"
 )
 foreach ($key in $cookingSpecialKeys) {
     if (-not $english.items[$key].wiki -or -not $english.items[$key].stateDescriptions) {
@@ -31,8 +32,44 @@ foreach ($key in $cookingSpecialKeys) {
     }
 }
 
+$requiredStates = @{
+    "Big Egg" = @("cooked", "burnt", "incinerated")
+    "Beehive" = @("cooked", "burnt", "incinerated")
+    "Bird" = @("cooked", "burnt", "incinerated")
+    "Checkpoint Flag" = @("cooked")
+    "Coconut Half" = @("cooked")
+    "Scoutmaster's Bugle" = @("incinerated")
+    "Scroll" = @("cooked")
+    "Scout Effigy" = @("cooked", "incinerated")
+    "ScoutsHonor" = @("cooked")
+    "Scorpion" = @("cooked")
+    "Strange Gem" = @("cooked", "incinerated")
+    "SNOWBALL" = @("cooked")
+    "EARLYWORM" = @("cooked", "burnt", "incinerated")
+}
+foreach ($key in $requiredStates.Keys) {
+    foreach ($state in $requiredStates[$key]) {
+        if (-not $english.items[$key].stateDescriptions.ContainsKey($state)) {
+            throw "Cooking profile '$key' is missing the required '$state' state."
+        }
+    }
+}
+if ($english.items["Gold Prickleberry"].wiki) {
+    throw "Gold Prickleberry has conflicting Wiki cooking facts and must remain unprofiled."
+}
+
 $manifestItems = [System.Collections.Generic.Dictionary[string, object]]::new([StringComparer]::Ordinal)
 foreach ($entry in $manifest.items) { $manifestItems[$entry.gameKey] = $entry }
+if ($manifestItems["Small Egg"].wikiTitle -ne "Small Egg") {
+    throw "Small Egg must map to its own Wiki page, not Egg."
+}
+if ($manifestItems["Fannypack"].wikiTitle -ne "Fanny Pack" -or $manifestItems["Frisbee"].wikiTitle -ne "Flying Disc") {
+    throw "Renamed item aliases do not resolve to their current Wiki pages."
+}
+
+foreach ($key in @("AMULET_CLONE", "AMULET_DOUBLEJUMP", "AMULET_HEALING", "AMULET_INFINITESTAM")) {
+    if (-not $manifestItems[$key].wikiTitle) { throw "Amulet key '$key' has no resolved Wiki source." }
+}
 
 foreach ($key in $englishProfiles) {
     $en = $english.items[$key]

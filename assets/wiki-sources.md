@@ -1,6 +1,6 @@
 # PEAK Wiki-derived tooltip data
 
-The English and Simplified Chinese defaults contain short summaries for 50 items whose effects change with cooking. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
+The English and Simplified Chinese defaults contain short summaries for 63 items whose effects change with cooking. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
 
 ## Sources reviewed on 2026-10-11
 
@@ -58,10 +58,23 @@ The English and Simplified Chinese defaults contain short summaries for 50 items
 | [The Book of Bones](https://peak.wiki.gg/wiki/The_Book_of_Bones) | 12107 | Visual-only cooking |
 | [Anti-Zooka](https://peak.wiki.gg/wiki/Anti-Zooka) | 11225 | Cooking creates a larger Anti-Sphere |
 | [Coconut](https://peak.wiki.gg/wiki/Coconut) | 12013 | Cooking produces cooked Half-Coconuts |
+| [Big Egg](https://peak.wiki.gg/wiki/Big_Egg) | 11612 | Cracking yields an Egg or rare Cooked Bird; contents inherit its cooking stage |
+| [Beehive](https://peak.wiki.gg/wiki/Beehive) | 11925 | Breaking yields Honeycombs; contents inherit the Beehive cooking stage |
+| [Cooked Bird](https://peak.wiki.gg/wiki/Cooked_Bird) | 11126 | Spawns pre-cooked; another cooking step makes it Well-Done |
+| [Checkpoint Flag](https://peak.wiki.gg/wiki/Checkpoint_Flag) | 11239 | Explosives advance its stage by two; cooking adds a use bonus |
+| [Half-Coconut](https://peak.wiki.gg/wiki/Half-Coconut) | 9542 | Cooking doubles Hunger restoration and adds Bonus stamina |
+| [Scoutmaster's Bugle](https://peak.wiki.gg/wiki/Scoutmaster%27s_Bugle) | 11283 | Incinerated use inflicts Poison |
+| [Scroll](https://peak.wiki.gg/wiki/Scroll) | 11890 | Cooking adds Bonus stamina when opened |
+| [Scout Effigy](https://peak.wiki.gg/wiki/Scout_Effigy) | 11968 | Cooking adds Bonus stamina; Incineration inflicts Poison on use |
+| [Scout's Honor](https://peak.wiki.gg/wiki/Scout%27s_Honor) | 11889 | Cooking triggers an Anti-Sphere explosion and summons the Scoutmaster |
+| [Scorpion](https://peak.wiki.gg/wiki/Scorpion) | 12098 | Cooking makes it edible and stops its movement and attacks |
+| [Strange Gem](https://peak.wiki.gg/wiki/Strange_Gem) | 11883 | Cooked bestowal adds Bonus stamina; burning adds Poison |
+| [Snowball](https://peak.wiki.gg/wiki/Snowball) | 12024 | Cooking inflicts Cold on hit without knocking the target down |
+| [The Early Worm](https://peak.wiki.gg/wiki/The_Early_Worm) | 11896 | Cooking stops movement without adding Bonus stamina |
 
 ## Review status and limits
 
-All 50 profiles have been checked against the cited Wiki pages and the general cooking rules. In-game validation is still pending. The Green Crispberry rule was also compared with the locally installed PEAK 2.6.b cooking implementation; the remaining special-item rules have not yet been confirmed in a live game session.
+All 63 profiles have been checked against the cited Wiki pages and the general cooking rules. In-game validation is still pending. The Green Crispberry rule was also compared with the locally installed PEAK 2.6.b cooking implementation; the remaining special-item rules have not yet been confirmed in a live game session.
 
 The Wiki states that Cooked and Well-Done food effects are identical and do not stack; cooked poisonous berries become safe, but mushroom poison cannot be cooked out; Shroomberries lose 5 Spores; Burnt food restores less Hunger; and each further Incinerated stage adds Poison. Sports Drink and several other items have exceptions, so the tooltip uses item-specific text only where a page documents the exception.
 

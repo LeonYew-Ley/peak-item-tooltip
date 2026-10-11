@@ -167,7 +167,21 @@
     },
     "Beehive": {
       "type": "MISC",
-      "description": "Found in trees in the tropics. Breaking it open drops four Honeycombs and releases the bees inside"
+      "description": "Found in trees in the tropics. Breaking it open drops four Honeycombs and releases the bees inside",
+      "context": "Found on trees in the Tropics; breaking it releases the bees and yields four Honeycombs.",
+      "stateDescriptions": {
+        "cooked": "The cooking stage transfers to the Honeycombs inside when the hive breaks.",
+        "burnt": "The cooking stage transfers to the Honeycombs inside when the hive breaks.",
+        "incinerated": "The cooking stage transfers to the Honeycombs inside when the hive breaks."
+      },
+      "wiki": {
+        "title": "Beehive",
+        "revision": 11925,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Berrynana Peel": {
       "type": "MISC",
@@ -175,7 +189,21 @@
     },
     "Big Egg": {
       "type": "CONSUMABLE",
-      "description": "Found in the caldera. Breaking it open yields an Egg, or rarely a pre-cooked Bird"
+      "description": "Found in the caldera. Breaking it open yields an Egg, or rarely a pre-cooked Bird",
+      "context": "Found in nests in the Caldera; cracking it yields an Egg or, sometimes, a Cooked Bird.",
+      "stateDescriptions": {
+        "cooked": "When cracked, its cooking stage transfers to the contents, except for a possible uncooked-bird result.",
+        "burnt": "When cracked, its cooking stage transfers to the contents, except for a possible uncooked-bird result.",
+        "incinerated": "When cracked, its cooking stage transfers to the contents, except for a possible uncooked-bird result."
+      },
+      "wiki": {
+        "title": "Big Egg",
+        "revision": 11612,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Big Lollipop": {
       "type": "CONSUMABLE",
@@ -215,7 +243,21 @@
     },
     "Bird": {
       "type": "CONSUMABLE",
-      "description": "Found in the caldera, hatched from eggs. Spawns pre-cooked"
+      "description": "Found in the caldera, hatched from eggs. Spawns pre-cooked",
+      "context": "A rare result from cracking Big Eggs or Small Eggs; it spawns pre-cooked.",
+      "stateDescriptions": {
+        "cooked": "It already spawns as Cooked; cooking it again makes it Well-Done, with the same effect as Cooked.",
+        "burnt": "Burnt food restores less Hunger and no longer grants Extra Stamina.",
+        "incinerated": "Each further incineration adds Poison; the live modifier row shows the current effect."
+      },
+      "wiki": {
+        "title": "Cooked Bird",
+        "revision": 11126,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Black Clusterberry": {
       "type": "CONSUMABLE",
@@ -356,7 +398,19 @@
     },
     "Checkpoint Flag": {
       "type": "DEPLOYABLE",
-      "description": "Places a single-use respawn checkpoint for the scout who placed it"
+      "description": "Places a single-use respawn checkpoint for the scout who placed it",
+      "context": "Places a single-use respawn checkpoint for the Scout who placed it.",
+      "stateDescriptions": {
+        "cooked": "Only explosives can cook this flag, and each explosion advances its cooking stage by two. Cooking adds a Bonus stamina effect when it is used."
+      },
+      "wiki": {
+        "title": "Checkpoint Flag",
+        "revision": 11239,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Chubby Shroom": {
       "type": "CONSUMABLE",
@@ -404,7 +458,19 @@
     },
     "Coconut Half": {
       "type": "CONSUMABLE",
-      "description": "Created by breaking a Coconut"
+      "description": "Created by breaking a Coconut",
+      "context": "Made by splitting a Coconut; eating a half also removes Heat.",
+      "stateDescriptions": {
+        "cooked": "Cooking once doubles its Hunger restoration and adds Bonus stamina; the current amounts remain in the live modifier row."
+      },
+      "wiki": {
+        "title": "Half-Coconut",
+        "revision": 9542,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Compass": {
       "type": "EQUIPMENT",
@@ -464,7 +530,21 @@
     },
     "EARLYWORM": {
       "type": "CONSUMABLE",
-      "description": "Found in the gloom. Removes drowsiness from the user"
+      "description": "Found in the gloom. Removes drowsiness from the user",
+      "context": "Found moving on the ground in the Gloom; eating it clears Drowsy and grants the Well Rested badge.",
+      "stateDescriptions": {
+        "cooked": "Cooking stops the worm moving but adds no Bonus stamina.",
+        "burnt": "The worm remains stopped; Burnt food restores less Hunger and grants no Bonus stamina.",
+        "incinerated": "Each further incineration adds Poison when eaten; the live modifier row shows the current effect."
+      },
+      "wiki": {
+        "title": "The Early Worm",
+        "revision": 11896,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Egg": {
       "type": "CONSUMABLE",
@@ -1020,7 +1100,19 @@
     },
     "Scorpion": {
       "type": "MISC",
-      "description": "Found in the mesa. Can be held but not stored in an inventory slot, and cannot be eaten raw"
+      "description": "Found in the mesa. Can be held but not stored in an inventory slot, and cannot be eaten raw",
+      "context": "Found in Mesa canyons and cliffs; it can be held but not stored, and it cannot be eaten raw.",
+      "stateDescriptions": {
+        "cooked": "Cooking makes it edible and stops it moving or attacking; it still cannot be stored in an inventory slot or Backpack."
+      },
+      "wiki": {
+        "title": "Scorpion",
+        "revision": 12098,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Scout Cannon": {
       "type": "DEPLOYABLE",
@@ -1044,11 +1136,36 @@
     },
     "Scout Effigy": {
       "type": "MYSTICAL",
-      "description": "Resurrects a dead scout at a target location. Does not spawn in solo play"
+      "description": "Resurrects a dead scout at a target location. Does not spawn in solo play",
+      "context": "A one-use mystical item that can revive a dead or unconscious Scout at the target location; it does not spawn in solo play.",
+      "stateDescriptions": {
+        "cooked": "Cooking grants Bonus stamina when the effigy is used.",
+        "incinerated": "Using it after Incineration also inflicts Poison on the user."
+      },
+      "wiki": {
+        "title": "Scout Effigy",
+        "revision": 11968,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Scoutmaster's Bugle": {
       "type": "MYSTICAL",
-      "description": "Grants the user and nearby scouts bonus stamina, and summons the Scoutmaster for two minutes"
+      "description": "Grants the user and nearby scouts bonus stamina, and summons the Scoutmaster for two minutes",
+      "context": "A one-use mystical item from Ancient Luggage or an Ancient Statue; playing it grants nearby Scouts Bonus stamina and summons the Scoutmaster.",
+      "stateDescriptions": {
+        "incinerated": "Playing it after Incineration also inflicts Poison on the user."
+      },
+      "wiki": {
+        "title": "Scoutmaster's Bugle",
+        "revision": 11283,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "SCOUTMASTERSOUL": {
       "type": "MYSTICAL",
@@ -1056,11 +1173,35 @@
     },
     "ScoutsHonor": {
       "type": "MYSTICAL",
-      "description": "Held by the Stone Scout at the PEAK. On use, transports all players to Nadir"
+      "description": "Held by the Stone Scout at the PEAK. On use, transports all players to Nadir",
+      "context": "Created when four Scout Amulets are bestowed on the Stone Scout at the Peak; activating it sends all Scouts to Nadir.",
+      "stateDescriptions": {
+        "cooked": "Cooking triggers a 40-meter Anti-Sphere explosion and summons the Scoutmaster to chase the player who cooked it."
+      },
+      "wiki": {
+        "title": "Scout's Honor",
+        "revision": 11889,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Scroll": {
       "type": "MISC",
-      "description": "Found at campfires. Opens to reveal a Torn Page"
+      "description": "Found at campfires. Opens to reveal a Torn Page",
+      "context": "Found at campfires; opening it reveals a Torn Page.",
+      "stateDescriptions": {
+        "cooked": "Cooking adds a Bonus stamina effect when the scroll is opened."
+      },
+      "wiki": {
+        "title": "Scroll",
+        "revision": 11890,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Shelf Fungus": {
       "type": "DEPLOYABLE",
@@ -1076,7 +1217,19 @@
     },
     "SNOWBALL": {
       "type": "MISC",
-      "description": "Found in the alpine. Can be thrown at other scouts"
+      "description": "Found in the alpine. Can be thrown at other scouts",
+      "context": "Collected from snow piles; larger snowballs hit harder and eventually become too large to pick up.",
+      "stateDescriptions": {
+        "cooked": "A cooked Snowball inflicts Cold when it hits but does not knock the target down."
+      },
+      "wiki": {
+        "title": "Snowball",
+        "revision": 12024,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Sports Drink": {
       "type": "CONSUMABLE",
@@ -1106,7 +1259,20 @@
     },
     "Strange Gem": {
       "type": "MYSTICAL",
-      "description": "Held by the Stone Scout at the PEAK. Can be toggled on and off, but serves no practical purpose"
+      "description": "Held by the Stone Scout at the PEAK. Can be toggled on and off, but serves no practical purpose",
+      "context": "Found in the Stone Scout’s hands at the Peak; clicking it toggles its activation message.",
+      "stateDescriptions": {
+        "cooked": "If bestowed on the Stone Scout, it grants Bonus stamina to the user.",
+        "incinerated": "If bestowed after Incineration, it also inflicts Poison on the user."
+      },
+      "wiki": {
+        "title": "Strange Gem",
+        "revision": 11883,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Sunscreen": {
       "type": "CONSUMABLE",

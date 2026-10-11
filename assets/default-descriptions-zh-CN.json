@@ -167,7 +167,21 @@
     },
     "Beehive": {
       "type": "MISC",
-      "description": "在雨林的树上发现。打破后掉落四个蜂巢块，并放出里面的蜜蜂"
+      "description": "在雨林的树上发现。打破后掉落四个蜂巢块，并放出里面的蜜蜂",
+      "context": "在热带雨林的树上发现；打破后会放出蜜蜂并掉落四块蜂巢。",
+      "stateDescriptions": {
+        "cooked": "蜂巢破裂时，里面的蜂巢块会继承它的烹饪阶段。",
+        "burnt": "蜂巢破裂时，里面的蜂巢块会继承它的烹饪阶段。",
+        "incinerated": "蜂巢破裂时，里面的蜂巢块会继承它的烹饪阶段。"
+      },
+      "wiki": {
+        "title": "Beehive",
+        "revision": 11925,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Berrynana Peel": {
       "type": "MISC",
@@ -175,7 +189,21 @@
     },
     "Big Egg": {
       "type": "CONSUMABLE",
-      "description": "在火山发现。打破后获得一枚蛋，或小概率获得一只已烤熟的鸟"
+      "description": "在火山发现。打破后获得一枚蛋，或小概率获得一只已烤熟的鸟",
+      "context": "在卡尔德拉的巢中发现；打破后会得到蛋，也有可能得到烤鸟。",
+      "stateDescriptions": {
+        "cooked": "打破时，蛋会继承它的烹饪阶段；可能出现的未烤熟鸟类结果除外。",
+        "burnt": "打破时，蛋会继承它的烹饪阶段；可能出现的未烤熟鸟类结果除外。",
+        "incinerated": "打破时，蛋会继承它的烹饪阶段；可能出现的未烤熟鸟类结果除外。"
+      },
+      "wiki": {
+        "title": "Big Egg",
+        "revision": 11612,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Big Lollipop": {
       "type": "CONSUMABLE",
@@ -215,7 +243,21 @@
     },
     "Bird": {
       "type": "CONSUMABLE",
-      "description": "在火山发现，由蛋孵化。生成时即已烤熟"
+      "description": "在火山发现，由蛋孵化。生成时即已烤熟",
+      "context": "打破大蛋或小蛋时有小概率获得；生成时已经烤熟。",
+      "stateDescriptions": {
+        "cooked": "它生成时已是烤熟阶段；再次烹饪会变为全熟，但效果与烤熟相同。",
+        "burnt": "烧焦后恢复的饥饿值减少，也不再提供额外耐力。",
+        "incinerated": "每继续烧毁一次都会增加中毒效果；当前效果以实时数值行为准。"
+      },
+      "wiki": {
+        "title": "Cooked Bird",
+        "revision": 11126,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Black Clusterberry": {
       "type": "CONSUMABLE",
@@ -356,7 +398,19 @@
     },
     "Checkpoint Flag": {
       "type": "DEPLOYABLE",
-      "description": "为放置它的侦察兵设置一个一次性重生检查点"
+      "description": "为放置它的侦察兵设置一个一次性重生检查点",
+      "context": "为放置它的侦察兵设置一次性重生检查点。",
+      "stateDescriptions": {
+        "cooked": "只有爆炸能烹饪这面旗，每次爆炸会让烹饪阶段前进两级；烹饪后使用它会提供额外耐力。"
+      },
+      "wiki": {
+        "title": "Checkpoint Flag",
+        "revision": 11239,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Chubby Shroom": {
       "type": "CONSUMABLE",
@@ -404,7 +458,19 @@
     },
     "Coconut Half": {
       "type": "CONSUMABLE",
-      "description": "由打破椰子获得"
+      "description": "由打破椰子获得",
+      "context": "打破椰子后获得；食用还会降低炎热。",
+      "stateDescriptions": {
+        "cooked": "烹饪一次会使恢复的饥饿值翻倍并增加额外耐力；具体数值仍以实时数值行为准。"
+      },
+      "wiki": {
+        "title": "Half-Coconut",
+        "revision": 9542,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Compass": {
       "type": "EQUIPMENT",
@@ -464,7 +530,21 @@
     },
     "EARLYWORM": {
       "type": "CONSUMABLE",
-      "description": "在雾沼发现。清除使用者的困倦"
+      "description": "在雾沼发现。清除使用者的困倦",
+      "context": "在雾沼地面发现；食用会清除困倦并获得“休息充足”徽章。",
+      "stateDescriptions": {
+        "cooked": "烹饪会让虫子停止移动，但不会增加额外耐力。",
+        "burnt": "虫子会保持静止；烧焦食物恢复的饥饿值减少，且不提供额外耐力。",
+        "incinerated": "每继续烧毁一次，食用时都会增加中毒效果；当前效果以实时数值行为准。"
+      },
+      "wiki": {
+        "title": "The Early Worm",
+        "revision": 11896,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Egg": {
       "type": "CONSUMABLE",
@@ -996,7 +1076,19 @@
     },
     "Scorpion": {
       "type": "MISC",
-      "description": "在方山发现。可以持有但不能放入物品栏位，也不能生吃"
+      "description": "在方山发现。可以持有但不能放入物品栏位，也不能生吃",
+      "context": "在方山的峡谷和峭壁发现；可以持有但无法存入物品栏或背包，不能生吃。",
+      "stateDescriptions": {
+        "cooked": "烹饪后可以食用，也会停止移动和攻击；仍不能存入物品栏或背包。"
+      },
+      "wiki": {
+        "title": "Scorpion",
+        "revision": 12098,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Scout Cannon": {
       "type": "DEPLOYABLE",
@@ -1020,11 +1112,36 @@
     },
     "Scout Effigy": {
       "type": "MYSTICAL",
-      "description": "在目标位置复活一名死亡的侦察兵。单人游戏中不会生成"
+      "description": "在目标位置复活一名死亡的侦察兵。单人游戏中不会生成",
+      "context": "一次性神秘道具，可在目标位置复活死亡或昏迷的侦察兵；单人游戏中不会生成。",
+      "stateDescriptions": {
+        "cooked": "烹饪后使用图腾还会提供额外耐力。",
+        "incinerated": "烧毁后使用还会使使用者中毒。"
+      },
+      "wiki": {
+        "title": "Scout Effigy",
+        "revision": 11968,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Scoutmaster's Bugle": {
       "type": "MYSTICAL",
-      "description": "为使用者及附近侦察兵提供额外耐力，并召唤侦察队长两分钟"
+      "description": "为使用者及附近侦察兵提供额外耐力，并召唤侦察队长两分钟",
+      "context": "一次性神秘道具，可从远古行李箱或远古雕像中获得；吹奏会为附近侦察兵提供额外耐力并召来侦察队长。",
+      "stateDescriptions": {
+        "incinerated": "烧毁后再吹奏还会使使用者中毒。"
+      },
+      "wiki": {
+        "title": "Scoutmaster's Bugle",
+        "revision": 11283,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "SCOUTMASTERSOUL": {
       "type": "MYSTICAL",
@@ -1032,11 +1149,35 @@
     },
     "ScoutsHonor": {
       "type": "MYSTICAL",
-      "description": "由峰顶的石像侦察兵持有。使用后将所有玩家传送至天底"
+      "description": "由峰顶的石像侦察兵持有。使用后将所有玩家传送至天底",
+      "context": "将四枚侦察兵护符交给峰顶的石像侦察兵后获得；启动后会把所有侦察兵传送至天底。",
+      "stateDescriptions": {
+        "cooked": "烹饪会触发半径40米的反重力球爆炸，并召来追击烹饪者的侦察队长。"
+      },
+      "wiki": {
+        "title": "Scout's Honor",
+        "revision": 11889,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Scroll": {
       "type": "MISC",
-      "description": "在营火处发现。打开后露出一页残页"
+      "description": "在营火处发现。打开后露出一页残页",
+      "context": "在营火处发现；打开后会露出一页残页。",
+      "stateDescriptions": {
+        "cooked": "烹饪后，打开卷轴还会提供额外耐力。"
+      },
+      "wiki": {
+        "title": "Scroll",
+        "revision": 11890,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Shelf Fungus": {
       "type": "DEPLOYABLE",
@@ -1052,7 +1193,19 @@
     },
     "SNOWBALL": {
       "type": "MISC",
-      "description": "在雪山发现。可以扔向其他侦察兵"
+      "description": "在雪山发现。可以扔向其他侦察兵",
+      "context": "从雪堆中拾取；雪球越大，击退越强，达到一定大小后无法拾起。",
+      "stateDescriptions": {
+        "cooked": "烹饪后的雪球命中目标时会施加寒冷，但不会将目标击倒。"
+      },
+      "wiki": {
+        "title": "Snowball",
+        "revision": 12024,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Sports Drink": {
       "type": "CONSUMABLE",
@@ -1082,7 +1235,20 @@
     },
     "Strange Gem": {
       "type": "MYSTICAL",
-      "description": "由峰顶的石像侦察兵持有。可以开关，但没有什么实际用途"
+      "description": "由峰顶的石像侦察兵持有。可以开关，但没有什么实际用途",
+      "context": "由峰顶石像侦察兵持有；点击可切换屏幕上的激活提示。",
+      "stateDescriptions": {
+        "cooked": "交给石像侦察兵后会为使用者提供额外耐力。",
+        "incinerated": "烧毁后再交给石像侦察兵还会使使用者中毒。"
+      },
+      "wiki": {
+        "title": "Strange Gem",
+        "revision": 11883,
+        "cookingRevision": 11785,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      }
     },
     "Sunscreen": {
       "type": "CONSUMABLE",
