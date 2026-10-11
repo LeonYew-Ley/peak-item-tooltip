@@ -55,28 +55,28 @@ namespace PeakItemTooltip
             // SUBTRACTED hunger: negative net change in hunger
             foreach (Action_RestoreHunger a in item.GetComponentsInChildren<Action_RestoreHunger>(true))
             {
-                if (a == null) continue;
+                if (!EffectEnabled(a, item)) continue;
                 AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Hunger), -a.restorationAmount, Zh.IsActive() ? "饥饿" : "Hunger");
             }
 
             // ADDED poision over time: total applied = poison per second * time
             foreach (Action_InflictPoison a in item.GetComponentsInChildren<Action_InflictPoison>(true))
             {
-                if (a == null) continue;
+                if (!EffectEnabled(a, item) || a.inflictionTime <= 0f) continue;
                 AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Poison), a.poisonPerSecond * a.inflictionTime, Zh.IsActive() ? "中毒" : "Poison");
             }
 
             // signed generic status changes: covers weight and anything else)t.
             foreach (Action_ModifyStatus a in item.GetComponentsInChildren<Action_ModifyStatus>(true))
             {
-                if (a == null) continue;
+                if (!EffectEnabled(a, item)) continue;
                 AppendLine(sb, ref first, ColourFor(a.statusType), a.changeAmount, StatusName(a.statusType));
             }
 
             // ADDED extra stamina
             foreach (Action_GiveExtraStamina a in item.GetComponentsInChildren<Action_GiveExtraStamina>(true))
             {
-                if (a == null) continue;
+                if (!EffectEnabled(a, item)) continue;
                 AppendLine(sb, ref first, StaminaColour, a.amount, Zh.IsActive() ? "额外耐力" : "Extra Stamina");
             }
 
@@ -101,7 +101,7 @@ namespace PeakItemTooltip
 
             foreach (MonoBehaviour comp in item.GetComponentsInChildren<MonoBehaviour>(true))
             {
-                if (comp == null) continue;
+                if (!EffectEnabled(comp, item)) continue;
 
                 foreach (FieldInfo f in comp.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance))
                 {
@@ -123,11 +123,25 @@ namespace PeakItemTooltip
             // on its own and show the min-max bounds
             foreach (Peak.Action_HealingGem a in item.GetComponentsInChildren<Peak.Action_HealingGem>(true))
             {
-                if (a == null) continue;
+                if (!EffectEnabled(a, item)) continue;
                 int low = Mathf.RoundToInt(a.minPetrify * 100f);
                 int high = Mathf.RoundToInt(a.maxPetrify * 100f);
                 AppendPointsRange(sb, ref first, colour, low, high, Zh.IsActive() ? "石化" : "Petrify");
             }
+        }
+
+        // CookingBehavior_DisableScripts keeps components attached but unsubscribes their actions.
+        // Check each component and its child branch, rather than the item's activeInHierarchy:
+        // an inventory item can have an inactive root and still have usable effects when equipped.
+        private static bool EffectEnabled(MonoBehaviour effect, Item item)
+        {
+            if (effect == null || !effect.enabled) return false;
+
+            for (Transform branch = effect.transform; branch != null && branch != item.transform; branch = branch.parent)
+            {
+                if (!branch.gameObject.activeSelf) return false;
+            }
+            return true;
         }
 
         /**

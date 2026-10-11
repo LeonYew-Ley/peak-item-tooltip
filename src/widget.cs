@@ -96,7 +96,7 @@ namespace PeakItemTooltip
             // name
             _name.text = item.GetItemName();
 
-            _description.text = info.Description;
+            _description.text = ItemDescription.Format(item, info.Description);
 
             // type(s): each type name is coloured from the shared type->colour map via rich-text tags
             _type.text = FormatTypes(info.Types, descriptions);

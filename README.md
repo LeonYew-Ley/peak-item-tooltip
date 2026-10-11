@@ -11,6 +11,7 @@
 ***
 ### 👉🏻 features
 - read an item's type, description and status effects when you hold or hover an item. simplified chinese translations are available thanks to **@Gintoki000** 🎉
+- modifier lines use the item's current values and skip disabled effect components, including effects removed by cooking. cooked items show their cooking count instead of the base-item description, whose raw-food warnings may no longer apply.
 
 <img width="1200" height="400" alt="item tooltip previews" src="https://github.com/user-attachments/assets/61b37fa2-c299-44a0-9693-51fe7454c6a8" />
 
