@@ -57,6 +57,16 @@ namespace PeakItemTooltip
             "Action_IncrementSteamStat",
             "Action_TryHotDogAchievement",
         };
+        private static readonly string[] NonConsumeTriggerFields =
+        {
+            "OnPressed", "OnHeld", "OnCastFinished", "OnCancelled",
+            "OnSecondaryCastFinished", "OnSecondaryPressed", "OnSecondaryHeld", "OnSecondaryCancelled"
+        };
+        private static readonly string[] TriggerFields =
+        {
+            "OnPressed", "OnHeld", "OnCastFinished", "OnCancelled",
+            "OnSecondaryCastFinished", "OnSecondaryPressed", "OnSecondaryHeld", "OnSecondaryCancelled", "OnConsumed"
+        };
 
         /**
          * @brief builds a rich-text block of the item's stat modifiers, one coloured line per modifier, or an empty string if it has none
@@ -74,7 +84,8 @@ namespace PeakItemTooltip
             foreach (Action_RestoreHunger a in item.GetComponentsInChildren<Action_RestoreHunger>(true))
             {
                 if (!EffectEnabled(a, item)) continue;
-                AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Hunger), -a.restorationAmount, Zh.IsActive() ? "饥饿" : "Hunger");
+                AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Hunger), -a.restorationAmount,
+                    QualifyActionLabel(a, Zh.IsActive() ? "饥饿" : "Hunger"));
             }
 
             // ADDED poision over time: total applied = poison per second * time
@@ -82,21 +93,23 @@ namespace PeakItemTooltip
             {
                 if (!EffectEnabled(a, item) || a.inflictionTime <= 0f) continue;
                 AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Poison), a.poisonPerSecond * a.inflictionTime,
-                    PoisonLabel(a.delay, a.inflictionTime));
+                    QualifyActionLabel(a, PoisonLabel(a.delay, a.inflictionTime)));
             }
 
             // signed generic status changes: covers weight and anything else)t.
             foreach (Action_ModifyStatus a in item.GetComponentsInChildren<Action_ModifyStatus>(true))
             {
                 if (!EffectEnabled(a, item)) continue;
-                AppendLine(sb, ref first, ColourFor(a.statusType), a.changeAmount, StatusName(a.statusType));
+                AppendLine(sb, ref first, ColourFor(a.statusType), a.changeAmount,
+                    QualifyActionLabel(a, StatusName(a.statusType)));
             }
 
             // ADDED extra stamina
             foreach (Action_GiveExtraStamina a in item.GetComponentsInChildren<Action_GiveExtraStamina>(true))
             {
                 if (!EffectEnabled(a, item)) continue;
-                AppendLine(sb, ref first, StaminaColour, a.amount, Zh.IsActive() ? "额外耐力" : "Extra Stamina");
+                AppendLine(sb, ref first, StaminaColour, a.amount,
+                    QualifyActionLabel(a, Zh.IsActive() ? "额外耐力" : "Extra Stamina"));
             }
 
             AppendActionAfflictions(sb, ref first, item);
@@ -107,7 +120,7 @@ namespace PeakItemTooltip
                 if (!EffectEnabled(action, item) || action.GetType().Name != "Action_AddOrRemoveThorns") continue;
                 if (TryReadIntField(action, "thornCount", out int thornCount))
                     AppendPoints(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Thorns), thornCount,
-                        Zh.IsActive() ? "荆棘" : "Thorns");
+                        QualifyActionLabel(action, Zh.IsActive() ? "荆棘" : "Thorns"));
             }
 
             // ADDED petrify: unlike other statuses, petrify is never applied through Action_ModifyStatus.
@@ -222,7 +235,8 @@ namespace PeakItemTooltip
                         && TryReadStatusField(affliction, "statusType", out CharacterAfflictions.STATUSTYPE status)
                         && TryReadFloatField(affliction, "statusAmount", out float amount))
                     {
-                        AppendLine(sb, ref first, ColourFor(status), amount, StatusName(status));
+                        AppendLine(sb, ref first, ColourFor(status), amount,
+                            QualifyActionLabel(action, StatusName(status)));
                     }
                     else if (typeName == "Affliction_PoisonOverTime"
                         && TryReadFloatField(affliction, "totalTime", out float totalTime)
@@ -231,21 +245,21 @@ namespace PeakItemTooltip
                     {
                         float duration = Math.Max(0f, totalTime - delay);
                         AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Poison), perSecond * duration,
-                            PoisonLabel(delay, duration));
+                            QualifyActionLabel(action, PoisonLabel(delay, duration)));
                     }
                     else if (typeName == "Affliction_AdjustColdOverTime"
                         && TryReadFloatField(affliction, "statusPerSecond", out float coldPerSecond)
                         && TryReadFloatField(affliction, "totalTime", out float coldDuration))
                     {
                         AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Cold), coldPerSecond * coldDuration,
-                            TimedStatusLabel(CharacterAfflictions.STATUSTYPE.Cold, coldDuration));
+                            QualifyActionLabel(action, TimedStatusLabel(CharacterAfflictions.STATUSTYPE.Cold, coldDuration)));
                     }
                     else if (typeName == "Affliction_AdjustDrowsyOverTime"
                         && TryReadFloatField(affliction, "statusPerSecond", out float drowsyPerSecond)
                         && TryReadFloatField(affliction, "totalTime", out float drowsyDuration))
                     {
                         AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Drowsy), drowsyPerSecond * drowsyDuration,
-                            TimedStatusLabel(CharacterAfflictions.STATUSTYPE.Drowsy, drowsyDuration));
+                            QualifyActionLabel(action, TimedStatusLabel(CharacterAfflictions.STATUSTYPE.Drowsy, drowsyDuration)));
                     }
                     else if (typeName == "Affliction_AddBonusStamina"
                         && TryReadFloatField(affliction, "staminaAmount", out float staminaAmount)
@@ -253,7 +267,7 @@ namespace PeakItemTooltip
                     {
                         string label = Zh.IsActive() ? "额外耐力" : "Extra Stamina";
                         if (staminaDuration > 0f) label = TimedStatusLabel(label, staminaDuration);
-                        AppendLine(sb, ref first, StaminaColour, staminaAmount, label);
+                        AppendLine(sb, ref first, StaminaColour, staminaAmount, QualifyActionLabel(action, label));
                     }
                 }
             }
@@ -394,7 +408,7 @@ namespace PeakItemTooltip
                     else if (f.FieldType == typeof(float)) points = Mathf.RoundToInt((float)f.GetValue(comp) * 100f);
                     else continue;
 
-                    AppendPoints(sb, ref first, colour, points, PetrifyLabel(f.Name));
+                    AppendPoints(sb, ref first, colour, points, QualifyActionLabel(comp, PetrifyLabel(f.Name)));
                 }
             }
 
@@ -406,7 +420,8 @@ namespace PeakItemTooltip
                 if (!EffectEnabled(a, item)) continue;
                 int low = Mathf.RoundToInt(a.minPetrify * 100f);
                 int high = Mathf.RoundToInt(a.maxPetrify * 100f);
-                AppendPointsRange(sb, ref first, colour, low, high, Zh.IsActive() ? "石化" : "Petrify");
+                AppendPointsRange(sb, ref first, colour, low, high,
+                    QualifyActionLabel(a, Zh.IsActive() ? "石化" : "Petrify"));
             }
         }
 
@@ -490,6 +505,73 @@ namespace PeakItemTooltip
             if (delay > 0f && duration > 0f) label += ", over " + FormatSeconds(duration) + "s";
             if (delay > 0f || duration > 0f) label += ")";
             return label;
+        }
+
+        private static string QualifyActionLabel(MonoBehaviour action, string label)
+        {
+            List<string> qualifiers = null;
+            if (action != null && TryReadBoolField(action, "ifSkeleton", out bool ifSkeleton) && ifSkeleton)
+                (qualifiers ??= new List<string>()).Add(Zh.IsActive() ? "仅骷髅" : "skeleton only");
+
+            if (action is ItemActionBase)
+            {
+                bool hasNonConsumeTrigger = false;
+                foreach (string trigger in NonConsumeTriggerFields)
+                {
+                    if (TryReadBoolField(action, trigger, out bool enabled) && enabled)
+                    {
+                        hasNonConsumeTrigger = true;
+                        break;
+                    }
+                }
+
+                if (hasNonConsumeTrigger)
+                {
+                    foreach (string trigger in TriggerFields)
+                    {
+                        if (!TryReadBoolField(action, trigger, out bool enabled) || !enabled) continue;
+                        (qualifiers ??= new List<string>()).Add(TriggerLabel(trigger));
+                    }
+                }
+            }
+
+            if (qualifiers == null || qualifiers.Count == 0) return label;
+            return Zh.IsActive()
+                ? label + "【" + string.Join("、", qualifiers) + "】"
+                : label + " [" + string.Join(", ", qualifiers) + "]";
+        }
+
+        private static string TriggerLabel(string trigger)
+        {
+            if (Zh.IsActive())
+            {
+                switch (trigger)
+                {
+                    case "OnPressed": return "按下时";
+                    case "OnHeld": return "按住时";
+                    case "OnCastFinished": return "主动作结束时";
+                    case "OnCancelled": return "主动作取消时";
+                    case "OnSecondaryCastFinished": return "副动作结束时";
+                    case "OnSecondaryPressed": return "副动作按下时";
+                    case "OnSecondaryHeld": return "副动作按住时";
+                    case "OnSecondaryCancelled": return "副动作取消时";
+                    case "OnConsumed": return "消耗时";
+                }
+            }
+
+            switch (trigger)
+            {
+                case "OnPressed": return "on press";
+                case "OnHeld": return "while held";
+                case "OnCastFinished": return "on primary cast finish";
+                case "OnCancelled": return "on primary cancel";
+                case "OnSecondaryCastFinished": return "on secondary cast finish";
+                case "OnSecondaryPressed": return "on secondary press";
+                case "OnSecondaryHeld": return "while secondary held";
+                case "OnSecondaryCancelled": return "on secondary cancel";
+                case "OnConsumed": return "on consume";
+                default: return trigger;
+            }
         }
 
         private static string TimedStatusLabel(CharacterAfflictions.STATUSTYPE status, float duration)

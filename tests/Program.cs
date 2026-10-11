@@ -124,6 +124,19 @@ static class Program
         Equal(TooltipItemSnapshot.Capture(parsedAffliction).SafetySourcesComplete, true,
             "fully parsed direct and extra afflictions count as supported sources");
 
+        var triggeredAffliction = new Item();
+        triggeredAffliction.Add(new Action_ApplyAffliction
+        {
+            OnSecondaryHeld = true,
+            affliction = new Peak.Afflictions.Affliction_AdjustStatus
+            {
+                statusType = CharacterAfflictions.STATUSTYPE.Cold,
+                statusAmount = .05f
+            }
+        });
+        Has(ItemModifiers.Format(triggeredAffliction), "+5 Cold [while secondary held]",
+            "affliction-backed modifier also displays its action trigger");
+
         var extendedAfflictions = new Item();
         extendedAfflictions.Add(new Action_ApplyAffliction
         {
@@ -219,9 +232,53 @@ static class Program
             "disabled unknown action does not affect safety coverage");
 
         var conditionalStatus = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
-        conditionalStatus.Add(new Action_ModifyStatus { statusType = CharacterAfflictions.STATUSTYPE.Poison, changeAmount = .1f, ifSkeleton = true });
+        conditionalStatus.Add(new Action_ModifyStatus
+        {
+            statusType = CharacterAfflictions.STATUSTYPE.Poison,
+            changeAmount = .1f,
+            ifSkeleton = true,
+            OnConsumed = true
+        });
+        Has(ItemModifiers.Format(conditionalStatus), "+10 Poison [skeleton only]",
+            "skeleton-only status row discloses its character condition");
         Equal(TooltipItemSnapshot.Capture(conditionalStatus).SafetySourcesComplete, false,
             "character-conditional status action marks safety coverage incomplete");
+
+        var triggeredPoison = new Item();
+        triggeredPoison.Add(new Action_InflictPoison
+        {
+            poisonPerSecond = .05f,
+            inflictionTime = 2f,
+            OnPressed = true
+        });
+        Has(ItemModifiers.Format(triggeredPoison), "+10 Poison (2s) [on press]",
+            "non-consumption trigger is shown beside the modifier");
+
+        var consumedPoison = new Item();
+        consumedPoison.Add(new Action_InflictPoison
+        {
+            poisonPerSecond = .05f,
+            inflictionTime = 2f,
+            OnConsumed = true
+        });
+        Has(ItemModifiers.Format(consumedPoison), "+10 Poison",
+            "ordinary consumed effects keep a concise modifier label");
+        Lacks(ItemModifiers.Format(consumedPoison), "[on consume]",
+            "ordinary consume trigger is not needlessly repeated");
+
+        Zh.Active = true;
+        var chineseConditional = new Item();
+        chineseConditional.Add(new Action_ModifyStatus
+        {
+            statusType = CharacterAfflictions.STATUSTYPE.Poison,
+            changeAmount = .1f,
+            ifSkeleton = true,
+            OnPressed = true,
+            OnConsumed = true
+        });
+        Has(ItemModifiers.Format(chineseConditional), "+10 中毒【仅骷髅、按下时、消耗时】",
+            "Chinese modifier labels preserve both character condition and action triggers");
+        Zh.Active = false;
 
         var disabled = new Item();
         disabled.Add(new Action_RestoreHunger { restorationAmount = .2f, enabled = false });

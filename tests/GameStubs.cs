@@ -69,7 +69,11 @@ public class Optionable<T> { public bool IsNone { get; set; } public T Value { g
 
 public class ItemCooking { public int timesCookedLocal; public bool wreckWhenCooked; }
 public class ItemActionBase : UnityEngine.MonoBehaviour { }
-public class ItemAction : ItemActionBase { }
+public class ItemAction : ItemActionBase
+{
+    public bool OnPressed, OnHeld, OnReleased, OnCastFinished, OnCancelled;
+    public bool OnSecondaryCastFinished, OnSecondaryPressed, OnSecondaryHeld, OnSecondaryCancelled, OnConsumed;
+}
 public class CustomUnknownAction : ItemActionBase { }
 public class Action_RestoreHunger : ItemAction { public float restorationAmount; }
 public class Action_InflictPoison : ItemAction { public float poisonPerSecond, inflictionTime, delay; }
