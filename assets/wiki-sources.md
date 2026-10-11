@@ -1,6 +1,6 @@
 # PEAK Wiki-derived tooltip data
 
-The English and Simplified Chinese defaults contain 67 cooking-state profiles. In total, 118 of 131 direct item pages have been content-reviewed; 51 reviewed pages did not need an additional state-specific sentence. Twelve items without a dedicated page have reviewed secondary sources. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
+The English and Simplified Chinese defaults contain 66 cooking-state profiles. In total, 118 of 131 direct item pages have been content-reviewed; 52 reviewed pages did not need an additional state-specific sentence. Twelve items without a dedicated page have reviewed secondary sources. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
 
 ## Sources reviewed on 2026-10-11
 

@@ -1169,12 +1169,7 @@
     },
     "Pink Berrynana": {
       "type": "CONSUMABLE",
-      "description": "Found in the tropics. Drops a Berrynana Peel when eaten",
-      "context": "Found on vines in the Tropics; eating it produces a peel.",
-      "stateDescriptions": {
-        "raw": "Eating it inflicts Poison after a 2-second delay, over 6 seconds.",
-        "cooked": "Cooking removes its Poison effect."
-      },
+      "description": "Found on vines in the tropics. Eating it drops a Berrynana Peel; eating it raw causes Poison, while cooking removes Poison.",
       "wiki": {
         "title": "Pink Berrynana",
         "revision": 10041,

@@ -1864,12 +1864,7 @@
     },
     "Pink Berrynana": {
       "type": "CONSUMABLE",
-      "description": "在雨林发现。食用后掉落莓蕉皮",
-      "context": "在热带雨林的藤蔓上发现；食用后会留下果皮。",
-      "stateDescriptions": {
-        "raw": "食用后会延迟2秒开始中毒，持续6秒。",
-        "cooked": "烹饪会消除中毒效果。"
-      },
+      "description": "在热带雨林的藤蔓上发现。食用后会留下莓蕉皮；生食会中毒，烹饪会消除中毒。",
       "wiki": {
         "title": "Pink Berrynana",
         "revision": 10041,

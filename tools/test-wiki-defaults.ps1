@@ -15,8 +15,8 @@ $chineseProfiles = @($chinese.items.Keys | Where-Object { $chinese.items[$_].sta
 if ($englishReviewed.Count -ne 118 -or $chineseReviewed.Count -ne 118) {
     throw "Expected 118 fact-reviewed item pages in each language file."
 }
-if ($englishProfiles.Count -ne 67 -or $chineseProfiles.Count -ne 67) {
-    throw "Expected 67 bilingual cooking-state profiles."
+if ($englishProfiles.Count -ne 66 -or $chineseProfiles.Count -ne 66) {
+    throw "Expected 66 bilingual cooking-state profiles."
 }
 if ((Compare-Object $englishReviewed $chineseReviewed -CaseSensitive) -or
     (Compare-Object $englishProfiles $chineseProfiles -CaseSensitive)) {
