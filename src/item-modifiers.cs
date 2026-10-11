@@ -161,12 +161,15 @@ namespace PeakItemTooltip
                     && TryReadIntField(action, "thornCount", out int thornCount) && thornCount > 0)
                     statuses.Add(CharacterAfflictions.STATUSTYPE.Thorns.ToString());
 
-                if (EffectEnabled(action, item) && action.GetType().Name == "Action_ApplyAffliction"
+                if (EffectEnabled(action, item) && IsApplyAfflictionAction(action) && !IsMassAfflictionAction(action)
                     && TryGetAppliedAfflictions(action, out List<object> afflictions))
                 {
                     foreach (object affliction in afflictions)
                         AddPositiveAfflictionStatus(statuses, affliction);
                 }
+
+                if (EffectEnabled(action, item) && HasPositivePetrifyEffect(action))
+                    statuses.Add(CharacterAfflictions.STATUSTYPE.Petrify.ToString());
             }
 
             return statuses;
@@ -186,9 +189,11 @@ namespace PeakItemTooltip
                 if (!EffectEnabled(action, item)) continue;
                 string typeName = action.GetType().Name;
                 if (!(action is ItemActionBase) && !typeName.StartsWith("Action_", StringComparison.Ordinal)) continue;
-                if (typeName == "Action_ApplyAffliction")
+                if (IsApplyAfflictionAction(action))
                 {
-                    if (HasCompleteApplyAfflictionCoverage(action)) continue;
+                    if (!IsMassAfflictionAction(action)
+                        && (typeName == "Action_ApplyAffliction" || typeName == "Action_SuperJumpAmulet")
+                        && HasCompleteApplyAfflictionCoverage(action)) continue;
                     return false;
                 }
                 if (!AccountedActionSources.Contains(typeName)) return false;
@@ -206,7 +211,7 @@ namespace PeakItemTooltip
         {
             foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
             {
-                if (!EffectEnabled(action, item) || action.GetType().Name != "Action_ApplyAffliction"
+                if (!EffectEnabled(action, item) || !IsApplyAfflictionAction(action) || IsMassAfflictionAction(action)
                     || !TryGetAppliedAfflictions(action, out List<object> afflictions)) continue;
 
                 foreach (object affliction in afflictions)
@@ -256,7 +261,7 @@ namespace PeakItemTooltip
 
         private static bool HasCompleteApplyAfflictionCoverage(MonoBehaviour action)
         {
-            if (action == null || action.GetType().Name != "Action_ApplyAffliction"
+            if (action == null || !IsApplyAfflictionAction(action)
                 || !TryGetAppliedAfflictions(action, out List<object> afflictions)) return false;
 
             foreach (object affliction in afflictions)
@@ -288,7 +293,7 @@ namespace PeakItemTooltip
         private static bool TryGetAppliedAfflictions(MonoBehaviour action, out List<object> afflictions)
         {
             afflictions = new List<object>();
-            if (action == null || action.GetType().Name != "Action_ApplyAffliction") return false;
+            if (action == null || !IsApplyAfflictionAction(action)) return false;
 
             FieldInfo primaryField = action.GetType().GetField("affliction", BindingFlags.Public | BindingFlags.Instance);
             if (primaryField == null) return false;
@@ -306,6 +311,33 @@ namespace PeakItemTooltip
             }
 
             return true;
+        }
+
+        private static bool IsApplyAfflictionAction(MonoBehaviour action)
+        {
+            for (Type type = action?.GetType(); type != null; type = type.BaseType)
+                if (type.Name == "Action_ApplyAffliction") return true;
+            return false;
+        }
+
+        private static bool IsMassAfflictionAction(MonoBehaviour action)
+        {
+            for (Type type = action?.GetType(); type != null; type = type.BaseType)
+                if (type.Name == "Action_ApplyMassAffliction") return true;
+            return false;
+        }
+
+        private static bool HasPositivePetrifyEffect(MonoBehaviour action)
+        {
+            foreach (FieldInfo field in action.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (!field.Name.StartsWith("petrify", StringComparison.OrdinalIgnoreCase)
+                    && !field.Name.EndsWith("Petrify", StringComparison.OrdinalIgnoreCase)) continue;
+                if (field.FieldType == typeof(int) && (int)field.GetValue(action) > 0) return true;
+                if (field.FieldType == typeof(float) && (float)field.GetValue(action) > 0f) return true;
+            }
+
+            return false;
         }
 
         private static void AddPositiveAfflictionStatus(HashSet<string> statuses, object affliction)

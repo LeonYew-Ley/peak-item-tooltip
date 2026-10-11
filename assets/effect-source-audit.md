@@ -19,6 +19,7 @@ The local assembly inventory contained 56 `Action_*` classes. Their implementati
 | `Action_ApplyAffliction` with `Affliction_PoisonOverTime` | Reads poison rate, total time, and delay from primary and extra afflictions; shows the aggregate amount plus timing. | Numeric row supported; participates in safety checks |
 | `Action_ApplyAffliction` with `Affliction_AdjustColdOverTime` / `Affliction_AdjustDrowsyOverTime` | Reads the signed per-second status rate and duration from primary and extra afflictions. | Numeric row supported; aggregate amount and duration shown; participates in safety checks |
 | `Action_ApplyAffliction` with `Affliction_AddBonusStamina` | Reads extra stamina and duration from primary and extra afflictions. | Numeric row supported; participates in safety checks |
+| `Peak.Action_SuperJumpAmulet` (derived from `Action_ApplyAffliction`) | Reads supported primary/extra afflictions and its direct `petrifyPerUse` value. | Numeric rows supported; Petrify participates in safety checks |
 | Other `Action_ApplyAffliction` payloads | Other affliction types can contain distinct buffs, conditions, or status behavior. | Unsupported; any active instance suppresses a checked safety claim |
 | `Action_ApplyMassAffliction` | Can apply afflictions to nearby characters depending on radius and caster conditions. | Target/radius behavior is not rendered; remains incomplete |
 | `Action_RandomMushroomEffect` | Reads the current mushroom-manager roll and can produce delayed positive or negative effects, including Poison/Spores changes. | Random outcome is not available from the item alone; treated as incomplete |
@@ -46,8 +47,8 @@ The tooltip does not execute cooking or action methods while reading an item. Th
 
 ## Verification and remaining work
 
-- Regression tests cover known numeric sources, direct Thorns, signed `Affliction_AdjustStatus`, primary/extra `Affliction_PoisonOverTime` payloads with timing, timed Cold/Drowsy and bonus stamina payloads, unsupported afflictions, mass-target conditions, disabled actions, unknown action subclasses, random mushroom effects, conditional status actions, conflicting live statuses, and the `CookingBehavior_Wreck` usability override.
+- Regression tests cover known numeric sources, direct Thorns, signed `Affliction_AdjustStatus`, primary/extra `Affliction_PoisonOverTime` payloads with timing, timed Cold/Drowsy and bonus stamina payloads, the derived Super Jump Amulet action and its Petrify value, unsupported afflictions, mass-target conditions, disabled actions, unknown action subclasses, random mushroom effects, conditional status actions, conflicting live statuses, and the `CookingBehavior_Wreck` usability override.
 - Configuration migration is factored into the production `DescriptionDefaultsMerger` and tested with old/custom JSON fixtures plus file-backed initialization, English/Chinese embedded defaults, HotReload, and invalid-JSON last-good-data retention.
-- Current automated suite: 104 regression checks. PEAK 2.6.b Release build: 0 warnings and 0 errors.
+- Current automated suite: 108 regression checks. PEAK 2.6.b Release build: 0 warnings and 0 errors.
 - Remaining source work: parse other affliction payloads, mass-action targets/conditions, and random mushroom outcomes; map the relevant serialized item prefabs where available; then validate the matrix in PEAK itself.
 - No item is declared fully effect-covered solely because this guard passed. Only the specific recognized action families above count as supported.

@@ -129,6 +129,7 @@ namespace Peak.Afflictions
 namespace Peak
 {
     public class Action_HealingGem : ItemAction { public float minPetrify, maxPetrify; }
+    public class Action_SuperJumpAmulet : Action_ApplyAffliction { public float petrifyPerUse; }
 }
 namespace PeakItemTooltip
 {

@@ -156,6 +156,23 @@ static class Program
         Has(string.Join(",", ItemModifiers.ActivePositiveStatuses(extendedAfflictions)), "ExtraStamina",
             "bonus stamina affliction participates in safety checks");
 
+        var inheritedAffliction = new Item();
+        inheritedAffliction.Add(new Peak.Action_SuperJumpAmulet
+        {
+            affliction = new Peak.Afflictions.Affliction_AdjustStatus
+            {
+                statusType = CharacterAfflictions.STATUSTYPE.Poison,
+                statusAmount = .1f
+            },
+            petrifyPerUse = .05f
+        });
+        Has(ItemModifiers.Format(inheritedAffliction), "+10 Poison", "derived Action_ApplyAffliction payload is rendered");
+        Has(ItemModifiers.Format(inheritedAffliction), "+5 Petrify (per use)", "derived action petrify modifier is rendered");
+        Has(string.Join(",", ItemModifiers.ActivePositiveStatuses(inheritedAffliction)), "Petrify",
+            "petrify field participates in safety checks");
+        Equal(TooltipItemSnapshot.Capture(inheritedAffliction).SafetySourcesComplete, true,
+            "known super-jump affliction subclass is covered when its payload is supported");
+
         var removedStatusAffliction = new Item();
         removedStatusAffliction.Add(new Action_ApplyAffliction
         {
