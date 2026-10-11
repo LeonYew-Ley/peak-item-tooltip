@@ -10,7 +10,7 @@ The local assembly inventory contained 56 `Action_*` classes. Their implementati
 |---|---|---|
 | `Action_RestoreHunger` | Reads the live hunger restoration value and renders a signed row. | Numeric row supported |
 | `Action_InflictPoison` | Reads poison rate and duration, renders the aggregate amount, and labels delay/duration. | Numeric row and timing supported |
-| `Action_ModifyStatus` | Reads signed status changes. Positive recognized statuses participate in safety checks. | Numeric row supported; `ifSkeleton` makes a categorical safety claim incomplete |
+| `Action_ModifyStatus` | Reads signed status changes. Positive recognized statuses participate in safety checks. Non-default `ItemAction` triggers and the `ifSkeleton` condition are included in the row label. | Numeric row supported; `ifSkeleton` still makes a categorical safety claim incomplete |
 | `Action_GiveExtraStamina` | Reads live extra stamina. | Numeric row supported |
 | `Action_AddOrRemoveThorns` | Reads the direct thorn count, renders add/remove values, and detects positive Thorns for safety checks. | Numeric row supported |
 | `Action_ClearAllStatus` | Decompilation confirms it only subtracts statuses, with exclusions. | Safe for absence checks; not represented as numeric rows |
@@ -25,6 +25,8 @@ The local assembly inventory contained 56 `Action_*` classes. Their implementati
 | `Action_RandomMushroomEffect` | Reads the current mushroom-manager roll and can produce delayed positive or negative effects, including Poison/Spores changes. | Random outcome is not available from the item alone; treated as incomplete |
 | `Action_ConsumeAndSpawn` | Consumes the source and creates another item after a delay. | Replacement chain is not followed; treated as incomplete |
 | Other active `ItemActionBase` subclasses and `Action_*` components | Not assumed harmless based only on their names. | Treated as incomplete unless explicitly accounted for |
+
+`ItemAction.Subscribe()` wires press, hold, cast-finished, cancel, secondary-action, and consumed events. The serialized `OnReleased` field is present in this build but is not subscribed by that base implementation, so the tooltip does not label it as an active trigger. Ordinary consume-only actions omit a redundant trigger suffix; non-default triggers are labeled on their numeric rows.
 
 When a state description has a `mustNotHaveActive` check, an incomplete action inventory now suppresses that state claim and shows an uncertainty note. A recognized active conflicting status suppresses the claim and reports the conflict. Disabled actions and inactive child branches do not count as active sources.
 
@@ -63,12 +65,12 @@ Notable verified details:
 - `CookingBehavior_Wreck` calls `ItemCooking.Wreck()`, which destroys item actions and sets the private `overrideUsability` option to false without setting `wreckWhenCooked`. State selection now reads that explicit unusable override as well.
 - Additional cooking behaviors run even when `ignoreDefaultCookBehavior` skips vanilla stat changes.
 
-The tooltip does not execute cooking or action methods while reading an item. The in-game matrix is still required to confirm each affected prefab's configured thresholds and final behavior.
+The tooltip does not execute cooking or action methods while reading an item. Numeric labels include non-default `ItemAction` triggers (such as press/hold/cast) and the skeleton-only condition where present; ordinary `OnConsumed` rows stay concise. The in-game matrix is still required to confirm each affected prefab's configured thresholds and final behavior.
 
 ## Verification and remaining work
 
-- Regression tests cover known numeric sources, direct Thorns, signed `Affliction_AdjustStatus`, primary/extra `Affliction_PoisonOverTime` payloads with timing, timed Cold/Drowsy and bonus stamina payloads, the derived Super Jump Amulet action and its Petrify value, unsupported afflictions, mass-target conditions, disabled actions, unknown action subclasses, random mushroom effects, conditional status actions, conflicting live statuses, and the `CookingBehavior_Wreck` usability override.
+- Regression tests cover known numeric sources, direct Thorns, signed `Affliction_AdjustStatus`, primary/extra `Affliction_PoisonOverTime` payloads with timing, timed Cold/Drowsy and bonus stamina payloads, the derived Super Jump Amulet action and its Petrify value, trigger/condition labels for direct and affliction-backed rows, unsupported afflictions, mass-target conditions, disabled actions, unknown action subclasses, random mushroom effects, conflicting live statuses, and the `CookingBehavior_Wreck` usability override.
 - Configuration migration is factored into the production `DescriptionDefaultsMerger` and tested with old/custom JSON fixtures plus file-backed initialization, English/Chinese embedded defaults, HotReload, and invalid-JSON last-good-data retention.
-- Current automated suite: 108 regression checks. PEAK 2.6.b Release build: 0 warnings and 0 errors.
+- Current automated suite: 114 regression checks, including English/Chinese labels for non-default triggers and skeleton-only status actions. PEAK 2.6.b Release build: 0 warnings and 0 errors.
 - Remaining source work: add explicit support for useful non-status/conditional afflictions, mass-action targets/conditions, and random mushroom outcomes; map the relevant serialized item prefabs where available; then validate the matrix in PEAK itself.
 - No item is declared fully effect-covered solely because this guard passed. Only the specific recognized action families above count as supported.
