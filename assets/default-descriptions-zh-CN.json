@@ -88,7 +88,18 @@
     },
     "Big Lollipop": {
       "type": "CONSUMABLE",
-      "description": "食用期间使使用者获得无限耐力"
+      "description": "食用期间使使用者获得无限耐力",
+      "context": "在行李箱中发现。",
+      "stateDescriptions": {
+        "cooked": "烹饪会消除无限耐力效果结束后的困倦惩罚。"
+      },
+      "wiki": {
+        "title": "Big Lollipop",
+        "revision": 10558,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Bing Bong": {
       "type": "MISC",
@@ -116,7 +127,26 @@
     },
     "Blue Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生有害效果"
+      "description": "在森蕈发现。释放孢子，食用后产生有害效果",
+      "context": "在树根区域发现；食用后会释放孢子。",
+      "stateDescriptions": {
+        "raw": "食用后可能触发随机负面效果。",
+        "cooked": "烹饪会消除其孢子效果。"
+      },
+      "wiki": {
+        "title": "Blue Shroomberry",
+        "revision": 10680,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Bounce Fungus": {
       "type": "DEPLOYABLE",
@@ -136,11 +166,33 @@
     },
     "Bugle Shroom": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒"
+      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒",
+      "context": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
+      "stateDescriptions": {
+        "cooked": "烹饪不会消除有毒蘑菇变种的中毒效果。"
+      },
+      "wiki": {
+        "title": "Bugle Shroom",
+        "revision": 11906,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Button Shroom": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒"
+      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒",
+      "context": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
+      "stateDescriptions": {
+        "cooked": "烹饪不会消除有毒蘑菇变种的中毒效果。"
+      },
+      "wiki": {
+        "title": "Button Shroom",
+        "revision": 11909,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Cactus": {
       "type": "CONSUMABLE",
@@ -172,7 +224,18 @@
     },
     "Cluster Shroom": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒"
+      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒",
+      "context": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
+      "stateDescriptions": {
+        "cooked": "烹饪不会消除有毒蘑菇变种的中毒效果。"
+      },
+      "wiki": {
+        "title": "Cluster Shroom",
+        "revision": 11908,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Coconut": {
       "type": "CONSUMABLE",
@@ -212,7 +275,25 @@
     },
     "Energy Drink": {
       "type": "CONSUMABLE",
-      "description": "提供暂时的速度提升，并施加困倦"
+      "description": "提供暂时的速度提升，并施加困倦",
+      "context": "在行李箱中发现。",
+      "stateDescriptions": {
+        "cooked": "烹饪后的饮料饮用时会爆炸并击退附近玩家；速度效果延长4秒，结束后不再追加困倦。"
+      },
+      "wiki": {
+        "title": "Energy Drink",
+        "revision": 11234,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Drowsy"
+          ]
+        }
+      }
     },
     "Faerie Lantern": {
       "type": "MYSTICAL",
@@ -232,7 +313,18 @@
     },
     "Fortified Milk": {
       "type": "CONSUMABLE",
-      "description": "清除使用者的炎热"
+      "description": "清除使用者的炎热",
+      "context": "在行李箱中发现。",
+      "stateDescriptions": {
+        "cooked": "首次烹饪会使无敌时间延长10秒；继续烹饪不会再增加时间。"
+      },
+      "wiki": {
+        "title": "Fortified Milk",
+        "revision": 11633,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Frisbee": {
       "type": "MISC",
@@ -264,15 +356,79 @@
     },
     "Green Crispberry": {
       "type": "CONSUMABLE",
-      "description": "在大多数生物群系发现。食用2秒后施加中毒"
+      "description": "海岛、雨林的灌木上可以找到，其他地区的部分特殊地点也有分布。",
+      "context": "主要在海岸和热带雨林的灌木上发现，其他区域也偶尔出现。",
+      "stateDescriptions": {
+        "raw": "食用后会延迟2秒中毒，持续4秒。",
+        "cooked": "烹饪会消除中毒；烤熟与全熟阶段的效果不会叠加。",
+        "burnt": "烧焦后恢复的饥饿值减少，也不再提供额外耐力。",
+        "incinerated": "每继续烧毁一次，都会增加中毒效果。"
+      },
+      "wiki": {
+        "title": "Green Crispberry",
+        "revision": 10035,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-and-game-code-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Poison"
+          ]
+        },
+        "burnt": {
+          "mustNotHaveActive": [
+            "ExtraStamina"
+          ]
+        }
+      }
     },
     "Green Kingberry": {
       "type": "CONSUMABLE",
-      "description": "在雨林发现。对使用者施加中毒"
+      "description": "在雨林发现。对使用者施加中毒",
+      "context": "在热带雨林的树上发现。",
+      "stateDescriptions": {
+        "raw": "食用后立即中毒。",
+        "cooked": "烹饪会消除中毒效果。"
+      },
+      "wiki": {
+        "title": "Green Kingberry",
+        "revision": 10039,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Poison"
+          ]
+        }
+      }
     },
     "Green Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生有害效果"
+      "description": "在森蕈发现。释放孢子，食用后产生有害效果",
+      "context": "在树根区域发现；食用后会释放孢子。",
+      "stateDescriptions": {
+        "raw": "食用后可能触发随机负面效果。",
+        "cooked": "烹饪会消除其孢子效果。"
+      },
+      "wiki": {
+        "title": "Green Shroomberry",
+        "revision": 10678,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Guidebook": {
       "type": "EQUIPMENT",
@@ -304,7 +460,19 @@
     },
     "Mandrake": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。拔起时会尖叫。生吃会隐藏耐力条60秒"
+      "description": "在森蕈发现。拔起时会尖叫。生吃会隐藏耐力条60秒",
+      "context": "在树根区域发现；拔起后会发出尖叫。",
+      "stateDescriptions": {
+        "raw": "生吃会隐藏耐力条60秒。",
+        "cooked": "烹饪会停止尖叫；熟吃可消除诅咒。"
+      },
+      "wiki": {
+        "title": "Mandrake",
+        "revision": 11458,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Marshmallow": {
       "type": "CONSUMABLE",
@@ -312,7 +480,18 @@
     },
     "Medicinal Root": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林、森蕈和方山发现。清除中毒和孢子，并治愈受伤"
+      "description": "在海岸、雨林、森蕈和方山发现。清除中毒和孢子，并治愈受伤",
+      "context": "在海岸、热带雨林、树根和方山发现。",
+      "stateDescriptions": {
+        "cooked": "烹饪后会额外消除中毒和孢子。"
+      },
+      "wiki": {
+        "title": "Medicinal Root",
+        "revision": 11876,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Megaphone": {
       "type": "EQUIPMENT",
@@ -352,7 +531,26 @@
     },
     "Purple Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生随机的有益或有害效果"
+      "description": "在森蕈发现。释放孢子，食用后产生随机的有益或有害效果",
+      "context": "在树根区域发现；食用后会释放孢子。",
+      "stateDescriptions": {
+        "raw": "食用后可能触发随机正面或负面效果。",
+        "cooked": "烹饪会消除其孢子效果。"
+      },
+      "wiki": {
+        "title": "Purple Shroomberry",
+        "revision": 11164,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Red Clusterberry": {
       "type": "CONSUMABLE",
@@ -364,11 +562,49 @@
     },
     "Red Prickleberry": {
       "type": "CONSUMABLE",
-      "description": "在方山发现。清除炎热，但会施加荆棘"
+      "description": "在方山发现。清除炎热，但会施加荆棘",
+      "context": "在方山的仙人掌上发现。",
+      "stateDescriptions": {
+        "raw": "食用后会使侦察兵受到荆棘效果。",
+        "cooked": "烹饪会消除附着的荆棘。"
+      },
+      "wiki": {
+        "title": "Red Prickleberry",
+        "revision": 10057,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Thorns"
+          ]
+        }
+      }
     },
     "Red Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生有益效果"
+      "description": "在森蕈发现。释放孢子，食用后产生有益效果",
+      "context": "在树根区域发现；食用后会释放孢子。",
+      "stateDescriptions": {
+        "raw": "食用后可能触发随机正面效果。",
+        "cooked": "烹饪会消除其孢子效果。"
+      },
+      "wiki": {
+        "title": "Red Shroomberry",
+        "revision": 10677,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Remedy Fungus": {
       "type": "CONSUMABLE",
@@ -448,7 +684,20 @@
     },
     "Sports Drink": {
       "type": "CONSUMABLE",
-      "description": "清除使用者的大量炎热"
+      "description": "清除使用者的大量炎热",
+      "context": "在行李箱中发现。",
+      "stateDescriptions": {
+        "cooked": "首次烹饪会增加额外耐力；继续烹饪不会改变效果。",
+        "burnt": "这种饮料烧焦后没有额外惩罚。",
+        "incinerated": "这种饮料烧毁后没有额外惩罚。"
+      },
+      "wiki": {
+        "title": "Sports Drink",
+        "revision": 11351,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Stick": {
       "type": "MISC",
@@ -527,11 +776,49 @@
     },
     "Yellow Kingberry": {
       "type": "CONSUMABLE",
-      "description": "在雨林发现。食用3秒后施加中毒"
+      "description": "在雨林发现。食用3秒后施加中毒",
+      "context": "在热带雨林的树上发现。",
+      "stateDescriptions": {
+        "raw": "食用后会延迟3秒开始中毒，持续10秒。",
+        "cooked": "烹饪会消除中毒效果。"
+      },
+      "wiki": {
+        "title": "Yellow Kingberry",
+        "revision": 10038,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Poison"
+          ]
+        }
+      }
     },
     "Yellow Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生有益效果"
+      "description": "在森蕈发现。释放孢子，食用后产生有益效果",
+      "context": "在树根区域发现；食用后会释放孢子。",
+      "stateDescriptions": {
+        "raw": "食用后可能触发随机正面效果。",
+        "cooked": "烹饪会消除其孢子效果。"
+      },
+      "wiki": {
+        "title": "Yellow Shroomberry",
+        "revision": 10679,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Yellow Winterberry": {
       "type": "CONSUMABLE",
@@ -539,7 +826,26 @@
     },
     "Pink Berrynana": {
       "type": "CONSUMABLE",
-      "description": "在雨林发现。食用后掉落莓蕉皮"
+      "description": "在雨林发现。食用后掉落莓蕉皮",
+      "context": "在热带雨林的藤蔓上发现；食用后会留下果皮。",
+      "stateDescriptions": {
+        "raw": "食用后会延迟2秒开始中毒，持续6秒。",
+        "cooked": "烹饪会消除中毒效果。"
+      },
+      "wiki": {
+        "title": "Pink Berrynana",
+        "revision": 10041,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Poison"
+          ]
+        }
+      }
     }
   }
 }

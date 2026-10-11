@@ -89,6 +89,45 @@ namespace PeakItemTooltip
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Returns the modifier rows captured for the same refresh as the item's description.
+        /// </summary>
+        public static string FormatSnapshot(TooltipItemSnapshot snapshot)
+        {
+            return snapshot != null ? snapshot.Modifiers : "";
+        }
+
+        /// <summary>
+        /// Returns positive statuses supported by the modifier formatter. State checks use these
+        /// semantic names to avoid showing a Wiki claim that contradicts the live modifier rows.
+        /// </summary>
+        public static HashSet<string> ActivePositiveStatuses(Item item)
+        {
+            var statuses = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            if (item == null) return statuses;
+
+            foreach (Action_InflictPoison action in item.GetComponentsInChildren<Action_InflictPoison>(true))
+            {
+                if (EffectEnabled(action, item) && action.inflictionTime > 0f
+                    && action.poisonPerSecond * action.inflictionTime > 0f)
+                    statuses.Add(CharacterAfflictions.STATUSTYPE.Poison.ToString());
+            }
+
+            foreach (Action_ModifyStatus action in item.GetComponentsInChildren<Action_ModifyStatus>(true))
+            {
+                if (EffectEnabled(action, item) && action.changeAmount > 0f)
+                    statuses.Add(action.statusType.ToString());
+            }
+
+            foreach (Action_GiveExtraStamina action in item.GetComponentsInChildren<Action_GiveExtraStamina>(true))
+            {
+                if (EffectEnabled(action, item) && action.amount > 0f)
+                    statuses.Add("ExtraStamina");
+            }
+
+            return statuses;
+        }
+
         /**
          * @brief scans the item's components for petrify cost fields and appends one line per field found
          * @param sb the builder the lines are appended to

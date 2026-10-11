@@ -58,7 +58,7 @@ public class Item : UnityEngine.MonoBehaviour
     public T[] GetComponentsInChildren<T>(bool includeInactive) => components.OfType<T>().ToArray();
 }
 
-public class ItemCooking { public int timesCookedLocal; }
+public class ItemCooking { public int timesCookedLocal; public bool wreckWhenCooked; }
 public class Action_RestoreHunger : UnityEngine.MonoBehaviour { public float restorationAmount; }
 public class Action_InflictPoison : UnityEngine.MonoBehaviour { public float poisonPerSecond, inflictionTime; }
 public class Action_ModifyStatus : UnityEngine.MonoBehaviour { public CharacterAfflictions.STATUSTYPE statusType; public float changeAmount; }
@@ -74,6 +74,11 @@ namespace Peak
 }
 namespace PeakItemTooltip
 {
+    public class StateCheck
+    {
+        public List<string> MustNotHaveActive = new List<string>();
+    }
+
     public static class Zh
     {
         public static bool Active;

@@ -27,6 +27,42 @@ namespace PeakItemTooltip
 
         [JsonProperty("description")]
         public string Description = "";
+
+        [JsonProperty("context")]
+        public string Context = "";
+
+        [JsonProperty("stateDescriptions")]
+        public Dictionary<string, string> StateDescriptions = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        [JsonProperty("stateChecks")]
+        public Dictionary<string, StateCheck> StateChecks = new Dictionary<string, StateCheck>(StringComparer.OrdinalIgnoreCase);
+
+        [JsonProperty("wiki")]
+        public WikiSource Wiki;
+    }
+
+    public class WikiSource
+    {
+        [JsonProperty("title")]
+        public string Title = "";
+
+        [JsonProperty("revision")]
+        public int Revision;
+
+        [JsonProperty("checkedAt")]
+        public string CheckedAt = "";
+
+        [JsonProperty("gameVersion")]
+        public string GameVersion = "";
+
+        [JsonProperty("reviewStatus")]
+        public string ReviewStatus = "";
+    }
+
+    public class StateCheck
+    {
+        [JsonProperty("mustNotHaveActive")]
+        public List<string> MustNotHaveActive = new List<string>();
     }
 
     /**
@@ -165,13 +201,58 @@ namespace PeakItemTooltip
                             continue;
                         }
 
-                        var present = new HashSet<string>(target.Properties().Select(p => p.Name), StringComparer.OrdinalIgnoreCase);
-                        foreach (JProperty prop in source.Properties())
+                        if (section == "items")
                         {
-                            if (!present.Add(prop.Name)) continue;
+                            foreach (JProperty item in source.Properties())
+                            {
+                                JObject defaultsForItem = item.Value as JObject;
+                                if (defaultsForItem == null) continue;
 
-                            target[prop.Name] = prop.Value.DeepClone();
-                            added.Add(prop.Name);
+                                JObject existing = target.Properties().FirstOrDefault(p => string.Equals(p.Name, item.Name, StringComparison.OrdinalIgnoreCase))?.Value as JObject;
+                                if (existing == null)
+                                {
+                                    target[item.Name] = defaultsForItem.DeepClone();
+                                    added.Add(item.Name);
+                                    continue;
+                                }
+
+                                // Enrich existing entries with wiki context, state descriptions, and provenance
+                                // without replacing a user's existing text or any unrelated custom fields.
+                                foreach (string field in new[] { "context", "stateDescriptions", "stateChecks", "wiki" })
+                                {
+                                    JToken incoming = defaultsForItem[field];
+                                    if (incoming == null) continue;
+
+                                    JProperty currentField = existing.Properties().FirstOrDefault(p => string.Equals(p.Name, field, StringComparison.OrdinalIgnoreCase));
+                                    if (currentField == null)
+                                    {
+                                        existing[field] = incoming.DeepClone();
+                                        added.Add(item.Name + "." + field);
+                                        continue;
+                                    }
+
+                                    if ((field != "stateDescriptions" && field != "stateChecks")
+                                        || !(incoming is JObject incomingStates) || !(currentField.Value is JObject existingStates)) continue;
+
+                                    foreach (JProperty state in incomingStates.Properties())
+                                    {
+                                        if (existingStates.Properties().Any(p => string.Equals(p.Name, state.Name, StringComparison.OrdinalIgnoreCase))) continue;
+                                        existingStates[state.Name] = state.Value.DeepClone();
+                                        added.Add(item.Name + "." + field + "." + state.Name);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var present = new HashSet<string>(target.Properties().Select(p => p.Name), StringComparer.OrdinalIgnoreCase);
+                            foreach (JProperty prop in source.Properties())
+                            {
+                                if (!present.Add(prop.Name)) continue;
+
+                                target[prop.Name] = prop.Value.DeepClone();
+                                added.Add(prop.Name);
+                            }
                         }
                     }
 

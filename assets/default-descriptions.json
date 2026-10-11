@@ -1,12 +1,19 @@
 {
-  "types": { "MYSTICAL": "#B15AD8", "CONSUMABLE": "#7CD64B", "DEPLOYABLE": "#A0764B", "UNUSED": "#2C2C2C", "EQUIPMENT": "FFDA03", "MISC": "#9AA0A6"},
+  "types": {
+    "MYSTICAL": "#B15AD8",
+    "CONSUMABLE": "#7CD64B",
+    "DEPLOYABLE": "#A0764B",
+    "UNUSED": "#2C2C2C",
+    "EQUIPMENT": "FFDA03",
+    "MISC": "#9AA0A6"
+  },
   "items": {
     "Airline Food": {
-      "type":  "CONSUMABLE",
+      "type": "CONSUMABLE",
       "description": "Found by breaking open regular and large luggages"
     },
     "Aloe Vera": {
-      "type":  "CONSUMABLE",
+      "type": "CONSUMABLE",
       "description": "Found in the mesa, using it will remove 50 heat"
     },
     "AMULET_CLONE": {
@@ -30,11 +37,17 @@
       "description": "Found in Mesa's Tomb, holding it grants the player invincibility. Throwing it into the lava of the kiln destroys it and unlocks the 24 Karat Badge"
     },
     "anti-rope cannon": {
-      "type": ["MYSTICAL", "DEPLOYABLE"],
+      "type": [
+        "MYSTICAL",
+        "DEPLOYABLE"
+      ],
       "description": "Attaches a 7.25 metre anti-rope which spools upwards. It has zero weight and will float when dropped"
     },
     "anti-rope spool": {
-      "type": ["MYSTICAL", "DEPLOYABLE"],
+      "type": [
+        "MYSTICAL",
+        "DEPLOYABLE"
+      ],
       "description": "Provides a total of 12.5 metres climbable anti gravity rope, placeable in custom lengths from 0.75m to 10m long. The rope will float upwards. It has negative weight and will float when dropped"
     },
     "Antidote": {
@@ -75,7 +88,18 @@
     },
     "Big Lollipop": {
       "type": "CONSUMABLE",
-      "description": "Grants infinite stamina to the user while being eaten"
+      "description": "Grants infinite stamina to the user while being eaten",
+      "context": "Found in luggage.",
+      "stateDescriptions": {
+        "cooked": "Cooking removes the Drowsy penalty that follows its infinite-stamina effect."
+      },
+      "wiki": {
+        "title": "Big Lollipop",
+        "revision": 10558,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Bing Bong": {
       "type": "MISC",
@@ -103,7 +127,26 @@
     },
     "Blue Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a harmful effect when eaten"
+      "description": "Found in the roots. Releases spores, and produces a harmful effect when eaten",
+      "context": "Found in the Roots; releases Spores when eaten.",
+      "stateDescriptions": {
+        "raw": "Eating it can cause a random harmful effect.",
+        "cooked": "Cooking removes its Spores effect."
+      },
+      "wiki": {
+        "title": "Blue Shroomberry",
+        "revision": 10680,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Bounce Fungus": {
       "type": "DEPLOYABLE",
@@ -123,11 +166,33 @@
     },
     "Bugle Shroom": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds"
+      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds",
+      "context": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
+      "stateDescriptions": {
+        "cooked": "Cooking does not remove Poison from poisonous mushroom varieties."
+      },
+      "wiki": {
+        "title": "Bugle Shroom",
+        "revision": 11906,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Button Shroom": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds"
+      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds",
+      "context": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
+      "stateDescriptions": {
+        "cooked": "Cooking does not remove Poison from poisonous mushroom varieties."
+      },
+      "wiki": {
+        "title": "Button Shroom",
+        "revision": 11909,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Cactus": {
       "type": "CONSUMABLE",
@@ -159,7 +224,18 @@
     },
     "Cluster Shroom": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds"
+      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds",
+      "context": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
+      "stateDescriptions": {
+        "cooked": "Cooking does not remove Poison from poisonous mushroom varieties."
+      },
+      "wiki": {
+        "title": "Cluster Shroom",
+        "revision": 11908,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Coconut": {
       "type": "CONSUMABLE",
@@ -199,7 +275,25 @@
     },
     "Energy Drink": {
       "type": "CONSUMABLE",
-      "description": "Grants a temporary speed boost and afflicts drowsiness"
+      "description": "Grants a temporary speed boost and afflicts drowsiness",
+      "context": "Found in luggage.",
+      "stateDescriptions": {
+        "cooked": "When consumed, a cooked drink explodes and knocks back nearby players; its speed effect lasts 4 seconds longer and adds no new Drowsy afterward."
+      },
+      "wiki": {
+        "title": "Energy Drink",
+        "revision": 11234,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Drowsy"
+          ]
+        }
+      }
     },
     "Faerie Lantern": {
       "type": "MYSTICAL",
@@ -219,7 +313,18 @@
     },
     "Fortified Milk": {
       "type": "CONSUMABLE",
-      "description": "Removes heat from the user"
+      "description": "Removes heat from the user",
+      "context": "Found in luggage.",
+      "stateDescriptions": {
+        "cooked": "The first cooking stage adds 10 seconds of invulnerability; further cooking adds no more time."
+      },
+      "wiki": {
+        "title": "Fortified Milk",
+        "revision": 11633,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Frisbee": {
       "type": "MISC",
@@ -251,15 +356,79 @@
     },
     "Green Crispberry": {
       "type": "CONSUMABLE",
-      "description": "Found across most biomes. Afflicts poison 2 seconds after eating"
+      "description": "Found on bushes on the Shore and in the Tropics; it also appears at a few special locations in other biomes.",
+      "context": "Found on bushes, mainly in the Shore and Tropics, with occasional plants elsewhere.",
+      "stateDescriptions": {
+        "raw": "Eating it inflicts Poison after 2 seconds, lasting 4 seconds.",
+        "cooked": "Cooking removes its Poison effect; Cooked and Well-Done do not stack.",
+        "burnt": "Burnt food restores less Hunger and no longer grants Bonus Stamina.",
+        "incinerated": "Each further incineration adds Poison."
+      },
+      "wiki": {
+        "title": "Green Crispberry",
+        "revision": 10035,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-and-game-code-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Poison"
+          ]
+        },
+        "burnt": {
+          "mustNotHaveActive": [
+            "ExtraStamina"
+          ]
+        }
+      }
     },
     "Green Kingberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the tropics. Afflicts poison onto the user"
+      "description": "Found in the tropics. Afflicts poison onto the user",
+      "context": "Found on trees in the Tropics.",
+      "stateDescriptions": {
+        "raw": "Eating it immediately inflicts Poison.",
+        "cooked": "Cooking removes its Poison effect."
+      },
+      "wiki": {
+        "title": "Green Kingberry",
+        "revision": 10039,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Poison"
+          ]
+        }
+      }
     },
     "Green Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a harmful effect when eaten"
+      "description": "Found in the roots. Releases spores, and produces a harmful effect when eaten",
+      "context": "Found in the Roots; releases Spores when eaten.",
+      "stateDescriptions": {
+        "raw": "Eating it can cause a random harmful effect.",
+        "cooked": "Cooking removes its Spores effect."
+      },
+      "wiki": {
+        "title": "Green Shroomberry",
+        "revision": 10678,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Guidebook": {
       "type": "EQUIPMENT",
@@ -291,7 +460,19 @@
     },
     "Mandrake": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Screams when uprooted. Eaten raw, it hides the stamina bar for 60 seconds"
+      "description": "Found in the roots. Screams when uprooted. Eaten raw, it hides the stamina bar for 60 seconds",
+      "context": "Found in the Roots; it screams after being uprooted.",
+      "stateDescriptions": {
+        "raw": "Eating it raw hides the Stamina bar for 60 seconds.",
+        "cooked": "Cooking stops its scream; eating it cooked removes Curse."
+      },
+      "wiki": {
+        "title": "Mandrake",
+        "revision": 11458,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Marshmallow": {
       "type": "CONSUMABLE",
@@ -299,7 +480,18 @@
     },
     "Medicinal Root": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics, roots and mesa. Removes poison and spores, and heals injury"
+      "description": "Found on the shore, tropics, roots and mesa. Removes poison and spores, and heals injury",
+      "context": "Found in the Shore, Tropics, Roots, and Mesa.",
+      "stateDescriptions": {
+        "cooked": "Cooking removes additional Poison and Spores."
+      },
+      "wiki": {
+        "title": "Medicinal Root",
+        "revision": 11876,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Megaphone": {
       "type": "EQUIPMENT",
@@ -323,7 +515,26 @@
     },
     "Pink Berrynana": {
       "type": "CONSUMABLE",
-      "description": "Found in the tropics. Drops a Berrynana Peel when eaten"
+      "description": "Found in the tropics. Drops a Berrynana Peel when eaten",
+      "context": "Found on vines in the Tropics; eating it produces a peel.",
+      "stateDescriptions": {
+        "raw": "Eating it inflicts Poison after a 2-second delay, over 6 seconds.",
+        "cooked": "Cooking removes its Poison effect."
+      },
+      "wiki": {
+        "title": "Pink Berrynana",
+        "revision": 10041,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Poison"
+          ]
+        }
+      }
     },
     "Pirate's Compass": {
       "type": "EQUIPMENT",
@@ -343,7 +554,26 @@
     },
     "Purple Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a random good or bad effect when eaten"
+      "description": "Found in the roots. Releases spores, and produces a random good or bad effect when eaten",
+      "context": "Found in the Roots; releases Spores when eaten.",
+      "stateDescriptions": {
+        "raw": "Eating it can cause a random good or bad effect.",
+        "cooked": "Cooking removes its Spores effect."
+      },
+      "wiki": {
+        "title": "Purple Shroomberry",
+        "revision": 11164,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Red Clusterberry": {
       "type": "CONSUMABLE",
@@ -355,11 +585,49 @@
     },
     "Red Prickleberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the mesa. Removes heat, but afflicts thorns"
+      "description": "Found in the mesa. Removes heat, but afflicts thorns",
+      "context": "Found on cacti in the Mesa.",
+      "stateDescriptions": {
+        "raw": "Eating it attaches Thorns to the Scout.",
+        "cooked": "Cooking removes the attached Thorns."
+      },
+      "wiki": {
+        "title": "Red Prickleberry",
+        "revision": 10057,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Thorns"
+          ]
+        }
+      }
     },
     "Red Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a beneficial effect when eaten"
+      "description": "Found in the roots. Releases spores, and produces a beneficial effect when eaten",
+      "context": "Found in the Roots; releases Spores when eaten.",
+      "stateDescriptions": {
+        "raw": "Eating it can cause a random beneficial effect.",
+        "cooked": "Cooking removes its Spores effect."
+      },
+      "wiki": {
+        "title": "Red Shroomberry",
+        "revision": 10677,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Remedy Fungus": {
       "type": "CONSUMABLE",
@@ -439,7 +707,20 @@
     },
     "Sports Drink": {
       "type": "CONSUMABLE",
-      "description": "Removes a large amount of heat from the user"
+      "description": "Removes a large amount of heat from the user",
+      "context": "Found in luggage.",
+      "stateDescriptions": {
+        "cooked": "The first cooking stage adds Bonus Stamina; further cooking has no effect.",
+        "burnt": "This drink has no Burnt-stage penalty.",
+        "incinerated": "This drink has no Incinerated-stage penalty."
+      },
+      "wiki": {
+        "title": "Sports Drink",
+        "revision": 11351,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      }
     },
     "Stick": {
       "type": "MISC",
@@ -478,7 +759,10 @@
       "description": "Found throughout the climb"
     },
     "VOIDLAUNCHER": {
-      "type": ["MYSTICAL", "DEPLOYABLE"],
+      "type": [
+        "MYSTICAL",
+        "DEPLOYABLE"
+      ],
       "description": "Found in ancient luggage and statues. Shoots an anti-sphere up to 40 metres away that reverses gravity where it lands"
     },
     "WARP COMPASS": {
@@ -515,11 +799,49 @@
     },
     "Yellow Kingberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the tropics. Afflicts poison 3 seconds after eating"
+      "description": "Found in the tropics. Afflicts poison 3 seconds after eating",
+      "context": "Found on trees in the Tropics.",
+      "stateDescriptions": {
+        "raw": "Eating it inflicts Poison after a 3-second delay, over 10 seconds.",
+        "cooked": "Cooking removes its Poison effect."
+      },
+      "wiki": {
+        "title": "Yellow Kingberry",
+        "revision": 10038,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Poison"
+          ]
+        }
+      }
     },
     "Yellow Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a beneficial effect when eaten"
+      "description": "Found in the roots. Releases spores, and produces a beneficial effect when eaten",
+      "context": "Found in the Roots; releases Spores when eaten.",
+      "stateDescriptions": {
+        "raw": "Eating it can cause a random beneficial effect.",
+        "cooked": "Cooking removes its Spores effect."
+      },
+      "wiki": {
+        "title": "Yellow Shroomberry",
+        "revision": 10679,
+        "checkedAt": "2026-10-11",
+        "gameVersion": "2.6.b",
+        "reviewStatus": "wiki-reviewed; in-game validation pending"
+      },
+      "stateChecks": {
+        "cooked": {
+          "mustNotHaveActive": [
+            "Spores"
+          ]
+        }
+      }
     },
     "Yellow Winterberry": {
       "type": "CONSUMABLE",
