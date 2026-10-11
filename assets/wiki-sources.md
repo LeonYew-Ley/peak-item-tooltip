@@ -1,6 +1,6 @@
 # PEAK Wiki-derived tooltip data
 
-The English and Simplified Chinese defaults contain short summaries for 63 items whose effects change with cooking. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
+The English and Simplified Chinese defaults contain 67 cooking-state profiles. In total, 118 of 131 direct item pages have been content-reviewed; 51 reviewed pages did not need an additional state-specific sentence. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
 
 ## Sources reviewed on 2026-10-11
 
@@ -71,14 +71,94 @@ The English and Simplified Chinese defaults contain short summaries for 63 items
 | [Strange Gem](https://peak.wiki.gg/wiki/Strange_Gem) | 11883 | Cooked bestowal adds Bonus stamina; burning adds Poison |
 | [Snowball](https://peak.wiki.gg/wiki/Snowball) | 12024 | Cooking inflicts Cold on hit without knocking the target down |
 | [The Early Worm](https://peak.wiki.gg/wiki/The_Early_Worm) | 11896 | Cooking stops movement without adding Bonus stamina |
+| [Frog](https://peak.wiki.gg/wiki/Frog) | 12141 | Cooking transforms it into Frog Legs |
+| [Frog Legs](https://peak.wiki.gg/wiki/Frog_Legs) | 11161 | Cooking once doubles Hunger restoration and adds Bonus stamina |
+| [Red Crispberry](https://peak.wiki.gg/wiki/Red_Crispberry) | 10033 | Cooking once doubles Hunger restoration and adds Bonus stamina |
+| [Small Egg](https://peak.wiki.gg/wiki/Small_Egg) | 12075 | Cooking the Small Egg also cooks the Egg result when cracked |
+
+## Reviewed direct pages without a state-specific profile
+
+These 51 pages were read against the item description and the general cooking rules. No extra state-specific sentence was needed; current modifier rows continue to come from the game item.
+
+| Source | Revision | Review outcome |
+|---|---:|---|
+| [Airline Food](https://peak.wiki.gg/wiki/Airline_Food) | 10056 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Aloe Vera](https://peak.wiki.gg/wiki/Aloe_Vera) | 7230 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Scout's Generosity](https://peak.wiki.gg/wiki/Scout%27s_Generosity) | 11880 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Scout's Initiative](https://peak.wiki.gg/wiki/Scout%27s_Initiative) | 11881 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Scout's Tenacity](https://peak.wiki.gg/wiki/Scout%27s_Tenacity) | 11882 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Scout's Ambition](https://peak.wiki.gg/wiki/Scout%27s_Ambition) | 11879 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Ancient Idol](https://peak.wiki.gg/wiki/Ancient_Idol) | 11788 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Binoculars](https://peak.wiki.gg/wiki/Binoculars) | 12142 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Black Clusterberry](https://peak.wiki.gg/wiki/Black_Clusterberry) | 10046 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Blue Berrynana](https://peak.wiki.gg/wiki/Blue_Berrynana) | 10040 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Bounce Fungus](https://peak.wiki.gg/wiki/Bounce_Fungus) | 7626 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Brown Berrynana](https://peak.wiki.gg/wiki/Brown_Berrynana) | 11312 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Bugle of Friendship](https://peak.wiki.gg/wiki/Bugle_of_Friendship) | 11947 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Cactus](https://peak.wiki.gg/wiki/Cactus) | 7704 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Candlestick](https://peak.wiki.gg/wiki/Candlestick) | 10763 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Chubby Shroom](https://peak.wiki.gg/wiki/Chubby_Shroom) | 11907 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Cloud Fungus](https://peak.wiki.gg/wiki/Cloud_Fungus) | 11182 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Compass](https://peak.wiki.gg/wiki/Compass) | 5463 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Conch](https://peak.wiki.gg/wiki/Conch) | 11368 | Cooking changes appearance only. |
+| [Egg](https://peak.wiki.gg/wiki/Egg) | 11625 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Fanny Pack](https://peak.wiki.gg/wiki/Fanny_Pack) | 12084 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Flying Disc](https://peak.wiki.gg/wiki/Flying_Disc) | 12008 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Glider](https://peak.wiki.gg/wiki/Glider) | 11997 | Cooking changes appearance only. |
+| [Granola Bar](https://peak.wiki.gg/wiki/Granola_Bar) | 10052 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Honeycomb](https://peak.wiki.gg/wiki/Honeycomb) | 9543 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Hot Dog](https://peak.wiki.gg/wiki/Hot_Dog) | 11165 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Jetpack](https://peak.wiki.gg/wiki/Jetpack) | 11898 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Magic Bean](https://peak.wiki.gg/wiki/Magic_Bean) | 9536 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Marshmallow](https://peak.wiki.gg/wiki/Marshmallow) | 9532 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Napberry](https://peak.wiki.gg/wiki/Napberry) | 12085 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Orange Winterberry](https://peak.wiki.gg/wiki/Orange_Winterberry) | 10045 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Parasol](https://peak.wiki.gg/wiki/Parasol) | 11946 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Pirate's Compass](https://peak.wiki.gg/wiki/Pirate%27s_Compass) | 7278 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Purple Kingberry](https://peak.wiki.gg/wiki/Purple_Kingberry) | 10037 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Red Clusterberry](https://peak.wiki.gg/wiki/Red_Clusterberry) | 10047 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Remedy Fungus](https://peak.wiki.gg/wiki/Remedy_Fungus) | 11113 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Ritual Dagger](https://peak.wiki.gg/wiki/Ritual_Dagger) | 11865 | Cooking does not change its function or effects. |
+| [Rocketpack](https://peak.wiki.gg/wiki/Rocketpack) | 11277 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Scorchberry](https://peak.wiki.gg/wiki/Scorchberry) | 10036 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Scout Cookies](https://peak.wiki.gg/wiki/Scout_Cookies) | 10987 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Shelf Fungus](https://peak.wiki.gg/wiki/Shelf_Fungus) | 8870 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Tick](https://peak.wiki.gg/wiki/Tick) | 9548 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Torch](https://peak.wiki.gg/wiki/Torch) | 5474 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Trail Mix](https://peak.wiki.gg/wiki/Trail_Mix) | 10053 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Warp Compass](https://peak.wiki.gg/wiki/Warp_Compass) | 9538 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Warp Compass](https://peak.wiki.gg/wiki/Warp_Compass) | 9538 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Warp Fungus](https://peak.wiki.gg/wiki/Warp_Fungus) | 12081 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Yellow Berrynana](https://peak.wiki.gg/wiki/Yellow_Berrynana) | 11173 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Yellow Clusterberry](https://peak.wiki.gg/wiki/Yellow_Clusterberry) | 10048 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Yellow Crispberry](https://peak.wiki.gg/wiki/Yellow_Crispberry) | 10034 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+| [Yellow Winterberry](https://peak.wiki.gg/wiki/Yellow_Winterberry) | 11171 | Reviewed; the item page did not require an additional state-specific tooltip sentence. |
+
+## Secondary source sections reviewed on 2026-10-11
+
+These items lack a dedicated item page, so their sourced facts are recorded here without pretending the section title is a direct item page. The refresh script checks each cited revision against the live MediaWiki API.
+
+| Internal key | Section source(s) | Reviewed fact |
+|---|---|---|
+| `AUTOPARACHUTE` | [Unused content § Auto-Parachute](https://peak.wiki.gg/wiki/Unused_content#Auto-Parachute) r11407 | Unused content page documents a one-use parachute that deploys from inventory during a fall to prevent fall damage. |
+| `Berrynana Peel` | [Blue Berrynana Peel § Blue Berrynana Peel](https://peak.wiki.gg/wiki/Blue_Berrynana_Peel#Blue_Berrynana_Peel) r11170<br>[Brown Berrynana Peel § Brown Berrynana Peel](https://peak.wiki.gg/wiki/Brown_Berrynana_Peel#Brown_Berrynana_Peel) r11313<br>[Pink Berrynana Peel § Pink Berrynana Peel](https://peak.wiki.gg/wiki/Pink_Berrynana_Peel#Pink_Berrynana_Peel) r11168<br>[Yellow Berrynana Peel § Yellow Berrynana Peel](https://peak.wiki.gg/wiki/Yellow_Berrynana_Peel#Yellow_Berrynana_Peel) r11240 | The four color-variant pages share the slipping effect; their source biome and acquisition vary by Berrynana color. |
+| `Climbing Chalk` | [Unused content § Climbing Chalk](https://peak.wiki.gg/wiki/Unused_content#Climbing_Chalk) r11407 | Unused content page says it has no model or texture and records a temporary reduction in climbing stamina use. |
+| `Megaphone` | [Unused content § Megaphone](https://peak.wiki.gg/wiki/Unused_content#Megaphone) r11407 | Unused content page describes voice-range amplification as a possibility, not a confirmed effect. |
+| `SCOUTMASTERSOUL` | [Nadir § Scoutmaster's Soul](https://peak.wiki.gg/wiki/Nadir#Scoutmaster%27s_Soul) r11745<br>[Scoutmaster Myres § Gameplay](https://peak.wiki.gg/wiki/Scoutmaster_Myres#Gameplay) and [Lore](https://peak.wiki.gg/wiki/Scoutmaster_Myres#Lore) r11913 | Nadir and Scoutmaster Myres pages describe communing with the soul, following it to the Peak, and restoring Myres in the ending. |
+| `Skull` | [Unused content § Skull](https://peak.wiki.gg/wiki/Unused_content#Skull) r11407 | Unused content page distinguishes this plain, non-functional skull from Cursed Skull. |
+| `Stick` | [Unused content § Stick](https://peak.wiki.gg/wiki/Unused_content#Stick) r11407 | Unused content page says it may have been intended as campfire fuel; a working use is not documented. |
+| `Stone` | [Unused content § Stone](https://peak.wiki.gg/wiki/Unused_content#Stone) r11407 | Unused content page notes a campfire heating behavior intended to prevent Cold, but says it does not appear functional. |
+| `Torn Page` | [Scroll § Torn Pages](https://peak.wiki.gg/wiki/Scroll#Torn_Pages) r11890 | Scroll page documents that opening the scroll reveals a page selected from the player's unread pages and progress. |
+| `Warpsketball` | [Unused content § Warpsketball](https://peak.wiki.gg/wiki/Unused_content#Warpsketball) r11407 | Unused content page describes a retextured basketball that teleports players to where it lands and is consumed. |
+| `Weird Shroom` | [Unused content § Weird Shroom](https://peak.wiki.gg/wiki/Unused_content#Weird_Shroom) r11407 | Unused content page describes a non-poisonous mushroom that can be eaten twice; its intended glowing effect does not work. |
 
 ## Review status and limits
 
-All 63 profiles have been checked against the cited Wiki pages and the general cooking rules. In-game validation is still pending. The Green Crispberry rule was also compared with the locally installed PEAK 2.6.b cooking implementation; the remaining special-item rules have not yet been confirmed in a live game session.
+All 67 profiles have been checked against the cited Wiki pages and the general cooking rules. Another 51 direct pages were reviewed and did not need state-specific prose. In-game validation is still pending. The Green Crispberry rule was also compared with the locally installed PEAK 2.6.b cooking implementation; the newly added profiles have not yet been confirmed in a live game session.
 
 The Wiki states that Cooked and Well-Done food effects are identical and do not stack; cooked poisonous berries become safe, but mushroom poison cannot be cooked out; Shroomberries lose 5 Spores; Burnt food restores less Hunger; and each further Incinerated stage adds Poison. Sports Drink and several other items have exceptions, so the tooltip uses item-specific text only where a page documents the exception.
 
-Gold Prickleberry is deliberately left out of this batch: its page's infobox says cooking removes Poison, while its prose says cooking removes Thorns. That conflict needs an in-game check before adding a state-specific claim. Other indexed pages remain candidates until their facts are reviewed; the page index is not an accuracy claim.
+Gold Prickleberry is deliberately left out of this batch: its page's infobox says cooking removes Poison, while its prose says cooking removes Thorns. That conflict needs an in-game check before adding a state-specific claim. All 11 secondary-source items were reviewed against their cited sections and current revisions. `Green Clusterberry` has no direct or reliable secondary source in the current Wiki; its effects are not inferred from other Clusterberries. Gold Prickleberry remains a separate unresolved source conflict; an indexed title alone is not an accuracy claim.
 
 PEAK Wiki pages are community-maintained. The site identifies Wiki text as CC BY-SA 4.0 unless an individual page says otherwise. This repository keeps source links and revision IDs with each derived profile; confirm the notice on any page added later. The repository's MIT code license does not replace the terms applying to Wiki-derived data.
 

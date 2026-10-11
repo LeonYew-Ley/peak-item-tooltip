@@ -4,26 +4,26 @@
   "retrievalDateUtc": "2026-10-11",
   "checkedGameVersion": "2.6.b",
   "reuseNotice": "Wiki page text is CC BY-SA 4.0 unless the individual page states otherwise; verify each source page.",
-  "reviewPolicy": "A page lookup is only a candidate. Read and compare its item facts and cooking notes before using it in a tooltip.",
+  "reviewPolicy": "A page lookup is only a candidate. Read and compare its item facts and cooking notes before marking it reviewed. A reviewed page can conclude that no item-specific state rule is needed; unresolved source conflicts remain separate.",
   "aliases": {
-    "FrogLegs": "Frog Legs",
-    "rope cannon": "Rope Cannon",
-    "SNOWBALL": "Snowball",
-    "EARLYWORM": "The Early Worm",
-    "AMULET_INFINITESTAM": "Scout's Ambition",
-    "Frisbee": "Flying Disc",
-    "Coconut Half": "Half-Coconut",
-    "rope spool": "Rope Spool",
-    "RitualDagger": "Ritual Dagger",
-    "ScoutsHonor": "Scout's Honor",
-    "THEBOOKOFBONES": "The Book of Bones",
-    "AMULET_HEALING": "Scout's Tenacity",
-    "VOIDLAUNCHER": "Anti-Zooka",
     "Bird": "Cooked Bird",
-    "Fannypack": "Fanny Pack",
+    "AMULET_HEALING": "Scout's Tenacity",
+    "AMULET_INFINITESTAM": "Scout's Ambition",
     "AMULET_DOUBLEJUMP": "Scout's Initiative",
+    "rope spool": "Rope Spool",
+    "FrogLegs": "Frog Legs",
+    "THEBOOKOFBONES": "The Book of Bones",
+    "Fannypack": "Fanny Pack",
+    "Frisbee": "Flying Disc",
+    "ScoutsHonor": "Scout's Honor",
+    "RitualDagger": "Ritual Dagger",
     "anti-rope cannon": "Anti-Rope Cannon",
+    "EARLYWORM": "The Early Worm",
+    "rope cannon": "Rope Cannon",
     "anti-rope spool": "Anti-Rope Spool",
+    "SNOWBALL": "Snowball",
+    "Coconut Half": "Half-Coconut",
+    "VOIDLAUNCHER": "Anti-Zooka",
     "AMULET_CLONE": "Scout's Generosity"
   },
   "items": [
@@ -33,8 +33,9 @@
       "wikiTitle": "Airline Food",
       "revision": 10056,
       "timestamp": "2026-08-13T17:45:46Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Aloe Vera",
@@ -42,8 +43,9 @@
       "wikiTitle": "Aloe Vera",
       "revision": 7230,
       "timestamp": "2025-12-01T18:40:16Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "AMULET_CLONE",
@@ -51,8 +53,9 @@
       "wikiTitle": "Scout's Generosity",
       "revision": 11880,
       "timestamp": "2026-09-14T19:44:03Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; page-says-cannot-cook; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "AMULET_DOUBLEJUMP",
@@ -60,8 +63,9 @@
       "wikiTitle": "Scout's Initiative",
       "revision": 11881,
       "timestamp": "2026-09-14T19:44:35Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; page-says-cannot-cook; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "AMULET_HEALING",
@@ -69,8 +73,9 @@
       "wikiTitle": "Scout's Tenacity",
       "revision": 11882,
       "timestamp": "2026-09-14T19:44:51Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; page-says-cannot-cook; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "AMULET_INFINITESTAM",
@@ -78,8 +83,9 @@
       "wikiTitle": "Scout's Ambition",
       "revision": 11879,
       "timestamp": "2026-09-14T19:43:43Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; page-says-cannot-cook; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Ancient Idol",
@@ -87,8 +93,9 @@
       "wikiTitle": "Ancient Idol",
       "revision": 11788,
       "timestamp": "2026-09-09T18:30:30Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; page-says-cannot-cook; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "anti-rope cannon",
@@ -97,7 +104,8 @@
       "revision": 7368,
       "timestamp": "2025-12-02T05:41:51Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "anti-rope spool",
@@ -106,7 +114,8 @@
       "revision": 12044,
       "timestamp": "2026-09-25T05:05:57Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Antidote",
@@ -115,7 +124,8 @@
       "revision": 12007,
       "timestamp": "2026-09-24T00:03:28Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "AUTOPARACHUTE",
@@ -123,12 +133,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page documents a one-use parachute that deploys from inventory during a fall to prevent fall damage.",
       "secondarySources": [
         {
           "title": "Unused content",
           "revision": 11407,
-          "section": "Auto-Parachute"
+          "section": "Auto-Parachute",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
         }
       ]
     },
@@ -139,7 +154,8 @@
       "revision": 11786,
       "timestamp": "2026-09-09T17:35:42Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Balloon",
@@ -148,7 +164,8 @@
       "revision": 10913,
       "timestamp": "2026-08-19T17:14:01Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Balloon Bunch",
@@ -157,7 +174,8 @@
       "revision": 9047,
       "timestamp": "2026-08-11T17:49:35Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Bandages",
@@ -166,7 +184,8 @@
       "revision": 11408,
       "timestamp": "2026-08-29T20:32:22Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Beehive",
@@ -175,7 +194,8 @@
       "revision": 11925,
       "timestamp": "2026-09-21T02:41:00Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Berrynana Peel",
@@ -183,27 +203,41 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "The four color-variant pages share the slipping effect; their source biome and acquisition vary by Berrynana color.",
       "secondarySources": [
         {
           "title": "Blue Berrynana Peel",
           "revision": 11170,
-          "section": "Blue Berrynana Peel"
+          "section": "Blue Berrynana Peel",
+          "currentTitle": "Blue Berrynana Peel",
+          "currentRevision": 11170,
+          "currentTimestamp": "2026-08-24T01:50:42Z"
         },
         {
           "title": "Brown Berrynana Peel",
           "revision": 11313,
-          "section": "Brown Berrynana Peel"
+          "section": "Brown Berrynana Peel",
+          "currentTitle": "Brown Berrynana Peel",
+          "currentRevision": 11313,
+          "currentTimestamp": "2026-08-28T05:22:25Z"
         },
         {
           "title": "Pink Berrynana Peel",
           "revision": 11168,
-          "section": "Pink Berrynana Peel"
+          "section": "Pink Berrynana Peel",
+          "currentTitle": "Pink Berrynana Peel",
+          "currentRevision": 11168,
+          "currentTimestamp": "2026-08-24T01:50:37Z"
         },
         {
           "title": "Yellow Berrynana Peel",
           "revision": 11240,
-          "section": "Yellow Berrynana Peel"
+          "section": "Yellow Berrynana Peel",
+          "currentTitle": "Yellow Berrynana Peel",
+          "currentRevision": 11240,
+          "currentTimestamp": "2026-08-26T11:05:23Z"
         }
       ]
     },
@@ -214,7 +248,8 @@
       "revision": 11612,
       "timestamp": "2026-09-03T21:29:38Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Big Lollipop",
@@ -223,7 +258,8 @@
       "revision": 10558,
       "timestamp": "2026-08-15T20:59:46Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Bing Bong",
@@ -232,7 +268,8 @@
       "revision": 12099,
       "timestamp": "2026-10-01T17:26:33Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Binoculars",
@@ -240,8 +277,9 @@
       "wikiTitle": "Binoculars",
       "revision": 12142,
       "timestamp": "2026-10-10T17:58:37Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Bird",
@@ -250,7 +288,8 @@
       "revision": 11126,
       "timestamp": "2026-08-23T17:09:47Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Black Clusterberry",
@@ -258,8 +297,9 @@
       "wikiTitle": "Black Clusterberry",
       "revision": 10046,
       "timestamp": "2026-08-13T17:44:49Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Blowgun",
@@ -268,7 +308,8 @@
       "revision": 11563,
       "timestamp": "2026-09-02T23:52:28Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Blue Berrynana",
@@ -276,8 +317,9 @@
       "wikiTitle": "Blue Berrynana",
       "revision": 10040,
       "timestamp": "2026-08-13T17:44:28Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Blue Shroomberry",
@@ -286,7 +328,8 @@
       "revision": 10680,
       "timestamp": "2026-08-17T12:05:10Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Bounce Fungus",
@@ -294,8 +337,9 @@
       "wikiTitle": "Bounce Fungus",
       "revision": 7626,
       "timestamp": "2025-12-14T23:05:56Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Brown Berrynana",
@@ -303,8 +347,9 @@
       "wikiTitle": "Brown Berrynana",
       "revision": 11312,
       "timestamp": "2026-08-28T05:21:41Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Bugle",
@@ -313,7 +358,8 @@
       "revision": 11284,
       "timestamp": "2026-08-27T14:26:57Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Bugle of Friendship",
@@ -321,8 +367,9 @@
       "wikiTitle": "Bugle of Friendship",
       "revision": 11947,
       "timestamp": "2026-09-23T12:22:43Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Bugle Shroom",
@@ -331,7 +378,8 @@
       "revision": 11906,
       "timestamp": "2026-09-18T19:10:06Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Button Shroom",
@@ -340,7 +388,8 @@
       "revision": 11909,
       "timestamp": "2026-09-18T19:13:34Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Cactus",
@@ -348,8 +397,9 @@
       "wikiTitle": "Cactus",
       "revision": 7704,
       "timestamp": "2025-12-20T05:37:09Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Candlestick",
@@ -357,8 +407,9 @@
       "wikiTitle": "Candlestick",
       "revision": 10763,
       "timestamp": "2026-08-17T21:15:46Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Chain Launcher",
@@ -367,7 +418,8 @@
       "revision": 7654,
       "timestamp": "2025-12-17T00:23:55Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Checkpoint Flag",
@@ -376,7 +428,8 @@
       "revision": 11239,
       "timestamp": "2026-08-26T10:57:45Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Chubby Shroom",
@@ -384,8 +437,9 @@
       "wikiTitle": "Chubby Shroom",
       "revision": 11907,
       "timestamp": "2026-09-18T19:11:09Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Climbing Chalk",
@@ -393,12 +447,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page says it has no model or texture and records a temporary reduction in climbing stamina use.",
       "secondarySources": [
         {
           "title": "Unused content",
           "revision": 11407,
-          "section": "Climbing Chalk"
+          "section": "Climbing Chalk",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
         }
       ]
     },
@@ -408,8 +467,9 @@
       "wikiTitle": "Cloud Fungus",
       "revision": 11182,
       "timestamp": "2026-08-24T16:43:01Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Cluster Shroom",
@@ -418,7 +478,8 @@
       "revision": 11908,
       "timestamp": "2026-09-18T19:12:25Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Coconut",
@@ -427,7 +488,8 @@
       "revision": 12013,
       "timestamp": "2026-09-24T00:06:17Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Coconut Half",
@@ -436,7 +498,8 @@
       "revision": 9542,
       "timestamp": "2026-08-12T14:58:19Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Compass",
@@ -444,8 +507,9 @@
       "wikiTitle": "Compass",
       "revision": 5463,
       "timestamp": "2025-11-05T16:41:17Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Conch",
@@ -453,8 +517,9 @@
       "wikiTitle": "Conch",
       "revision": 11368,
       "timestamp": "2026-08-29T01:22:34Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; visual-only-cooking; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Cure-All",
@@ -463,7 +528,8 @@
       "revision": 12012,
       "timestamp": "2026-09-24T00:06:08Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Cursed Skull",
@@ -472,7 +538,8 @@
       "revision": 11558,
       "timestamp": "2026-09-02T23:27:43Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Dynamite",
@@ -481,7 +548,8 @@
       "revision": 11396,
       "timestamp": "2026-08-29T15:27:39Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "EARLYWORM",
@@ -490,7 +558,8 @@
       "revision": 11896,
       "timestamp": "2026-09-15T22:52:13Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Egg",
@@ -498,8 +567,9 @@
       "wikiTitle": "Egg",
       "revision": 11625,
       "timestamp": "2026-09-04T13:52:38Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Energy Drink",
@@ -508,7 +578,8 @@
       "revision": 11234,
       "timestamp": "2026-08-25T22:37:42Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Faerie Lantern",
@@ -517,7 +588,8 @@
       "revision": 11089,
       "timestamp": "2026-08-22T18:53:58Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Fannypack",
@@ -525,8 +597,9 @@
       "wikiTitle": "Fanny Pack",
       "revision": 12084,
       "timestamp": "2026-09-27T16:44:51Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "First Aid Kit",
@@ -535,7 +608,8 @@
       "revision": 11223,
       "timestamp": "2026-08-25T16:05:50Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Flare",
@@ -544,7 +618,8 @@
       "revision": 9540,
       "timestamp": "2026-08-12T14:56:50Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Fortified Milk",
@@ -553,7 +628,8 @@
       "revision": 11633,
       "timestamp": "2026-09-04T16:39:11Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Frisbee",
@@ -561,8 +637,9 @@
       "wikiTitle": "Flying Disc",
       "revision": 12008,
       "timestamp": "2026-09-24T00:03:42Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Frog",
@@ -570,8 +647,9 @@
       "wikiTitle": "Frog",
       "revision": 12141,
       "timestamp": "2026-10-10T17:01:49Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "FrogLegs",
@@ -579,8 +657,9 @@
       "wikiTitle": "Frog Legs",
       "revision": 11161,
       "timestamp": "2026-08-24T01:31:37Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Glider",
@@ -588,8 +667,9 @@
       "wikiTitle": "Glider",
       "revision": 11997,
       "timestamp": "2026-09-23T19:58:13Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; visual-only-cooking; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Gold Prickleberry",
@@ -597,8 +677,9 @@
       "wikiTitle": "Gold Prickleberry",
       "revision": 11109,
       "timestamp": "2026-08-23T10:52:47Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "source-conflict; in-game-resolution-required",
+      "reviewStatus": null,
+      "reviewNote": "The infobox says cooking removes Poison, while the article prose and patch history say cooking removes Thorns. Do not publish a state claim until reconciled with PEAK 2.6.b behavior."
     },
     {
       "gameKey": "Granola Bar",
@@ -606,8 +687,9 @@
       "wikiTitle": "Granola Bar",
       "revision": 10052,
       "timestamp": "2026-08-13T17:45:32Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Green Clusterberry",
@@ -615,7 +697,8 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "missing"
+      "status": "missing",
+      "reviewNote": "No direct item page or reliable secondary/variant source was found in the current Wiki API or item listings. Do not infer its effects from other Clusterberries."
     },
     {
       "gameKey": "Green Crispberry",
@@ -624,7 +707,8 @@
       "revision": 10035,
       "timestamp": "2026-08-13T17:44:20Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-and-game-code-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-and-game-code-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Green Kingberry",
@@ -633,7 +717,8 @@
       "revision": 10039,
       "timestamp": "2026-08-13T17:44:26Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Green Shroomberry",
@@ -642,7 +727,8 @@
       "revision": 10678,
       "timestamp": "2026-08-17T12:04:32Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Guidebook",
@@ -651,7 +737,8 @@
       "revision": 11331,
       "timestamp": "2026-08-28T20:13:31Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Heat Pack",
@@ -660,7 +747,8 @@
       "revision": 10957,
       "timestamp": "2026-08-20T21:17:00Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Honeycomb",
@@ -668,8 +756,9 @@
       "wikiTitle": "Honeycomb",
       "revision": 9543,
       "timestamp": "2026-08-12T15:01:31Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Hot Dog",
@@ -677,8 +766,9 @@
       "wikiTitle": "Hot Dog",
       "revision": 11165,
       "timestamp": "2026-08-24T01:44:59Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Jetpack",
@@ -686,8 +776,9 @@
       "wikiTitle": "Jetpack",
       "revision": 11898,
       "timestamp": "2026-09-16T10:31:17Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Lantern",
@@ -696,7 +787,8 @@
       "revision": 11374,
       "timestamp": "2026-08-29T02:09:27Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Magic Bean",
@@ -704,8 +796,9 @@
       "wikiTitle": "Magic Bean",
       "revision": 9536,
       "timestamp": "2026-08-12T14:54:55Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Mandrake",
@@ -714,7 +807,8 @@
       "revision": 11458,
       "timestamp": "2026-08-31T12:59:00Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Marshmallow",
@@ -722,8 +816,9 @@
       "wikiTitle": "Marshmallow",
       "revision": 9532,
       "timestamp": "2026-08-12T14:44:02Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Medicinal Root",
@@ -732,7 +827,8 @@
       "revision": 11876,
       "timestamp": "2026-09-14T11:11:24Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Megaphone",
@@ -740,12 +836,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page describes voice-range amplification as a possibility, not a confirmed effect.",
       "secondarySources": [
         {
           "title": "Unused content",
           "revision": 11407,
-          "section": "Megaphone"
+          "section": "Megaphone",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
         }
       ]
     },
@@ -755,8 +856,9 @@
       "wikiTitle": "Napberry",
       "revision": 12085,
       "timestamp": "2026-09-27T16:52:29Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Orange Winterberry",
@@ -764,8 +866,9 @@
       "wikiTitle": "Orange Winterberry",
       "revision": 10045,
       "timestamp": "2026-08-13T17:44:47Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Pandora's Lunchbox",
@@ -774,7 +877,8 @@
       "revision": 11410,
       "timestamp": "2026-08-29T20:41:49Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Parasol",
@@ -782,8 +886,9 @@
       "wikiTitle": "Parasol",
       "revision": 11946,
       "timestamp": "2026-09-23T12:12:34Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Pink Berrynana",
@@ -792,7 +897,8 @@
       "revision": 10041,
       "timestamp": "2026-08-13T17:44:30Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Pirate's Compass",
@@ -800,8 +906,9 @@
       "wikiTitle": "Pirate's Compass",
       "revision": 7278,
       "timestamp": "2025-12-01T18:59:52Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Piton",
@@ -810,7 +917,8 @@
       "revision": 10767,
       "timestamp": "2026-08-17T23:08:12Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Portable Stove",
@@ -819,7 +927,8 @@
       "revision": 10988,
       "timestamp": "2026-08-21T18:42:54Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Purple Kingberry",
@@ -827,8 +936,9 @@
       "wikiTitle": "Purple Kingberry",
       "revision": 10037,
       "timestamp": "2026-08-13T17:44:24Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Purple Shroomberry",
@@ -837,7 +947,8 @@
       "revision": 11164,
       "timestamp": "2026-08-24T01:41:10Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Red Clusterberry",
@@ -845,8 +956,9 @@
       "wikiTitle": "Red Clusterberry",
       "revision": 10047,
       "timestamp": "2026-08-13T17:44:51Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Red Crispberry",
@@ -854,8 +966,9 @@
       "wikiTitle": "Red Crispberry",
       "revision": 10033,
       "timestamp": "2026-08-13T17:44:17Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Red Prickleberry",
@@ -864,7 +977,8 @@
       "revision": 10057,
       "timestamp": "2026-08-13T17:45:50Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Red Shroomberry",
@@ -873,7 +987,8 @@
       "revision": 10677,
       "timestamp": "2026-08-17T12:03:48Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Remedy Fungus",
@@ -881,8 +996,9 @@
       "wikiTitle": "Remedy Fungus",
       "revision": 11113,
       "timestamp": "2026-08-23T14:03:54Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Rescue Claw",
@@ -891,7 +1007,8 @@
       "revision": 11988,
       "timestamp": "2026-09-23T19:35:54Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "RitualDagger",
@@ -899,8 +1016,9 @@
       "wikiTitle": "Ritual Dagger",
       "revision": 11865,
       "timestamp": "2026-09-12T02:59:21Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; cooking-does-not-change-function; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Rocketpack",
@@ -908,8 +1026,9 @@
       "wikiTitle": "Rocketpack",
       "revision": 11277,
       "timestamp": "2026-08-27T12:37:51Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "rope cannon",
@@ -918,7 +1037,8 @@
       "revision": 8625,
       "timestamp": "2026-03-30T22:44:45Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "rope spool",
@@ -927,7 +1047,8 @@
       "revision": 7363,
       "timestamp": "2025-12-02T05:40:56Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Scorchberry",
@@ -935,8 +1056,9 @@
       "wikiTitle": "Scorchberry",
       "revision": 10036,
       "timestamp": "2026-08-13T17:44:22Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Scorpion",
@@ -945,7 +1067,8 @@
       "revision": 12098,
       "timestamp": "2026-10-01T01:49:13Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Scout Cannon",
@@ -954,7 +1077,8 @@
       "revision": 11987,
       "timestamp": "2026-09-23T19:33:56Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Scout Cookies",
@@ -962,8 +1086,9 @@
       "wikiTitle": "Scout Cookies",
       "revision": 10987,
       "timestamp": "2026-08-21T18:41:53Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Scout Effigy",
@@ -972,7 +1097,8 @@
       "revision": 11968,
       "timestamp": "2026-09-23T17:41:26Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Scoutmaster's Bugle",
@@ -981,7 +1107,8 @@
       "revision": 11283,
       "timestamp": "2026-08-27T14:12:58Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "SCOUTMASTERSOUL",
@@ -989,12 +1116,33 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Nadir and Scoutmaster Myres pages describe communing with the soul, following it to the Peak, and restoring Myres in the ending.",
       "secondarySources": [
         {
-          "title": "The Lost Souls",
-          "revision": 11150,
-          "section": "Scoutmaster's Soul"
+          "title": "Nadir",
+          "revision": 11745,
+          "section": "Scoutmaster's Soul",
+          "currentTitle": "Nadir",
+          "currentRevision": 11745,
+          "currentTimestamp": "2026-09-08T17:45:01Z"
+        },
+        {
+          "title": "Scoutmaster Myres",
+          "revision": 11913,
+          "section": "Gameplay",
+          "currentTitle": "Scoutmaster Myres",
+          "currentRevision": 11913,
+          "currentTimestamp": "2026-09-19T15:26:08Z"
+        },
+        {
+          "title": "Scoutmaster Myres",
+          "revision": 11913,
+          "section": "Lore",
+          "currentTitle": "Scoutmaster Myres",
+          "currentRevision": 11913,
+          "currentTimestamp": "2026-09-19T15:26:08Z"
         }
       ]
     },
@@ -1005,7 +1153,8 @@
       "revision": 11889,
       "timestamp": "2026-09-15T00:59:58Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Scroll",
@@ -1014,7 +1163,8 @@
       "revision": 11890,
       "timestamp": "2026-09-15T04:25:23Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Shelf Fungus",
@@ -1022,8 +1172,9 @@
       "wikiTitle": "Shelf Fungus",
       "revision": 8870,
       "timestamp": "2026-07-08T08:42:32Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Skull",
@@ -1031,12 +1182,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page distinguishes this plain, non-functional skull from Cursed Skull.",
       "secondarySources": [
         {
           "title": "Unused content",
           "revision": 11407,
-          "section": "Skull"
+          "section": "Skull",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
         }
       ]
     },
@@ -1046,8 +1202,9 @@
       "wikiTitle": "Small Egg",
       "revision": 12075,
       "timestamp": "2026-09-27T06:06:37Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "SNOWBALL",
@@ -1056,7 +1213,8 @@
       "revision": 12024,
       "timestamp": "2026-09-24T00:11:16Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Sports Drink",
@@ -1065,7 +1223,8 @@
       "revision": 11351,
       "timestamp": "2026-08-28T21:38:01Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Stick",
@@ -1073,12 +1232,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page says it may have been intended as campfire fuel; a working use is not documented.",
       "secondarySources": [
         {
           "title": "Unused content",
           "revision": 11407,
-          "section": "Stick"
+          "section": "Stick",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
         }
       ]
     },
@@ -1088,12 +1252,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page notes a campfire heating behavior intended to prevent Cold, but says it does not appear functional.",
       "secondarySources": [
         {
           "title": "Unused content",
           "revision": 11407,
-          "section": "Stone"
+          "section": "Stone",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
         }
       ]
     },
@@ -1104,7 +1273,8 @@
       "revision": 11883,
       "timestamp": "2026-09-14T19:47:04Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game-validation-pending"
+      "reviewStatus": "wiki-reviewed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Sunscreen",
@@ -1113,7 +1283,8 @@
       "revision": 10959,
       "timestamp": "2026-08-20T21:17:48Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "THEBOOKOFBONES",
@@ -1122,7 +1293,8 @@
       "revision": 12107,
       "timestamp": "2026-10-04T14:09:37Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Tick",
@@ -1130,8 +1302,9 @@
       "wikiTitle": "Tick",
       "revision": 9548,
       "timestamp": "2026-08-12T15:18:40Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Torch",
@@ -1139,8 +1312,9 @@
       "wikiTitle": "Torch",
       "revision": 5474,
       "timestamp": "2025-11-05T16:58:49Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Torn Page",
@@ -1148,12 +1322,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Scroll page documents that opening the scroll reveals a page selected from the player's unread pages and progress.",
       "secondarySources": [
         {
           "title": "Scroll",
           "revision": 11890,
-          "section": "Torn Pages"
+          "section": "Torn Pages",
+          "currentTitle": "Scroll",
+          "currentRevision": 11890,
+          "currentTimestamp": "2026-09-15T04:25:23Z"
         }
       ]
     },
@@ -1163,8 +1342,9 @@
       "wikiTitle": "Trail Mix",
       "revision": 10053,
       "timestamp": "2026-08-13T17:45:35Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "VOIDLAUNCHER",
@@ -1173,7 +1353,8 @@
       "revision": 11225,
       "timestamp": "2026-08-25T16:15:53Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "WARP COMPASS",
@@ -1181,8 +1362,9 @@
       "wikiTitle": "Warp Compass",
       "revision": 9538,
       "timestamp": "2026-08-12T14:56:24Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Warp Compass",
@@ -1190,8 +1372,9 @@
       "wikiTitle": "Warp Compass",
       "revision": 9538,
       "timestamp": "2026-08-12T14:56:24Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Warp Fungus",
@@ -1199,8 +1382,9 @@
       "wikiTitle": "Warp Fungus",
       "revision": 12081,
       "timestamp": "2026-09-27T16:15:10Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Warpsketball",
@@ -1208,12 +1392,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page describes a retextured basketball that teleports players to where it lands and is consumed.",
       "secondarySources": [
         {
           "title": "Unused content",
           "revision": 11407,
-          "section": "Warpsketball"
+          "section": "Warpsketball",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
         }
       ]
     },
@@ -1223,12 +1412,17 @@
       "wikiTitle": null,
       "revision": null,
       "timestamp": null,
-      "status": "no-direct-item-page; secondary-source-needs-review",
+      "status": "no-direct-item-page; secondary-source-reviewed",
+      "reviewStatus": "secondary-section-reviewed; in-game-validation-pending",
+      "reviewNote": "Unused content page describes a non-poisonous mushroom that can be eaten twice; its intended glowing effect does not work.",
       "secondarySources": [
         {
           "title": "Unused content",
           "revision": 11407,
-          "section": "Weird Shroom"
+          "section": "Weird Shroom",
+          "currentTitle": "Unused content",
+          "currentRevision": 11407,
+          "currentTimestamp": "2026-08-29T19:53:41Z"
         }
       ]
     },
@@ -1238,8 +1432,9 @@
       "wikiTitle": "Yellow Berrynana",
       "revision": 11173,
       "timestamp": "2026-08-24T10:41:10Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Yellow Clusterberry",
@@ -1247,8 +1442,9 @@
       "wikiTitle": "Yellow Clusterberry",
       "revision": 10048,
       "timestamp": "2026-08-13T17:44:53Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Yellow Crispberry",
@@ -1256,8 +1452,9 @@
       "wikiTitle": "Yellow Crispberry",
       "revision": 10034,
       "timestamp": "2026-08-13T17:44:19Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Yellow Kingberry",
@@ -1266,7 +1463,8 @@
       "revision": 10038,
       "timestamp": "2026-08-13T17:44:25Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Yellow Shroomberry",
@@ -1275,7 +1473,8 @@
       "revision": 10679,
       "timestamp": "2026-08-17T12:04:50Z",
       "status": "facts-reviewed; in-game-validation-pending",
-      "reviewStatus": "wiki-reviewed; in-game validation pending"
+      "reviewStatus": "wiki-reviewed; in-game validation pending",
+      "reviewNote": null
     },
     {
       "gameKey": "Yellow Winterberry",
@@ -1283,8 +1482,9 @@
       "wikiTitle": "Yellow Winterberry",
       "revision": 11171,
       "timestamp": "2026-08-24T05:00:58Z",
-      "status": "page-found-needs-content-review",
-      "reviewStatus": null
+      "status": "facts-reviewed; in-game-validation-pending",
+      "reviewStatus": "wiki-reviewed; no-item-specific-state-prose-needed; in-game-validation-pending",
+      "reviewNote": null
     }
   ]
 }
