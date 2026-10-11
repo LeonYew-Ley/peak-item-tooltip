@@ -9,7 +9,7 @@ The local assembly inventory contained 56 `Action_*` classes. Their implementati
 | Source family | Current handling | Coverage status |
 |---|---|---|
 | `Action_RestoreHunger` | Reads the live hunger restoration value and renders a signed row. | Numeric row supported |
-| `Action_InflictPoison` | Reads poison rate and duration and renders the aggregate amount. | Numeric row supported; delay is not shown in the row yet |
+| `Action_InflictPoison` | Reads poison rate and duration, renders the aggregate amount, and labels delay/duration. | Numeric row and timing supported |
 | `Action_ModifyStatus` | Reads signed status changes. Positive recognized statuses participate in safety checks. | Numeric row supported; `ifSkeleton` makes a categorical safety claim incomplete |
 | `Action_GiveExtraStamina` | Reads live extra stamina. | Numeric row supported |
 | `Action_AddOrRemoveThorns` | Reads the direct thorn count, renders add/remove values, and detects positive Thorns for safety checks. | Numeric row supported |
@@ -28,7 +28,27 @@ The local assembly inventory contained 56 `Action_*` classes. Their implementati
 
 When a state description has a `mustNotHaveActive` check, an incomplete action inventory now suppresses that state claim and shows an uncertainty note. A recognized active conflicting status suppresses the claim and reports the conflict. Disabled actions and inactive child branches do not count as active sources.
 
-This is a **safety-claim guard**, not full effect coverage: unsupported effects may still be absent from the numeric rows. In particular, direct afflictions, random mushroom effects, duration/delay details, and non-status buffs still need source-specific rendering and tests.
+This is a **safety-claim guard**, not full effect coverage: unsupported effects may still be absent from the numeric rows. In particular, non-status buffs, conditional afflictions, area effects, and replacement chains still need source-specific rendering and tests.
+
+## Affliction inventory
+
+The PEAK 2.6.b assembly contains 26 `Peak.Afflictions` classes. The five payload families listed above are parsed into numeric rows. The remaining 21 are inventoried below; they are deliberately not treated as harmless by the current reader, so an active instance keeps a checked safety claim unverified.
+
+| Affliction payloads | Decompiled behavior | Current reader decision |
+|---|---|---|
+| `Affliction_AdjustStatus`, `Affliction_PoisonOverTime`, `Affliction_AdjustColdOverTime`, `Affliction_AdjustDrowsyOverTime`, `Affliction_AddBonusStamina` | Signed status adjustment; timed Poison; timed Cold/Drowsy; or temporary bonus stamina. | Parsed when fields are readable; numeric amount and applicable timing are shown. |
+| `Affliction_AdjustStatusOverTime` | Carries a status rate and duration but has no `UpdateEffect` override in this game build; the base update is empty. | Not rendered or whitelisted; remains conservative until its source is intentionally supported. |
+| `Affliction_Chaos` | Clears statuses, then randomly distributes status and bonus-stamina amounts. | Unsupported: random outcome depends on the runtime roll. |
+| `Affliction_ZombieBite` | After a delay, adds Spores only while the target already has a minimum Spores status; otherwise it ends. | Unsupported: conditional delayed status behavior. |
+| `Affliction_PreventPoisonHealing` | Temporarily prevents Poison healing. | Unsupported: conditional gameplay rule, not a numeric status delta. |
+| `Affliction_Exhaustion`, `Affliction_FasterBoi` | Drains stamina over time; or changes movement/climbing and Drowsy, including an end-time Drowsy effect. | Unsupported: resource drain, movement modifiers, and delayed side effects. |
+| `Affliction_InfiniteStamina` | Temporarily grants infinite stamina and may apply a serialized Drowsy affliction when it ends. | Unsupported: delayed secondary payload is not yet described. |
+| `Affliction_RadiateInfiniteStam`, `Affliction_MassSuperJump` | Grant stamina or movement effects to nearby characters based on radius and target state. | Unsupported: area/teammate effects and target conditions. |
+| `Affliction_HealAll`, `Affliction_ClearAllStatus` | Reduce selected adverse statuses, bounded by a healing amount or exclusions. | Source behavior is reduction-only, but no numeric row is emitted and the safety reader remains conservative. |
+| `Affliction_BingBongShield`, `Affliction_Invincibility`, `Affliction_Blind`, `Affliction_Numb` | Change invincibility or sensory/control behavior for a duration. | Unsupported: non-status gameplay effects are not represented in numeric rows. |
+| `Affliction_LowGravity`, `Affliction_ClimbingChalk`, `Affliction_DoubleJumpAmulet`, `Affliction_Glowing`, `Affliction_NoHunger`, `Affliction_Sunscreen` | Change gravity, climbing cost, jump count, visibility, hunger, or sun protection. | Unsupported: non-status gameplay effects are not represented in numeric rows. |
+
+This inventory records decompiled behavior, not which items instantiate each payload. The installed resource scan found no serialized food `ItemCooking`/`CookingBehavior` instances, so mapping these classes to specific food variants and verifying their final cooking state remains open.
 
 ## Cooking behavior
 
@@ -50,5 +70,5 @@ The tooltip does not execute cooking or action methods while reading an item. Th
 - Regression tests cover known numeric sources, direct Thorns, signed `Affliction_AdjustStatus`, primary/extra `Affliction_PoisonOverTime` payloads with timing, timed Cold/Drowsy and bonus stamina payloads, the derived Super Jump Amulet action and its Petrify value, unsupported afflictions, mass-target conditions, disabled actions, unknown action subclasses, random mushroom effects, conditional status actions, conflicting live statuses, and the `CookingBehavior_Wreck` usability override.
 - Configuration migration is factored into the production `DescriptionDefaultsMerger` and tested with old/custom JSON fixtures plus file-backed initialization, English/Chinese embedded defaults, HotReload, and invalid-JSON last-good-data retention.
 - Current automated suite: 108 regression checks. PEAK 2.6.b Release build: 0 warnings and 0 errors.
-- Remaining source work: parse other affliction payloads, mass-action targets/conditions, and random mushroom outcomes; map the relevant serialized item prefabs where available; then validate the matrix in PEAK itself.
+- Remaining source work: add explicit support for useful non-status/conditional afflictions, mass-action targets/conditions, and random mushroom outcomes; map the relevant serialized item prefabs where available; then validate the matrix in PEAK itself.
 - No item is declared fully effect-covered solely because this guard passed. Only the specific recognized action families above count as supported.
