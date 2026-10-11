@@ -15,7 +15,10 @@ The local assembly inventory contained 56 `Action_*` classes. Their implementati
 | `Action_AddOrRemoveThorns` | Reads the direct thorn count, renders add/remove values, and detects positive Thorns for safety checks. | Numeric row supported |
 | `Action_ClearAllStatus` | Decompilation confirms it only subtracts statuses, with exclusions. | Safe for absence checks; not represented as numeric rows |
 | `Action_Consume`, `Action_ReduceUses`, animation actions, `Action_IncrementSteamStat`, `Action_TryHotDogAchievement` | Consumption, visual, or achievement plumbing. | Accounted for when checking adverse-effect claims |
-| `Action_ApplyAffliction`, `Action_ApplyMassAffliction` | Can carry an affliction plus extra afflictions; mass form can target nearby characters. Affliction values are not parsed by this tooltip yet. | Unsupported; any active instance suppresses a checked safety claim |
+| `Action_ApplyAffliction` with `Affliction_AdjustStatus` | Reads the signed live status amount from the primary and extra afflictions. | Numeric row supported; participates in safety checks |
+| `Action_ApplyAffliction` with `Affliction_PoisonOverTime` | Reads poison rate, total time, and delay from primary and extra afflictions; shows the aggregate amount plus timing. | Numeric row supported; participates in safety checks |
+| Other `Action_ApplyAffliction` payloads | Other affliction types can contain distinct buffs, conditions, or status behavior. | Unsupported; any active instance suppresses a checked safety claim |
+| `Action_ApplyMassAffliction` | Can apply afflictions to nearby characters depending on radius and caster conditions. | Target/radius behavior is not rendered; remains incomplete |
 | `Action_RandomMushroomEffect` | Reads the current mushroom-manager roll and can produce delayed positive or negative effects, including Poison/Spores changes. | Random outcome is not available from the item alone; treated as incomplete |
 | `Action_ConsumeAndSpawn` | Consumes the source and creates another item after a delay. | Replacement chain is not followed; treated as incomplete |
 | Other active `ItemActionBase` subclasses and `Action_*` components | Not assumed harmless based only on their names. | Treated as incomplete unless explicitly accounted for |
@@ -32,7 +35,7 @@ Notable verified details:
 
 - `CookingBehavior_DisableScripts` disables selected components; the modifier reader ignores disabled components.
 - `CookingBehavior_AddPoisonOnUse` adds an `Action_ModifyStatus` Poison component with an `OnConsumed` or `OnCastFinished` trigger; the existing status reader then sees its live value.
-- `CookingBehavior_ChangeAfflictionTime` mutates an `Action_ApplyAffliction` payload, which remains unsupported and therefore cannot support a categorical safety claim.
+- `CookingBehavior_ChangeAfflictionTime` mutates an `Action_ApplyAffliction` payload's `totalTime`. The modifier reader reflects the updated duration for supported PoisonOverTime payloads; other affliction types remain incomplete.
 - `CookingBehavior_ReplaceItem` destroys the source and spawns a replacement, optionally cooking it once.
 - `CookingBehavior_Wreck` calls `ItemCooking.Wreck()`, which destroys item actions and sets the private `overrideUsability` option to false without setting `wreckWhenCooked`. State selection now reads that explicit unusable override as well.
 - Additional cooking behaviors run even when `ignoreDefaultCookBehavior` skips vanilla stat changes.
@@ -41,8 +44,8 @@ The tooltip does not execute cooking or action methods while reading an item. Th
 
 ## Verification and remaining work
 
-- Regression tests cover known numeric sources, direct Thorns, disabled actions, unknown action subclasses, `Action_ApplyAffliction`, random mushroom effects, conditional status actions, conflicting live statuses, and the `CookingBehavior_Wreck` usability override.
+- Regression tests cover known numeric sources, direct Thorns, signed `Affliction_AdjustStatus`, primary/extra `Affliction_PoisonOverTime` payloads with timing, unsupported afflictions, mass-target conditions, disabled actions, unknown action subclasses, random mushroom effects, conditional status actions, conflicting live statuses, and the `CookingBehavior_Wreck` usability override.
 - Configuration migration is factored into the production `DescriptionDefaultsMerger` and tested with old/custom JSON fixtures plus file-backed initialization, English/Chinese embedded defaults, HotReload, and invalid-JSON last-good-data retention.
-- Current automated suite: 88 regression checks. PEAK 2.6.b Release build: 0 warnings and 0 errors.
-- Remaining source work: parse and display supported affliction payloads and their conditions/timing; decide which other action families merit concise tooltip rows; map the relevant serialized item prefabs; then validate the matrix in PEAK itself.
+- Current automated suite: 97 regression checks. PEAK 2.6.b Release build: 0 warnings and 0 errors.
+- Remaining source work: parse other affliction payloads, mass-action targets/conditions, and random mushroom outcomes; map the relevant serialized item prefabs; then validate the matrix in PEAK itself.
 - No item is declared fully effect-covered solely because this guard passed. Only the specific recognized action families above count as supported.

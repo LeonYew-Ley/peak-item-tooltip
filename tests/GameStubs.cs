@@ -72,7 +72,7 @@ public class ItemActionBase : UnityEngine.MonoBehaviour { }
 public class ItemAction : ItemActionBase { }
 public class CustomUnknownAction : ItemActionBase { }
 public class Action_RestoreHunger : ItemAction { public float restorationAmount; }
-public class Action_InflictPoison : ItemAction { public float poisonPerSecond, inflictionTime; }
+public class Action_InflictPoison : ItemAction { public float poisonPerSecond, inflictionTime, delay; }
 public class Action_ModifyStatus : ItemAction { public CharacterAfflictions.STATUSTYPE statusType; public float changeAmount; public bool ifSkeleton; }
 public class Action_GiveExtraStamina : ItemAction { public float amount; }
 public class Action_AddOrRemoveThorns : ItemAction { public int thornCount; }
@@ -83,12 +83,33 @@ public class Action_PlayAnimation : ItemAction { }
 public class Action_PlayItemAnimation : ItemAction { }
 public class Action_IncrementSteamStat : ItemAction { }
 public class Action_TryHotDogAchievement : ItemAction { }
-public class Action_ApplyAffliction : ItemAction { }
+public class Action_ApplyAffliction : ItemAction
+{
+    public Peak.Afflictions.Affliction affliction;
+    public Peak.Afflictions.Affliction[] extraAfflictions;
+}
+public class Action_ApplyMassAffliction : Action_ApplyAffliction { public float radius; }
 public class Action_RandomMushroomEffect : ItemAction { }
 public class PetrifySource : UnityEngine.MonoBehaviour { public int petrifyPerJump; }
 public class CharacterAfflictions
 {
     public enum STATUSTYPE { Injury, Hunger, Cold, Poison, Crab, Curse, Drowsy, Weight, Hot, Thorns, Spores, Web, Arrow, Petrify, FlyTrap }
+}
+namespace Peak.Afflictions
+{
+    public class Affliction { }
+    public class Affliction_AdjustStatus : Affliction
+    {
+        public CharacterAfflictions.STATUSTYPE statusType;
+        public float statusAmount;
+    }
+    public class Affliction_PoisonOverTime : Affliction
+    {
+        public float totalTime;
+        public float delayBeforeEffect;
+        public float statusPerSecond;
+    }
+    public class Affliction_InfiniteStamina : Affliction { }
 }
 namespace Peak
 {

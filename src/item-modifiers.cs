@@ -5,6 +5,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 using System.Text;
 using UnityEngine;
@@ -80,7 +81,8 @@ namespace PeakItemTooltip
             foreach (Action_InflictPoison a in item.GetComponentsInChildren<Action_InflictPoison>(true))
             {
                 if (!EffectEnabled(a, item) || a.inflictionTime <= 0f) continue;
-                AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Poison), a.poisonPerSecond * a.inflictionTime, Zh.IsActive() ? "中毒" : "Poison");
+                AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Poison), a.poisonPerSecond * a.inflictionTime,
+                    PoisonLabel(a.delay, a.inflictionTime));
             }
 
             // signed generic status changes: covers weight and anything else)t.
@@ -96,6 +98,8 @@ namespace PeakItemTooltip
                 if (!EffectEnabled(a, item)) continue;
                 AppendLine(sb, ref first, StaminaColour, a.amount, Zh.IsActive() ? "额外耐力" : "Extra Stamina");
             }
+
+            AppendActionAfflictions(sb, ref first, item);
 
             // thorns are applied directly to the character rather than through a STATUSTYPE component
             foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
@@ -156,6 +160,13 @@ namespace PeakItemTooltip
                 if (EffectEnabled(action, item) && action.GetType().Name == "Action_AddOrRemoveThorns"
                     && TryReadIntField(action, "thornCount", out int thornCount) && thornCount > 0)
                     statuses.Add(CharacterAfflictions.STATUSTYPE.Thorns.ToString());
+
+                if (EffectEnabled(action, item) && action.GetType().Name == "Action_ApplyAffliction"
+                    && TryGetAppliedAfflictions(action, out List<object> afflictions))
+                {
+                    foreach (object affliction in afflictions)
+                        AddPositiveAfflictionStatus(statuses, affliction);
+                }
             }
 
             return statuses;
@@ -175,6 +186,11 @@ namespace PeakItemTooltip
                 if (!EffectEnabled(action, item)) continue;
                 string typeName = action.GetType().Name;
                 if (!(action is ItemActionBase) && !typeName.StartsWith("Action_", StringComparison.Ordinal)) continue;
+                if (typeName == "Action_ApplyAffliction")
+                {
+                    if (HasCompleteApplyAfflictionCoverage(action)) continue;
+                    return false;
+                }
                 if (!AccountedActionSources.Contains(typeName)) return false;
 
                 // A status action conditioned on character type is not a universal safety guarantee.
@@ -184,6 +200,97 @@ namespace PeakItemTooltip
             }
 
             return true;
+        }
+
+        private static void AppendActionAfflictions(StringBuilder sb, ref bool first, Item item)
+        {
+            foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
+            {
+                if (!EffectEnabled(action, item) || action.GetType().Name != "Action_ApplyAffliction"
+                    || !TryGetAppliedAfflictions(action, out List<object> afflictions)) continue;
+
+                foreach (object affliction in afflictions)
+                {
+                    if (affliction == null) continue;
+                    string typeName = affliction.GetType().Name;
+                    if (typeName == "Affliction_AdjustStatus"
+                        && TryReadStatusField(affliction, "statusType", out CharacterAfflictions.STATUSTYPE status)
+                        && TryReadFloatField(affliction, "statusAmount", out float amount))
+                    {
+                        AppendLine(sb, ref first, ColourFor(status), amount, StatusName(status));
+                    }
+                    else if (typeName == "Affliction_PoisonOverTime"
+                        && TryReadFloatField(affliction, "totalTime", out float totalTime)
+                        && TryReadFloatField(affliction, "delayBeforeEffect", out float delay)
+                        && TryReadFloatField(affliction, "statusPerSecond", out float perSecond))
+                    {
+                        float duration = Math.Max(0f, totalTime - delay);
+                        AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Poison), perSecond * duration,
+                            PoisonLabel(delay, duration));
+                    }
+                }
+            }
+        }
+
+        private static bool HasCompleteApplyAfflictionCoverage(MonoBehaviour action)
+        {
+            if (action == null || action.GetType().Name != "Action_ApplyAffliction"
+                || !TryGetAppliedAfflictions(action, out List<object> afflictions)) return false;
+
+            foreach (object affliction in afflictions)
+            {
+                if (affliction == null) continue;
+                string typeName = affliction.GetType().Name;
+                if (typeName == "Affliction_AdjustStatus"
+                    && TryReadStatusField(affliction, "statusType", out CharacterAfflictions.STATUSTYPE _)
+                    && TryReadFloatField(affliction, "statusAmount", out float _)) continue;
+                if (typeName == "Affliction_PoisonOverTime"
+                    && TryReadFloatField(affliction, "totalTime", out float _)
+                    && TryReadFloatField(affliction, "delayBeforeEffect", out float _)
+                    && TryReadFloatField(affliction, "statusPerSecond", out float _)) continue;
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool TryGetAppliedAfflictions(MonoBehaviour action, out List<object> afflictions)
+        {
+            afflictions = new List<object>();
+            if (action == null || action.GetType().Name != "Action_ApplyAffliction") return false;
+
+            FieldInfo primaryField = action.GetType().GetField("affliction", BindingFlags.Public | BindingFlags.Instance);
+            if (primaryField == null) return false;
+            object primary = primaryField.GetValue(action);
+            // The game returns before applying extras when the primary affliction is null.
+            if (primary == null) return true;
+            afflictions.Add(primary);
+
+            FieldInfo extrasField = action.GetType().GetField("extraAfflictions", BindingFlags.Public | BindingFlags.Instance);
+            if (extrasField == null) return false;
+            if (extrasField.GetValue(action) is Array extras)
+            {
+                foreach (object extra in extras)
+                    if (extra != null) afflictions.Add(extra);
+            }
+
+            return true;
+        }
+
+        private static void AddPositiveAfflictionStatus(HashSet<string> statuses, object affliction)
+        {
+            if (affliction == null) return;
+            string typeName = affliction.GetType().Name;
+            if (typeName == "Affliction_AdjustStatus"
+                && TryReadStatusField(affliction, "statusType", out CharacterAfflictions.STATUSTYPE status)
+                && TryReadFloatField(affliction, "statusAmount", out float amount) && amount > 0f)
+                statuses.Add(status.ToString());
+            else if (typeName == "Affliction_PoisonOverTime"
+                && TryReadFloatField(affliction, "totalTime", out float totalTime)
+                && TryReadFloatField(affliction, "delayBeforeEffect", out float delay)
+                && TryReadFloatField(affliction, "statusPerSecond", out float perSecond)
+                && perSecond * Math.Max(0f, totalTime - delay) > 0f)
+                statuses.Add(CharacterAfflictions.STATUSTYPE.Poison.ToString());
         }
 
         /**
@@ -254,6 +361,29 @@ namespace PeakItemTooltip
             return false;
         }
 
+        private static bool TryReadFloatField(object target, string name, out float value)
+        {
+            FieldInfo field = target?.GetType().GetField(name, BindingFlags.Public | BindingFlags.Instance);
+            if (field != null && field.FieldType == typeof(float))
+            {
+                value = (float)field.GetValue(target);
+                return true;
+            }
+
+            value = 0f;
+            return false;
+        }
+
+        private static bool TryReadStatusField(object target, string name, out CharacterAfflictions.STATUSTYPE value)
+        {
+            FieldInfo field = target?.GetType().GetField(name, BindingFlags.Public | BindingFlags.Instance);
+            if (field != null && field.FieldType.IsEnum
+                && Enum.TryParse(field.GetValue(target)?.ToString(), out value)) return true;
+
+            value = default;
+            return false;
+        }
+
         private static bool TryReadBoolField(MonoBehaviour component, string name, out bool value)
         {
             FieldInfo field = component.GetType().GetField(name, BindingFlags.Public | BindingFlags.Instance);
@@ -265,6 +395,30 @@ namespace PeakItemTooltip
 
             value = false;
             return false;
+        }
+
+        private static string PoisonLabel(float delay, float duration)
+        {
+            string label = Zh.IsActive() ? "中毒" : "Poison";
+            if (Zh.IsActive())
+            {
+                if (delay > 0f) label += "（延迟 " + FormatSeconds(delay) + " 秒";
+                else if (duration > 0f) label += "（持续 " + FormatSeconds(duration) + " 秒";
+                if (delay > 0f && duration > 0f) label += "，持续 " + FormatSeconds(duration) + " 秒";
+                if (delay > 0f || duration > 0f) label += "）";
+                return label;
+            }
+
+            if (delay > 0f) label += " (after " + FormatSeconds(delay) + "s delay";
+            else if (duration > 0f) label += " (" + FormatSeconds(duration) + "s";
+            if (delay > 0f && duration > 0f) label += ", over " + FormatSeconds(duration) + "s";
+            if (delay > 0f || duration > 0f) label += ")";
+            return label;
+        }
+
+        private static string FormatSeconds(float seconds)
+        {
+            return seconds.ToString("0.#", CultureInfo.InvariantCulture);
         }
 
         /**

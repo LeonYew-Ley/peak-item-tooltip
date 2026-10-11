@@ -88,7 +88,7 @@ static class Program
             "Found here. Cooking removes poison.", "known consumption action does not suppress a verified safety claim");
 
         var afflictionItem = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
-        afflictionItem.Add(new Action_ApplyAffliction());
+        afflictionItem.Add(new Action_ApplyAffliction { affliction = new Peak.Afflictions.Affliction_InfiniteStamina() });
         var afflictionSnapshot = TooltipItemSnapshot.Capture(afflictionItem);
         Equal(afflictionSnapshot.SafetySourcesComplete, false, "unparsed affliction action marks safety coverage incomplete");
         Equal(ItemDescription.FormatSnapshot(afflictionSnapshot, "Raw text", "Found here.",
@@ -99,6 +99,60 @@ static class Program
             new System.Collections.Generic.Dictionary<string, string> { ["cooked"] = "Cooking changes the effect." }, null),
             "Found here. Cooking changes the effect. Some item effects may not appear in the modifier rows.",
             "unparsed effects are disclosed even without a safety claim");
+
+        var parsedAffliction = new Item();
+        parsedAffliction.Add(new Action_ApplyAffliction
+        {
+            affliction = new Peak.Afflictions.Affliction_AdjustStatus
+            {
+                statusType = CharacterAfflictions.STATUSTYPE.Injury,
+                statusAmount = .05f
+            },
+            extraAfflictions = new Peak.Afflictions.Affliction[]
+            {
+                new Peak.Afflictions.Affliction_PoisonOverTime
+                {
+                    totalTime = 6f,
+                    delayBeforeEffect = 2f,
+                    statusPerSecond = .025f
+                }
+            }
+        });
+        Has(ItemModifiers.Format(parsedAffliction), "+5 Injury", "ApplyAffliction status payload is shown in modifier rows");
+        Has(ItemModifiers.Format(parsedAffliction), "+10 Poison (after 2s delay, over 4s)", "extra timed poison affliction includes amount and timing");
+        Has(string.Join(",", ItemModifiers.ActivePositiveStatuses(parsedAffliction)), "Poison", "parsed positive affliction participates in safety checks");
+        Equal(TooltipItemSnapshot.Capture(parsedAffliction).SafetySourcesComplete, true,
+            "fully parsed direct and extra afflictions count as supported sources");
+
+        var removedStatusAffliction = new Item();
+        removedStatusAffliction.Add(new Action_ApplyAffliction
+        {
+            affliction = new Peak.Afflictions.Affliction_AdjustStatus
+            {
+                statusType = CharacterAfflictions.STATUSTYPE.Poison,
+                statusAmount = -.2f
+            }
+        });
+        Has(ItemModifiers.Format(removedStatusAffliction), "-20 Poison", "negative ApplyAffliction status remains signed as removal");
+        Lacks(string.Join(",", ItemModifiers.ActivePositiveStatuses(removedStatusAffliction)), "Poison",
+            "negative ApplyAffliction status does not count as a positive risk");
+
+        var massAffliction = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
+        massAffliction.Add(new Action_ApplyMassAffliction
+        {
+            affliction = new Peak.Afflictions.Affliction_AdjustStatus
+            {
+                statusType = CharacterAfflictions.STATUSTYPE.Poison,
+                statusAmount = .1f
+            }
+        });
+        var massSnapshot = TooltipItemSnapshot.Capture(massAffliction);
+        Equal(massSnapshot.SafetySourcesComplete, false,
+            "mass affliction remains incomplete because target and radius conditions are not rendered");
+        Equal(ItemDescription.FormatSnapshot(massSnapshot, "Raw text", "Found here.",
+            new System.Collections.Generic.Dictionary<string, string> { ["cooked"] = "Cooking removes poison." }, cookedPoisonCheck),
+            "Found here. Some effect sources are unrecognized, so this claim could not be verified.",
+            "mass action cannot bypass the safety-claim fallback");
 
         var randomMushroom = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
         randomMushroom.Add(new Action_RandomMushroomEffect());
@@ -167,6 +221,7 @@ static class Program
 
         Zh.Active = true;
         Has(ItemModifiers.Format(berry), "+10 中毒", "localized live effects");
+        Has(ItemModifiers.Format(parsedAffliction), "+10 中毒（延迟 2 秒，持续 4 秒）", "localized ApplyAffliction timing");
         Has(ItemDescription.Format(berry, "生食会中毒", "在雨林发现。", new System.Collections.Generic.Dictionary<string, string> { ["incinerated"] = "烧毁后再次中毒。" }), "烧毁后再次中毒", "localized state description");
         Equal(ItemDescription.Format(new Item { cooking = new ItemCooking() }, "自定义描述", "", states), "自定义描述 Raw poison starts later.", "custom raw description preserved with the selected state description");
         Equal(ItemDescription.Format(new Item { cooking = new ItemCooking { timesCookedLocal = 1 } }, "旧版条目描述", "", null), "旧版条目描述", "unreviewed item retains its legacy description");
