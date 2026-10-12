@@ -287,6 +287,10 @@ namespace PeakItemTooltip
                         if (staminaDuration > 0f) label = TimedStatusLabel(label, staminaDuration);
                         AppendLine(sb, ref first, StaminaColour, staminaAmount, QualifyActionLabel(action, label));
                     }
+                    else if (TryReadResourceEffect(affliction, out string resourceLabel, out bool _))
+                    {
+                        AppendEffectNote(sb, ref first, QualifyActionLabel(action, resourceLabel));
+                    }
                     else if (TryReadTimedBuff(affliction, out string buffLabel, out float buffDuration))
                     {
                         AppendEffectNote(sb, ref first, QualifyActionLabel(action, BuffDurationLabel(buffLabel, buffDuration)));
@@ -339,6 +343,7 @@ namespace PeakItemTooltip
                 if (typeName == "Affliction_AddBonusStamina"
                     && TryReadFloatField(affliction, "totalTime", out float _)
                     && TryReadFloatField(affliction, "staminaAmount", out float _)) continue;
+                if (TryReadResourceEffect(affliction, out string _, out bool reductionOnly) && reductionOnly) continue;
                 if (TryReadTimedBuff(affliction, out string _, out float _)) continue;
                 if (TryReadInfiniteStamina(affliction, out float _, out float _, out object end)
                     && (end == null || TryReadInfiniteStaminaEnd(end, out float _, out float _))) continue;
@@ -346,6 +351,84 @@ namespace PeakItemTooltip
             }
 
             return true;
+        }
+
+        private static bool TryReadResourceEffect(object affliction, out string label, out bool reductionOnly)
+        {
+            label = null;
+            reductionOnly = false;
+            if (affliction == null) return false;
+            switch (affliction.GetType().Name)
+            {
+                case "Affliction_HealAll":
+                    if (!TryReadFloatField(affliction, "maxHealing", out float budget) || !ValidDuration(budget)) return false;
+                    // One shared budget is spent in this order, not a separate amount per status.
+                    string order = string.Join(Zh.IsActive() ? "→" : " > ", new[] {
+                        StatusName(CharacterAfflictions.STATUSTYPE.Injury), StatusName(CharacterAfflictions.STATUSTYPE.Spores),
+                        StatusName(CharacterAfflictions.STATUSTYPE.Poison), StatusName(CharacterAfflictions.STATUSTYPE.Cold),
+                        StatusName(CharacterAfflictions.STATUSTYPE.Hot), StatusName(CharacterAfflictions.STATUSTYPE.Drowsy) });
+                    label = Zh.IsActive() ? "最多共恢复 " + FormatSeconds(budget * 100f) + " 点（顺序：" + order + "）"
+                        : "Heal up to " + FormatSeconds(budget * 100f) + " points total (order: " + order + ")";
+                    reductionOnly = true;
+                    return !float.IsInfinity(budget * 100f);
+                case "Affliction_ClearAllStatus":
+                    if (!TryReadBoolField(affliction, "excludeCurse", out bool excludeCurse)
+                        || !TryReadBoolField(affliction, "includePetrify", out bool includePetrify)) return false;
+                    var exclusions = new List<string> {
+                        StatusName(CharacterAfflictions.STATUSTYPE.Crab), StatusName(CharacterAfflictions.STATUSTYPE.Weight),
+                        StatusName(CharacterAfflictions.STATUSTYPE.Thorns), StatusName(CharacterAfflictions.STATUSTYPE.Arrow) };
+                    if (excludeCurse) exclusions.Add(StatusName(CharacterAfflictions.STATUSTYPE.Curse));
+                    if (!includePetrify) exclusions.Add(StatusName(CharacterAfflictions.STATUSTYPE.Petrify));
+                    label = Zh.IsActive() ? "清除可治愈状态（不清除：" + string.Join("、", exclusions) + "）"
+                        : "Clear curable statuses (excludes: " + string.Join(", ", exclusions) + ")";
+                    reductionOnly = true;
+                    return true;
+                case "Affliction_Exhaustion":
+                    if (!TryReadFloatField(affliction, "totalTime", out float duration) || !ValidDuration(duration) || duration <= 0f
+                        || !TryReadFloatField(affliction, "drainAmount", out float drain) || !ValidDuration(drain)
+                        || float.IsInfinity(drain * 100f) || float.IsInfinity(drain / duration)) return false;
+                    // UseStamina applies ascent scaling and bypasses drain with infinite stamina.
+                    // Keep this as a conditional resource note, not a signed adverse-status row.
+                    label = Zh.IsActive()
+                        ? "耐力基础消耗 " + FormatSeconds(drain * 100f) + " 点（持续 " + FormatSeconds(duration)
+                            + " 秒；受登顶难度修正，无限耐力时不消耗）"
+                        : "Base Stamina drain " + FormatSeconds(drain * 100f) + " points (over " + FormatSeconds(duration)
+                            + "s; scaled by ascent difficulty, bypassed by Infinite Stamina)";
+                    return true;
+                case "Affliction_ZombieBite":
+                    if (!TryReadFloatField(affliction, "totalTime", out float biteTime) || !ValidDuration(biteTime)
+                        || !TryReadFloatField(affliction, "delayBeforeEffect", out float biteDelay) || !ValidDuration(biteDelay)
+                        || !TryReadFloatField(affliction, "statusPerSecond", out float biteRate) || !ValidDuration(biteRate)) return false;
+                    float biteDuration = Math.Max(0f, biteTime - biteDelay);
+                    float spores = biteRate * biteDuration * 100f;
+                    if (float.IsInfinity(spores)) return false;
+                    label = Zh.IsActive()
+                        ? "最多增加 " + FormatSeconds(spores) + " 点孢子（延迟 " + FormatSeconds(biteDelay)
+                            + " 秒，持续 " + FormatSeconds(biteDuration) + " 秒；孢子低于 2.5 点时终止）"
+                        : "Up to " + FormatSeconds(spores) + " Spores (after " + FormatSeconds(biteDelay)
+                            + "s delay, over " + FormatSeconds(biteDuration) + "s; ends if Spores falls below 2.5 points)";
+                    return true;
+                case "Affliction_RadiateInfiniteStam":
+                    if (!TryReadFloatField(affliction, "totalTime", out float auraTime) || !ValidDuration(auraTime)
+                        || !TryReadFloatField(affliction, "radius", out float auraRadius) || !ValidDuration(auraRadius)) return false;
+                    label = Zh.IsActive()
+                        ? "无限耐力光环（持续 " + FormatSeconds(auraTime) + " 秒；以效果接收者为中心 " + auraRadius.ToString("0.###", CultureInfo.InvariantCulture)
+                            + " 米内，含本人；每 0.5 秒刷新 1 秒增益）"
+                        : "Infinite Stamina aura (duration " + FormatSeconds(auraTime) + "s; within " + auraRadius.ToString("0.###", CultureInfo.InvariantCulture)
+                            + "m of recipient, including self; refreshes a 1s buff every 0.5s)";
+                    return true;
+                case "Affliction_Chaos":
+                    if (!TryReadFloatField(affliction, "statusAmountAverage", out float statusMean) || !Finite(statusMean)
+                        || !TryReadFloatField(affliction, "statusAmountStandardDeviation", out float statusDeviation) || !ValidDuration(statusDeviation)
+                        || !TryReadFloatField(affliction, "averageBonusStamina", out float staminaMean) || !Finite(staminaMean)
+                        || !TryReadFloatField(affliction, "standardDeviationBonusStamina", out float staminaDeviation) || !ValidDuration(staminaDeviation)) return false;
+                    // These are distribution parameters, not a guaranteed dose. Never roll the RNG here.
+                    label = Zh.IsActive()
+                        ? "清除可治愈状态（含诅咒、不含石化），再随机分配异常状态；随机重设额外耐力，结果无法预知"
+                        : "Clear curable statuses (including Curse, excluding Petrify), then randomly redistribute adverse statuses; randomly replace Extra Stamina; outcome unknown";
+                    return true;
+                default: return false;
+            }
         }
 
         private static bool TryReadTimedBuff(object affliction, out string label, out float duration)
@@ -360,6 +443,8 @@ namespace PeakItemTooltip
                 case "Affliction_Numb": label = Zh.IsActive() ? "麻木（隐藏耐力条）" : "Numb (Stamina bar hidden)"; break;
                 case "Affliction_Blind": label = Zh.IsActive() ? "失明" : "Blind"; break;
                 case "Affliction_Glowing": label = Zh.IsActive() ? "发光" : "Glowing"; break;
+                case "Affliction_NoHunger": label = Zh.IsActive() ? "免饥饿（阻止增加，不清除已有饥饿）" : "No Hunger (blocks gain, does not clear existing Hunger)"; break;
+                case "Affliction_BingBongShield": label = Zh.IsActive() ? "Bing Bong 护盾（无敌）" : "Bing Bong Shield (Invincibility)"; break;
                 default: return false;
             }
             return TryReadFloatField(affliction, "totalTime", out duration) && ValidDuration(duration);
@@ -390,7 +475,9 @@ namespace PeakItemTooltip
         }
 
         private static bool ValidDuration(float duration) =>
-            !float.IsNaN(duration) && !float.IsInfinity(duration) && duration >= 0f;
+            Finite(duration) && duration >= 0f;
+
+        private static bool Finite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);
 
         private static string BuffDurationLabel(string label, float duration) => Zh.IsActive()
             ? label + "（持续 " + FormatSeconds(duration) + " 秒）"
@@ -587,7 +674,7 @@ namespace PeakItemTooltip
             return false;
         }
 
-        private static bool TryReadBoolField(MonoBehaviour component, string name, out bool value)
+        private static bool TryReadBoolField(object component, string name, out bool value)
         {
             FieldInfo field = component.GetType().GetField(name, BindingFlags.Public | BindingFlags.Instance);
             if (field != null && field.FieldType == typeof(bool))

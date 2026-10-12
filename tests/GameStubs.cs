@@ -135,7 +135,18 @@ namespace Peak.Afflictions
     public class Affliction_Numb : Affliction { public float totalTime; }
     public class Affliction_Blind : Affliction { public float totalTime; }
     public class Affliction_Glowing : Affliction { public float totalTime; }
-    public class Affliction_Chaos : Affliction { }
+    public class Affliction_NoHunger : Affliction { public float totalTime; }
+    public class Affliction_BingBongShield : Affliction { public float totalTime; }
+    public class Affliction_HealAll : Affliction { public float maxHealing; }
+    public class Affliction_ClearAllStatus : Affliction { public bool excludeCurse; public bool includePetrify; }
+    public class Affliction_Exhaustion : Affliction { public float totalTime; public float drainAmount; }
+    public class Affliction_Chaos : Affliction
+    {
+        public float statusAmountAverage, statusAmountStandardDeviation, averageBonusStamina, standardDeviationBonusStamina;
+    }
+    public class Affliction_ZombieBite : Affliction { public float totalTime, delayBeforeEffect, statusPerSecond; }
+    public class Affliction_RadiateInfiniteStam : Affliction { public float totalTime, radius; }
+    public class UnknownAffliction : Affliction { }
 }
 namespace Peak
 {
