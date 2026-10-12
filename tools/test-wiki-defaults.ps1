@@ -15,12 +15,11 @@ $chineseProfiles = @($chinese.items.Keys | Where-Object { $chinese.items[$_].sta
 if ($englishReviewed.Count -ne 118 -or $chineseReviewed.Count -ne 118) {
     throw "Expected 118 fact-reviewed item pages in each language file."
 }
-if ($englishProfiles.Count -ne 55 -or $chineseProfiles.Count -ne 55) {
-    throw "Expected 55 remaining bilingual cooking-state profiles."
+if ($englishProfiles.Count -ne 0 -or $chineseProfiles.Count -ne 0) {
+    throw "Defaults must use complete shared prose instead of state-specific replacement text."
 }
-if ((Compare-Object $englishReviewed $chineseReviewed -CaseSensitive) -or
-    (Compare-Object $englishProfiles $chineseProfiles -CaseSensitive)) {
-    throw "English and Chinese reviewed keys or cooking profiles differ."
+if (Compare-Object $englishReviewed $chineseReviewed -CaseSensitive) {
+    throw "English and Chinese reviewed keys differ."
 }
 
 $cookingSpecialKeys = @(
@@ -34,35 +33,11 @@ $cookingSpecialKeys = @(
     "Frog", "Small Egg"
 )
 foreach ($key in $cookingSpecialKeys) {
-    if (-not $english.items[$key].wiki -or -not $english.items[$key].stateDescriptions) {
-        throw "Cooking special item '$key' has no sourced state profile."
+    if (-not $english.items[$key].wiki -or -not $english.items[$key].description) {
+        throw "Cooking special item '$key' has no sourced shared description."
     }
 }
 
-$requiredStates = @{
-    "Big Egg" = @("cooked", "burnt", "incinerated")
-    "Beehive" = @("cooked", "burnt", "incinerated")
-    "Bird" = @("cooked", "burnt", "incinerated")
-    "Checkpoint Flag" = @("cooked")
-    "Coconut Half" = @("cooked")
-    "Scoutmaster's Bugle" = @("incinerated")
-    "Scroll" = @("cooked")
-    "Scout Effigy" = @("cooked", "incinerated")
-    "ScoutsHonor" = @("cooked")
-    "Scorpion" = @("cooked")
-    "Strange Gem" = @("cooked", "incinerated")
-    "SNOWBALL" = @("cooked")
-    "EARLYWORM" = @("cooked", "burnt", "incinerated")
-    "Frog" = @("cooked")
-    "Small Egg" = @("cooked")
-}
-foreach ($key in $requiredStates.Keys) {
-    foreach ($state in $requiredStates[$key]) {
-        if (-not $english.items[$key].stateDescriptions.ContainsKey($state)) {
-            throw "Cooking profile '$key' is missing the required '$state' state."
-        }
-    }
-}
 if ($english.items["Gold Prickleberry"].wiki) {
     throw "Gold Prickleberry has conflicting Wiki cooking facts and must remain unprofiled."
 }
@@ -72,7 +47,7 @@ foreach ($entry in $manifest.items) { $manifestItems[$entry.gameKey] = $entry }
 if ($manifestItems["Small Egg"].wikiTitle -ne "Small Egg") {
     throw "Small Egg must map to its own Wiki page, not Egg."
 }
-if (-not $english.items["Small Egg"].stateDescriptions.ContainsKey("cooked")) {
+if ($english.items["Small Egg"].description -notmatch "Cooking.*Egg") {
     throw "Small Egg must describe the cooked result when cracked."
 }
 if ($manifestItems["Fannypack"].wikiTitle -ne "Fanny Pack" -or $manifestItems["Frisbee"].wikiTitle -ne "Flying Disc") {
@@ -159,14 +134,12 @@ if ($english.items["Red Crispberry"].description -notmatch "improves Hunger rest
     $chinese.items["Red Crispberry"].description -notmatch "增强饥饿恢复.*额外耐力") {
     throw "Red Crispberry's qualitative cooked behavior is missing in one language."
 }
-if ($english.items["Frog"].stateDescriptions.cooked -notmatch "Frog Legs" -or
-    $chinese.items["Frog"].stateDescriptions.cooked -notmatch "青蛙腿") {
+if ($english.items["Frog"].description -notmatch "Cooking.*Frog Legs" -or
+    $chinese.items["Frog"].description -notmatch "烹饪.*青蛙腿") {
     throw "Frog's cooked transformation is missing in one language."
 }
 
-foreach ($key in @("Pink Berrynana", "Green Crispberry", "Green Kingberry", "Yellow Kingberry",
-    "Red Prickleberry", "Blue Shroomberry", "Green Shroomberry", "Purple Shroomberry",
-    "Red Shroomberry", "Yellow Shroomberry", "Red Crispberry", "FrogLegs")) {
+foreach ($key in $english.items.Keys) {
     foreach ($data in @($english, $chinese)) {
         $item = $data.items[$key]
         if ($item.context -or $item.stateDescriptions.Count -gt 0 -or -not $item.description) {
