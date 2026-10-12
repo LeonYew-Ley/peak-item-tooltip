@@ -1,6 +1,6 @@
 # PEAK Wiki-derived tooltip data
 
-The English and Simplified Chinese defaults contain 66 cooking-state profiles. In total, 118 of 131 direct item pages have been content-reviewed; 52 reviewed pages did not need an additional state-specific sentence. Twelve items without a dedicated page have reviewed secondary sources. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows.
+The English and Simplified Chinese defaults contain 55 remaining cooking-state profiles. Twelve items (Pink Berrynana, Green Crispberry, Green/Yellow Kingberry, Red Prickleberry, all five Shroomberries, Red Crispberry and Frog Legs) now use complete shared prose with explicit state conditions instead of replacing the description at each stage. Their existing effect-conflict checks remain independent of prose selection. In total, 118 of 131 direct item pages have been content-reviewed. Twelve items without a dedicated page have reviewed secondary sources. The prose is independently written; numeric values that the mod reads from the current item remain in the live modifier rows. Shared prose describes sourced behavior; it is not proof that every current effect has been parsed or game-verified.
 
 ## Sources reviewed on 2026-10-11
 

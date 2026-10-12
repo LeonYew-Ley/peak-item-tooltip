@@ -77,6 +77,16 @@ static class Program
         stillPoisonous.Add(new Action_InflictPoison { poisonPerSecond = .05f, inflictionTime = 2f });
         Has(ItemModifiers.Format(stillPoisonous), "+10 Poison", "enabled cooked poison remains visible");
         var conflictingSnapshot = TooltipItemSnapshot.Capture(stillPoisonous);
+        const string completeBerryDescription = "Found on bushes. Raw food causes Poison; cooked stages remove its original Poison; incineration can add Poison again.";
+        for (int cooks = 0; cooks <= 4; cooks++)
+            Equal(ItemDescription.Format(new Item { cooking = new ItemCooking { timesCookedLocal = cooks } },
+                completeBerryDescription, "", null), completeBerryDescription,
+                "complete conditional prose stays available at cooking stage " + cooks);
+        Equal(ItemDescription.Format(wrecked, completeBerryDescription, "", null), completeBerryDescription,
+            "complete conditional prose stays available on an unusable item");
+        Equal(ItemDescription.FormatSnapshot(conflictingSnapshot, completeBerryDescription, "", null, cookedPoisonCheck),
+            completeBerryDescription + " Current effects conflict with this item-effect note.",
+            "shared prose keeps a live Poison conflict notice even without a state-specific sentence");
         Equal(ItemDescription.FormatSnapshot(conflictingSnapshot, "Raw poison", "Found here.",
             new System.Collections.Generic.Dictionary<string, string> { ["cooked"] = "Cooking removes poison." }, cookedPoisonCheck),
             "Found here. Current effects conflict with this item-effect note.", "a Wiki safety claim is suppressed when live poison remains active");
@@ -91,6 +101,9 @@ static class Program
         afflictionItem.Add(new Action_ApplyAffliction { affliction = new Peak.Afflictions.Affliction_InfiniteStamina() });
         var afflictionSnapshot = TooltipItemSnapshot.Capture(afflictionItem);
         Equal(afflictionSnapshot.SafetySourcesComplete, false, "unparsed affliction action marks safety coverage incomplete");
+        Equal(ItemDescription.FormatSnapshot(afflictionSnapshot, completeBerryDescription, "", null, cookedPoisonCheck),
+            completeBerryDescription + " Some item effects may not appear in the modifier rows.",
+            "shared prose discloses incomplete numeric coverage instead of treating unknown effects as absent");
         Equal(ItemDescription.FormatSnapshot(afflictionSnapshot, "Raw text", "Found here.",
             new System.Collections.Generic.Dictionary<string, string> { ["cooked"] = "Cooking removes poison." }, cookedPoisonCheck),
             "Found here. Some effect sources are unrecognized, so this claim could not be verified.",

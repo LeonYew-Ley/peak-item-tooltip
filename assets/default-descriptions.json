@@ -367,12 +367,7 @@
     },
     "Blue Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a harmful effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten raw.",
-      "stateDescriptions": {
-        "raw": "Eating it can cause a random harmful effect.",
-        "cooked": "Cooking removes its Spores effect."
-      },
+      "description": "Found in the Roots. Eating it raw releases Spores and may cause a random harmful effect. The cooked or well-done stage removes its original Spores; this does not establish that every harmful effect is removed.",
       "wiki": {
         "title": "Blue Shroomberry",
         "revision": 10680,
@@ -842,12 +837,7 @@
     },
     "FrogLegs": {
       "type": "CONSUMABLE",
-      "description": "Obtained by cooking a Frog; normally appears already cooked.",
-      "context": "Normally obtained only by cooking a Frog; uncooked Frog Legs are not obtainable in regular play.",
-      "stateDescriptions": {
-        "raw": "Uncooked Frog Legs are not obtainable in normal play.",
-        "cooked": "Cooking once doubles Hunger restoration and adds Bonus stamina; current values remain in the live modifier rows."
-      },
+      "description": "Obtained by cooking a Frog. It spawns already cooked in normal play; raw Frog Legs are not normally obtainable. The cooked or well-done stage restores Hunger and provides Bonus Stamina.",
       "wiki": {
         "title": "Frog Legs",
         "revision": 11161,
@@ -891,14 +881,7 @@
     },
     "Green Crispberry": {
       "type": "CONSUMABLE",
-      "description": "Found on bushes on the Shore and in the Tropics; it also appears at a few special locations in other biomes.",
-      "context": "Found on bushes, mainly in the Shore and Tropics, with occasional plants elsewhere.",
-      "stateDescriptions": {
-        "raw": "Eating it inflicts Poison after 2 seconds, lasting 4 seconds.",
-        "cooked": "Cooking removes its Poison effect; Cooked and Well-Done do not stack.",
-        "burnt": "Burnt food restores less Hunger and no longer grants Bonus Stamina.",
-        "incinerated": "Each further incineration adds Poison."
-      },
+      "description": "Found mainly on bushes in the Shore and Tropics, occasionally elsewhere. Eating it raw causes delayed Poison. Cooked and well-done stages remove its original Poison and have the same effects. Burning reduces Hunger restoration and removes Bonus Stamina; further incineration increases Poison.",
       "wiki": {
         "title": "Green Crispberry",
         "revision": 10035,
@@ -922,12 +905,7 @@
     },
     "Green Kingberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the tropics. Afflicts poison onto the user",
-      "context": "Found on trees in the Tropics.",
-      "stateDescriptions": {
-        "raw": "Eating it immediately inflicts Poison.",
-        "cooked": "Cooking removes its Poison effect."
-      },
+      "description": "Found on trees in the Tropics. Eating it raw causes immediate Poison; the cooked or well-done stage removes its original Poison.",
       "wiki": {
         "title": "Green Kingberry",
         "revision": 10039,
@@ -946,12 +924,7 @@
     },
     "Green Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a harmful effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten raw.",
-      "stateDescriptions": {
-        "raw": "Eating it can cause a random harmful effect.",
-        "cooked": "Cooking removes its Spores effect."
-      },
+      "description": "Found in the Roots. Eating it raw releases Spores and may cause a random harmful effect. The cooked or well-done stage removes its original Spores; this does not establish that every harmful effect is removed.",
       "wiki": {
         "title": "Green Shroomberry",
         "revision": 10678,
@@ -1245,12 +1218,7 @@
     },
     "Purple Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a random good or bad effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten raw.",
-      "stateDescriptions": {
-        "raw": "Eating it can cause a random good or bad effect.",
-        "cooked": "Cooking removes its Spores effect."
-      },
+      "description": "Found in the Roots. Eating it raw releases Spores and may cause a random beneficial or harmful effect. The cooked or well-done stage removes its original Spores; this does not establish that random effects are removed.",
       "wiki": {
         "title": "Purple Shroomberry",
         "revision": 11164,
@@ -1281,11 +1249,7 @@
     },
     "Red Crispberry": {
       "type": "CONSUMABLE",
-      "description": "A natural berry found on bushes across several biomes.",
-      "context": "A natural berry found on bushes across several biomes.",
-      "stateDescriptions": {
-        "cooked": "Cooking once doubles Hunger restoration and adds Bonus stamina; current values remain in the live modifier rows."
-      },
+      "description": "Found on bushes across several biomes. The cooked or well-done stage improves Hunger restoration and provides Bonus Stamina.",
       "wiki": {
         "title": "Red Crispberry",
         "revision": 10033,
@@ -1297,12 +1261,7 @@
     },
     "Red Prickleberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the mesa. Removes heat, but afflicts thorns",
-      "context": "Found on cacti in the Mesa.",
-      "stateDescriptions": {
-        "raw": "Eating it attaches Thorns to the Scout.",
-        "cooked": "Cooking removes the attached Thorns."
-      },
+      "description": "Found on cacti in the Mesa. Eating it reduces Heat. Eating it raw also applies Thorns; the cooked or well-done stage removes its original Thorns.",
       "wiki": {
         "title": "Red Prickleberry",
         "revision": 10057,
@@ -1321,12 +1280,7 @@
     },
     "Red Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a beneficial effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten raw.",
-      "stateDescriptions": {
-        "raw": "Eating it can cause a random beneficial effect.",
-        "cooked": "Cooking removes its Spores effect."
-      },
+      "description": "Found in the Roots. Eating it raw releases Spores and may cause a random beneficial effect. The cooked or well-done stage removes its original Spores.",
       "wiki": {
         "title": "Red Shroomberry",
         "revision": 10677,
@@ -1823,12 +1777,7 @@
     },
     "Yellow Kingberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the tropics. Afflicts poison 3 seconds after eating",
-      "context": "Found on trees in the Tropics.",
-      "stateDescriptions": {
-        "raw": "Eating it inflicts Poison after a 3-second delay, over 10 seconds.",
-        "cooked": "Cooking removes its Poison effect."
-      },
+      "description": "Found on trees in the Tropics. Eating it raw causes delayed Poison; the cooked or well-done stage removes its original Poison.",
       "wiki": {
         "title": "Yellow Kingberry",
         "revision": 10038,
@@ -1847,12 +1796,7 @@
     },
     "Yellow Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "Found in the roots. Releases spores, and produces a beneficial effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten raw.",
-      "stateDescriptions": {
-        "raw": "Eating it can cause a random beneficial effect.",
-        "cooked": "Cooking removes its Spores effect."
-      },
+      "description": "Found in the Roots. Eating it raw releases Spores and may cause a random beneficial effect. The cooked or well-done stage removes its original Spores.",
       "wiki": {
         "title": "Yellow Shroomberry",
         "revision": 10679,

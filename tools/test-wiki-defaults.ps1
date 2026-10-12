@@ -15,8 +15,8 @@ $chineseProfiles = @($chinese.items.Keys | Where-Object { $chinese.items[$_].sta
 if ($englishReviewed.Count -ne 118 -or $chineseReviewed.Count -ne 118) {
     throw "Expected 118 fact-reviewed item pages in each language file."
 }
-if ($englishProfiles.Count -ne 66 -or $chineseProfiles.Count -ne 66) {
-    throw "Expected 66 bilingual cooking-state profiles."
+if ($englishProfiles.Count -ne 55 -or $chineseProfiles.Count -ne 55) {
+    throw "Expected 55 remaining bilingual cooking-state profiles."
 }
 if ((Compare-Object $englishReviewed $chineseReviewed -CaseSensitive) -or
     (Compare-Object $englishProfiles $chineseProfiles -CaseSensitive)) {
@@ -31,7 +31,7 @@ $cookingSpecialKeys = @(
     "Piton", "Portable Stove", "Rescue Claw", "rope cannon", "rope spool", "Scout Cannon", "Sports Drink",
     "Sunscreen", "THEBOOKOFBONES", "Big Egg", "Beehive", "Bird", "Checkpoint Flag", "Coconut Half",
     "Scoutmaster's Bugle", "Scroll", "Scout Effigy", "ScoutsHonor", "Scorpion", "Strange Gem", "SNOWBALL", "EARLYWORM",
-    "Frog", "FrogLegs", "Red Crispberry", "Small Egg"
+    "Frog", "Small Egg"
 )
 foreach ($key in $cookingSpecialKeys) {
     if (-not $english.items[$key].wiki -or -not $english.items[$key].stateDescriptions) {
@@ -54,8 +54,6 @@ $requiredStates = @{
     "SNOWBALL" = @("cooked")
     "EARLYWORM" = @("cooked", "burnt", "incinerated")
     "Frog" = @("cooked")
-    "FrogLegs" = @("raw", "cooked")
-    "Red Crispberry" = @("cooked")
     "Small Egg" = @("cooked")
 }
 foreach ($key in $requiredStates.Keys) {
@@ -141,10 +139,13 @@ foreach ($key in $englishReviewed) {
     }
 }
 
-foreach ($key in $englishProfiles) {
+foreach ($key in $englishReviewed) {
     $en = $english.items[$key]
     $zh = $chinese.items[$key]
-    if (Compare-Object @($en.stateDescriptions.Keys) @($zh.stateDescriptions.Keys) -CaseSensitive) {
+    $enStates = if ($en.stateDescriptions) { @($en.stateDescriptions.Keys) } else { @() }
+    $zhStates = if ($zh.stateDescriptions) { @($zh.stateDescriptions.Keys) } else { @() }
+    if ($enStates.Count -ne $zhStates.Count -or
+        ($enStates.Count -gt 0 -and (Compare-Object $enStates $zhStates -CaseSensitive))) {
         throw "State keys differ by language for '$key'."
     }
     $enCheckKeys = if ($en.stateChecks) { @($en.stateChecks.Keys) } else { @() }
@@ -154,17 +155,38 @@ foreach ($key in $englishProfiles) {
         throw "State checks differ by language for '$key'."
     }
 }
-if ($english.items["Red Crispberry"].stateDescriptions.cooked -notmatch "doubles Hunger|doubling.*Hunger" -or
-    $chinese.items["Red Crispberry"].stateDescriptions.cooked -notmatch "翻倍") {
-    throw "Red Crispberry's cooked effect is missing in one language."
+if ($english.items["Red Crispberry"].description -notmatch "improves Hunger restoration.*Bonus Stamina" -or
+    $chinese.items["Red Crispberry"].description -notmatch "增强饥饿恢复.*额外耐力") {
+    throw "Red Crispberry's qualitative cooked behavior is missing in one language."
 }
 if ($english.items["Frog"].stateDescriptions.cooked -notmatch "Frog Legs" -or
     $chinese.items["Frog"].stateDescriptions.cooked -notmatch "青蛙腿") {
     throw "Frog's cooked transformation is missing in one language."
 }
 
-if ($english.items["Green Crispberry"].stateDescriptions.ContainsKey("unusable")) {
-    throw "Green Crispberry must not claim that cooking destroys it."
+foreach ($key in @("Pink Berrynana", "Green Crispberry", "Green Kingberry", "Yellow Kingberry",
+    "Red Prickleberry", "Blue Shroomberry", "Green Shroomberry", "Purple Shroomberry",
+    "Red Shroomberry", "Yellow Shroomberry", "Red Crispberry", "FrogLegs")) {
+    foreach ($data in @($english, $chinese)) {
+        $item = $data.items[$key]
+        if ($item.context -or $item.stateDescriptions.Count -gt 0 -or -not $item.description) {
+            throw "Complete shared description for '$key' must not be overridden by a state profile."
+        }
+    }
+}
+foreach ($key in @("Pink Berrynana", "Green Crispberry", "Green Kingberry", "Yellow Kingberry")) {
+    foreach ($data in @($english, $chinese)) {
+        if ("Poison" -notin $data.items[$key].stateChecks.cooked.mustNotHaveActive) {
+            throw "Complete shared Poison prose lost its cooked conflict check for '$key'."
+        }
+    }
+}
+foreach ($key in @("Blue Shroomberry", "Green Shroomberry", "Purple Shroomberry", "Red Shroomberry", "Yellow Shroomberry")) {
+    foreach ($data in @($english, $chinese)) {
+        if ("Spores" -notin $data.items[$key].stateChecks.cooked.mustNotHaveActive) {
+            throw "Complete shared Spores prose lost its cooked conflict check for '$key'."
+        }
+    }
 }
 
 [PSCustomObject]@{
@@ -173,6 +195,7 @@ if ($english.items["Green Crispberry"].stateDescriptions.ContainsKey("unusable")
     FactReviewedPages = $englishReviewed.Count
     BilingualCookingProfiles = $englishProfiles.Count
     ProfilesWithLiveChecks = @($englishProfiles | Where-Object { $english.items[$_].stateChecks.Count -gt 0 }).Count
+    ItemsWithLiveChecks = @($english.items.Keys | Where-Object { $english.items[$_].stateChecks.Count -gt 0 }).Count
     ReviewedSecondarySourceItems = $secondaryReviewed.Count
     Result = "PASS"
 } | ConvertTo-Json

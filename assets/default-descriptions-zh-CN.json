@@ -367,12 +367,7 @@
     },
     "Blue Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生有害效果",
-      "context": "在树根区域发现；生食时会释放孢子。",
-      "stateDescriptions": {
-        "raw": "食用后可能触发随机负面效果。",
-        "cooked": "烹饪会消除其孢子效果。"
-      },
+      "description": "在树根区域发现。生食会释放孢子，并可能触发随机负面效果；烤熟或全熟会消除原有孢子，但不代表所有负面效果都被消除。",
       "wiki": {
         "title": "Blue Shroomberry",
         "revision": 10680,
@@ -842,12 +837,7 @@
     },
     "FrogLegs": {
       "type": "CONSUMABLE",
-      "description": "由烹饪青蛙获得；正常游戏中生成时已是烤熟状态。",
-      "context": "通常只能通过烹饪青蛙获得；正常游戏中无法取得生的青蛙腿。",
-      "stateDescriptions": {
-        "raw": "正常游戏中无法取得生的青蛙腿。",
-        "cooked": "烹饪一次会使恢复的饥饿值翻倍并增加额外耐力；具体数值以实时数值行为准。"
-      },
+      "description": "由烹饪青蛙获得，正常游戏中生成时已经烤熟，无法取得生的青蛙腿。烤熟或全熟时可恢复饥饿并提供额外耐力。",
       "wiki": {
         "title": "Frog Legs",
         "revision": 11161,
@@ -891,14 +881,7 @@
     },
     "Green Crispberry": {
       "type": "CONSUMABLE",
-      "description": "海岛、雨林的灌木上可以找到，其他地区的部分特殊地点也有分布。",
-      "context": "主要在海岸和热带雨林的灌木上发现，其他区域也偶尔出现。",
-      "stateDescriptions": {
-        "raw": "食用后会延迟2秒中毒，持续4秒。",
-        "cooked": "烹饪会消除中毒；烤熟与全熟阶段的效果不会叠加。",
-        "burnt": "烧焦后恢复的饥饿值减少，也不再提供额外耐力。",
-        "incinerated": "每继续烧毁一次，都会增加中毒效果。"
-      },
+      "description": "主要在海岸和热带雨林的灌木上发现，其他区域也偶尔出现。生食会延迟中毒；烤熟或全熟会消除原有中毒，两阶段效果相同。烧焦会减少饥饿恢复并失去额外耐力；继续烧毁会增加中毒。",
       "wiki": {
         "title": "Green Crispberry",
         "revision": 10035,
@@ -922,12 +905,7 @@
     },
     "Green Kingberry": {
       "type": "CONSUMABLE",
-      "description": "在雨林发现。对使用者施加中毒",
-      "context": "在热带雨林的树上发现。",
-      "stateDescriptions": {
-        "raw": "食用后立即中毒。",
-        "cooked": "烹饪会消除中毒效果。"
-      },
+      "description": "在热带雨林的树上发现。生食会立即中毒；烤熟或全熟会消除原有中毒。",
       "wiki": {
         "title": "Green Kingberry",
         "revision": 10039,
@@ -946,12 +924,7 @@
     },
     "Green Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生有害效果",
-      "context": "在树根区域发现；生食时会释放孢子。",
-      "stateDescriptions": {
-        "raw": "食用后可能触发随机负面效果。",
-        "cooked": "烹饪会消除其孢子效果。"
-      },
+      "description": "在树根区域发现。生食会释放孢子，并可能触发随机负面效果；烤熟或全熟会消除原有孢子，但不代表所有负面效果都被消除。",
       "wiki": {
         "title": "Green Shroomberry",
         "revision": 10678,
@@ -1226,12 +1199,7 @@
     },
     "Purple Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生随机的有益或有害效果",
-      "context": "在树根区域发现；生食时会释放孢子。",
-      "stateDescriptions": {
-        "raw": "食用后可能触发随机正面或负面效果。",
-        "cooked": "烹饪会消除其孢子效果。"
-      },
+      "description": "在树根区域发现。生食会释放孢子，并可能触发随机正面或负面效果；烤熟或全熟会消除原有孢子，但不代表随机效果都被消除。",
       "wiki": {
         "title": "Purple Shroomberry",
         "revision": 11164,
@@ -1262,11 +1230,7 @@
     },
     "Red Crispberry": {
       "type": "CONSUMABLE",
-      "description": "在多个生物群系的灌木上发现的天然莓果。",
-      "context": "在多个生物群系的灌木上发现的天然莓果。",
-      "stateDescriptions": {
-        "cooked": "烹饪一次会使恢复的饥饿值翻倍并增加额外耐力；具体数值以实时数值行为准。"
-      },
+      "description": "在多个生物群系的灌木上发现。烤熟或全熟会增强饥饿恢复，并提供额外耐力。",
       "wiki": {
         "title": "Red Crispberry",
         "revision": 10033,
@@ -1278,12 +1242,7 @@
     },
     "Red Prickleberry": {
       "type": "CONSUMABLE",
-      "description": "在方山发现。清除炎热，但会施加荆棘",
-      "context": "在方山的仙人掌上发现。",
-      "stateDescriptions": {
-        "raw": "食用后会使侦察兵受到荆棘效果。",
-        "cooked": "烹饪会消除附着的荆棘。"
-      },
+      "description": "在方山的仙人掌上发现。食用可降低炎热；生食还会施加荆棘，烤熟或全熟会消除原有荆棘。",
       "wiki": {
         "title": "Red Prickleberry",
         "revision": 10057,
@@ -1302,12 +1261,7 @@
     },
     "Red Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生有益效果",
-      "context": "在树根区域发现；生食时会释放孢子。",
-      "stateDescriptions": {
-        "raw": "食用后可能触发随机正面效果。",
-        "cooked": "烹饪会消除其孢子效果。"
-      },
+      "description": "在树根区域发现。生食会释放孢子，并可能触发随机正面效果；烤熟或全熟会消除原有孢子。",
       "wiki": {
         "title": "Red Shroomberry",
         "revision": 10677,
@@ -1804,12 +1758,7 @@
     },
     "Yellow Kingberry": {
       "type": "CONSUMABLE",
-      "description": "在雨林发现。食用3秒后施加中毒",
-      "context": "在热带雨林的树上发现。",
-      "stateDescriptions": {
-        "raw": "食用后会延迟3秒开始中毒，持续10秒。",
-        "cooked": "烹饪会消除中毒效果。"
-      },
+      "description": "在热带雨林的树上发现。生食会延迟中毒；烤熟或全熟会消除原有中毒。",
       "wiki": {
         "title": "Yellow Kingberry",
         "revision": 10038,
@@ -1828,12 +1777,7 @@
     },
     "Yellow Shroomberry": {
       "type": "CONSUMABLE",
-      "description": "在森蕈发现。释放孢子，食用后产生有益效果",
-      "context": "在树根区域发现；生食时会释放孢子。",
-      "stateDescriptions": {
-        "raw": "食用后可能触发随机正面效果。",
-        "cooked": "烹饪会消除其孢子效果。"
-      },
+      "description": "在树根区域发现。生食会释放孢子，并可能触发随机正面效果；烤熟或全熟会消除原有孢子。",
       "wiki": {
         "title": "Yellow Shroomberry",
         "revision": 10679,
