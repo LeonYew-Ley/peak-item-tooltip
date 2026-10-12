@@ -89,19 +89,19 @@ namespace PeakItemTooltip
                 return AppendNotice(formatted, Zh.IsActive()
                     ? (snapshot.SafetySourcesComplete
                         ? "当前效果与这条说明不一致。"
-                        : "已识别的效果与这条说明不一致，且还有未识别的效果来源。")
+                        : "已识别的效果与这条说明不一致，且还有未确认的效果或作用条件。")
                     : (snapshot.SafetySourcesComplete
                         ? "Current effects conflict with this item-effect note."
-                        : "Known effects conflict with this item-effect note, and other sources are unrecognized."));
+                        : "Known effects conflict with this item-effect note, and other sources or conditions are unverified."));
 
             if (!snapshot.SafetySourcesComplete)
                 return AppendNotice(formatted, Zh.IsActive()
                     ? (hasSafetyClaim && hasStateCheck
-                        ? "部分效果来源尚未识别，无法核实这条说明。"
-                        : "部分物品效果可能未显示在数值行中。")
+                        ? "部分效果来源或作用条件尚未确认，无法核实这条说明。"
+                        : "部分物品效果或作用条件尚未确认，数值行可能不完整。")
                     : (hasSafetyClaim && hasStateCheck
-                        ? "Some effect sources are unrecognized, so this claim could not be verified."
-                        : "Some item effects may not appear in the modifier rows."));
+                        ? "This effect note could not be checked against every effect source and target condition."
+                        : "Some item effects or target conditions are unverified; modifier rows may be incomplete."));
 
             return formatted;
         }

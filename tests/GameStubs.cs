@@ -92,7 +92,7 @@ public class Action_ApplyAffliction : ItemAction
     public Peak.Afflictions.Affliction affliction;
     public Peak.Afflictions.Affliction[] extraAfflictions;
 }
-public class Action_ApplyMassAffliction : Action_ApplyAffliction { public float radius; }
+public class Action_ApplyMassAffliction : Action_ApplyAffliction { public float radius; public bool ignoreCaster; }
 public class Action_RandomMushroomEffect : ItemAction { }
 public class PetrifySource : UnityEngine.MonoBehaviour { public int petrifyPerJump; }
 public class CharacterAfflictions

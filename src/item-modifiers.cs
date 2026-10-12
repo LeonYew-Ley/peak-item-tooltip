@@ -224,8 +224,11 @@ namespace PeakItemTooltip
         {
             foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
             {
-                if (!EffectEnabled(action, item) || !IsApplyAfflictionAction(action) || IsMassAfflictionAction(action)
+                if (!EffectEnabled(action, item) || !IsApplyAfflictionAction(action)
                     || !TryGetAppliedAfflictions(action, out List<object> afflictions)) continue;
+                // Area payload values are useful only when their target condition can be shown.
+                // Do not turn a conditional nearby-player effect into an unconditional self effect.
+                if (IsMassAfflictionAction(action) && !TryReadMassTarget(action, out float _, out bool _)) continue;
 
                 foreach (object affliction in afflictions)
                 {
@@ -339,6 +342,15 @@ namespace PeakItemTooltip
             for (Type type = action?.GetType(); type != null; type = type.BaseType)
                 if (type.Name == "Action_ApplyMassAffliction") return true;
             return false;
+        }
+
+        private static bool TryReadMassTarget(MonoBehaviour action, out float radius, out bool ignoreCaster)
+        {
+            radius = 0f;
+            ignoreCaster = false;
+            return TryReadFloatField(action, "radius", out radius)
+                && !float.IsNaN(radius) && !float.IsInfinity(radius) && radius >= 0f
+                && TryReadBoolField(action, "ignoreCaster", out ignoreCaster);
         }
 
         private static bool HasPositivePetrifyEffect(MonoBehaviour action)
@@ -510,6 +522,13 @@ namespace PeakItemTooltip
         private static string QualifyActionLabel(MonoBehaviour action, string label)
         {
             List<string> qualifiers = null;
+            if (IsMassAfflictionAction(action) && TryReadMassTarget(action, out float radius, out bool ignoreCaster))
+            {
+                string range = radius.ToString("0.###", CultureInfo.InvariantCulture);
+                (qualifiers ??= new List<string>()).Add(Zh.IsActive()
+                    ? "物品周围 " + range + " 米内的玩家" : "characters within " + range + "m of item");
+                if (ignoreCaster) qualifiers.Add(Zh.IsActive() ? "排除持有者" : "holder excluded");
+            }
             if (action != null && TryReadBoolField(action, "ifSkeleton", out bool ifSkeleton) && ifSkeleton)
                 (qualifiers ??= new List<string>()).Add(Zh.IsActive() ? "仅骷髅" : "skeleton only");
 

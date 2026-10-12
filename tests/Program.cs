@@ -102,15 +102,15 @@ static class Program
         var afflictionSnapshot = TooltipItemSnapshot.Capture(afflictionItem);
         Equal(afflictionSnapshot.SafetySourcesComplete, false, "unparsed affliction action marks safety coverage incomplete");
         Equal(ItemDescription.FormatSnapshot(afflictionSnapshot, completeBerryDescription, "", null, cookedPoisonCheck),
-            completeBerryDescription + " Some item effects may not appear in the modifier rows.",
+            completeBerryDescription + " Some item effects or target conditions are unverified; modifier rows may be incomplete.",
             "shared prose discloses incomplete numeric coverage instead of treating unknown effects as absent");
         Equal(ItemDescription.FormatSnapshot(afflictionSnapshot, "Raw text", "Found here.",
             new System.Collections.Generic.Dictionary<string, string> { ["cooked"] = "Cooking removes poison." }, cookedPoisonCheck),
-            "Found here. Some effect sources are unrecognized, so this claim could not be verified.",
+            "Found here. This effect note could not be checked against every effect source and target condition.",
             "unknown affliction cannot produce a false safety claim");
         Equal(ItemDescription.FormatSnapshot(afflictionSnapshot, "Raw text", "Found here.",
             new System.Collections.Generic.Dictionary<string, string> { ["cooked"] = "Cooking changes the effect." }, null),
-            "Found here. Cooking changes the effect. Some item effects may not appear in the modifier rows.",
+            "Found here. Cooking changes the effect. Some item effects or target conditions are unverified; modifier rows may be incomplete.",
             "unparsed effects are disclosed even without a safety claim");
 
         var parsedAffliction = new Item();
@@ -213,8 +213,10 @@ static class Program
             "negative ApplyAffliction status does not count as a positive risk");
 
         var massAffliction = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
-        massAffliction.Add(new Action_ApplyMassAffliction
+        var massAction = massAffliction.Add(new Action_ApplyMassAffliction
         {
+            radius = 4.8f,
+            ignoreCaster = true,
             affliction = new Peak.Afflictions.Affliction_AdjustStatus
             {
                 statusType = CharacterAfflictions.STATUSTYPE.Poison,
@@ -222,11 +224,42 @@ static class Program
             }
         });
         var massSnapshot = TooltipItemSnapshot.Capture(massAffliction);
+        Has(massSnapshot.Modifiers, "+10 Poison", "area payload amount is shown");
+        Has(massSnapshot.Modifiers, "characters within 4.8m of item", "area row identifies the item-centered radius");
+        Has(massSnapshot.Modifiers, "holder excluded", "area row states the holder exclusion");
+        Lacks(string.Join(",", massSnapshot.ActivePositiveStatuses), "Poison", "area Poison is not an unconditional self status");
+        massAction.radius = 2.125f;
+        massAction.ignoreCaster = false;
+        massAction.extraAfflictions = new Peak.Afflictions.Affliction[]
+        {
+            new Peak.Afflictions.Affliction_AddBonusStamina { staminaAmount = .2f, totalTime = 6f }
+        };
+        Has(ItemModifiers.Format(massAffliction), "characters within 2.125m of item", "area radius follows the live action value");
+        Lacks(ItemModifiers.Format(massAffliction), "holder excluded", "changed area eligibility removes the old qualifier");
+        Has(ItemModifiers.Format(massAffliction), "+20 Extra Stamina (over 6s) [characters within 2.125m of item]",
+            "extra affliction inherits the same area target condition");
+        Has(massSnapshot.Modifiers, "characters within 4.8m of item", "captured area rows do not change with a later mutation");
+        massAction.radius = -1f;
+        Equal(ItemModifiers.Format(massAffliction), "", "negative radius cannot produce a reachable area effect");
+        massAction.radius = float.NaN;
+        Equal(ItemModifiers.Format(massAffliction), "", "invalid radius does not emit an unqualified area row");
+        massAction.radius = 4.8f;
+        massAction.affliction = null;
+        Equal(ItemModifiers.Format(massAffliction), "", "null primary area payload prevents extras just as the game does");
+        massAction.affliction = new Peak.Afflictions.Affliction_AdjustStatus
+            { statusType = CharacterAfflictions.STATUSTYPE.Poison, statusAmount = .1f };
+        massAction.enabled = false;
+        Equal(ItemModifiers.Format(massAffliction), "", "disabled area source contributes no rows");
+        Zh.Active = true;
+        massAction.enabled = true;
+        massAction.ignoreCaster = true;
+        Has(ItemModifiers.Format(massAffliction), "物品周围 4.8 米内的玩家、排除持有者", "area conditions are localized");
+        Zh.Active = false;
         Equal(massSnapshot.SafetySourcesComplete, false,
-            "mass affliction remains incomplete because target and radius conditions are not rendered");
+            "area eligibility is not evaluated as an unconditional self safety guarantee");
         Equal(ItemDescription.FormatSnapshot(massSnapshot, "Raw text", "Found here.",
             new System.Collections.Generic.Dictionary<string, string> { ["cooked"] = "Cooking removes poison." }, cookedPoisonCheck),
-            "Found here. Some effect sources are unrecognized, so this claim could not be verified.",
+            "Found here. This effect note could not be checked against every effect source and target condition.",
             "mass action cannot bypass the safety-claim fallback");
 
         var randomMushroom = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
