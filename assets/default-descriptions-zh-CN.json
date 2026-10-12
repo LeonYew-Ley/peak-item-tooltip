@@ -98,7 +98,7 @@
         "DEPLOYABLE"
       ],
       "description": "发射一根向上卷绕的7.25米反重力绳索。零重量，丢弃后会漂浮",
-      "context": "部署会向上漂浮的反重力绳索。",
+      "context": "发射一根向上卷绕的7.25米反重力绳索。零重量，丢弃后会漂浮",
       "stateDescriptions": {
         "incinerated": "烧毁后无法使用。",
         "unusable": "该物品已烧毁，无法继续使用。"
@@ -118,7 +118,7 @@
         "DEPLOYABLE"
       ],
       "description": "提供共12.5米可攀爬的反重力绳索，可自定义铺设0.75米至10米长度。绳索会向上漂浮。负重量，丢弃后会漂浮",
-      "context": "部署可攀爬的反重力绳索。",
+      "context": "提供共12.5米可攀爬的反重力绳索，可自定义铺设0.75米至10米长度。绳索会向上漂浮。负重量，丢弃后会漂浮",
       "stateDescriptions": {
         "incinerated": "烧毁后无法使用。",
         "unusable": "该物品已烧毁，无法继续使用。"
@@ -156,7 +156,7 @@
     "Backpack": {
       "type": "EQUIPMENT",
       "description": "占用玩家第四个物品栏位，提供四个额外储存栏位",
-      "context": "提供四个额外储存栏位。",
+      "context": "占用玩家第四个物品栏位，提供四个额外储存栏位",
       "stateDescriptions": {
         "cooked": "烹饪只会改变外观；即使反复烧毁，背包仍可存放物品。",
         "burnt": "烹饪只会改变外观；即使反复烧毁，背包仍可存放物品。",
@@ -206,7 +206,7 @@
     "Bandages": {
       "type": "CONSUMABLE",
       "description": "一次性使用。治愈使用者的受伤",
-      "context": "一次性治疗用品。",
+      "context": "一次性使用。治愈使用者的受伤",
       "stateDescriptions": {
         "cooked": "烹饪只会改变外观，使用效果不变。",
         "burnt": "烹饪只会改变外观，使用效果不变。",
@@ -263,8 +263,8 @@
     },
     "Big Lollipop": {
       "type": "CONSUMABLE",
-      "description": "食用期间使使用者获得无限耐力",
-      "context": "在行李箱中发现。",
+      "description": "在行李箱中发现；食用期间使使用者获得无限耐力。",
+      "context": "在行李箱中发现；食用期间使使用者获得无限耐力。",
       "stateDescriptions": {
         "cooked": "烹饪会消除无限耐力效果结束后的困倦惩罚。"
       },
@@ -307,7 +307,7 @@
     },
     "Bird": {
       "type": "CONSUMABLE",
-      "description": "在火山发现，由蛋孵化。生成时即已烤熟",
+      "description": "打破大蛋或小蛋时有小概率获得；生成时已经烤熟。",
       "context": "打破大蛋或小蛋时有小概率获得；生成时已经烤熟。",
       "stateDescriptions": {
         "cooked": "它生成时已是烤熟阶段；再次烹饪会变为全熟，但效果与烤熟相同。",
@@ -338,7 +338,7 @@
     "Blowgun": {
       "type": "MISC",
       "description": "向其他侦察兵发射飞镖。单人游戏中不会生成",
-      "context": "向其他侦察兵发射飞镖。",
+      "context": "向其他侦察兵发射飞镖。单人游戏中不会生成",
       "stateDescriptions": {
         "cooked": "烹饪会将效果从困倦改为炎热。",
         "burnt": "烧熟后施加炎热，而非困倦。",
@@ -416,7 +416,7 @@
     "Bugle": {
       "type": "EQUIPMENT",
       "description": "在拍照点和坠机点发现。使用时发出音符",
-      "context": "使用时会发出音符。",
+      "context": "在拍照点和坠机点发现。使用时发出音符",
       "stateDescriptions": {
         "cooked": "每次烹饪都会让音调更加摇摆。",
         "burnt": "每次烹饪都会让音调更加摇摆。",
@@ -445,7 +445,7 @@
     },
     "Bugle Shroom": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒",
+      "description": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
       "context": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
       "stateDescriptions": {
         "cooked": "烹饪不会消除有毒蘑菇变种的中毒效果。"
@@ -461,7 +461,7 @@
     },
     "Button Shroom": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒",
+      "description": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
       "context": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
       "stateDescriptions": {
         "cooked": "烹饪不会消除有毒蘑菇变种的中毒效果。"
@@ -562,7 +562,7 @@
     },
     "Cluster Shroom": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林和方山发现。部分变种会在10秒后施加中毒",
+      "description": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
       "context": "在海岸、热带雨林、树根和方山发现；部分变种有毒。",
       "stateDescriptions": {
         "cooked": "烹饪不会消除有毒蘑菇变种的中毒效果。"
@@ -594,7 +594,7 @@
     },
     "Coconut Half": {
       "type": "CONSUMABLE",
-      "description": "由打破椰子获得",
+      "description": "打破椰子后获得；食用还会降低炎热。",
       "context": "打破椰子后获得；食用还会降低炎热。",
       "stateDescriptions": {
         "cooked": "烹饪一次会使恢复的饥饿值翻倍并增加额外耐力；具体数值仍以实时数值行为准。"
@@ -682,7 +682,7 @@
     },
     "EARLYWORM": {
       "type": "CONSUMABLE",
-      "description": "在雾沼发现。清除使用者的困倦",
+      "description": "在雾沼地面发现；食用会清除困倦并获得“休息充足”徽章。",
       "context": "在雾沼地面发现；食用会清除困倦并获得“休息充足”徽章。",
       "stateDescriptions": {
         "cooked": "烹饪会让虫子停止移动，但不会增加额外耐力。",
@@ -712,8 +712,8 @@
     },
     "Energy Drink": {
       "type": "CONSUMABLE",
-      "description": "提供暂时的速度提升，并施加困倦",
-      "context": "在行李箱中发现。",
+      "description": "在行李箱中发现；饮用后暂时提升速度，未烹饪时还会在效果结束后施加困倦。",
+      "context": "在行李箱中发现；饮用后暂时提升速度，未烹饪时还会在效果结束后施加困倦。",
       "stateDescriptions": {
         "cooked": "烹饪后的饮料饮用时会爆炸并击退附近玩家；速度效果延长4秒，结束后不再追加困倦。"
       },
@@ -765,7 +765,7 @@
     "First Aid Kit": {
       "type": "CONSUMABLE",
       "description": "使用需要5秒。清除中毒和孢子，并治愈受伤",
-      "context": "清除中毒和孢子，并治愈受伤。",
+      "context": "使用需要5秒。清除中毒和孢子，并治愈受伤",
       "stateDescriptions": {
         "cooked": "烹饪只会改变外观，使用效果不变。",
         "burnt": "烹饪只会改变外观，使用效果不变。",
@@ -783,7 +783,7 @@
     "Flare": {
       "type": "EQUIPMENT",
       "description": "在坠机点和峰顶发现。在峰顶使用时召唤救援直升机",
-      "context": "在峰顶使用时会召唤救援直升机。",
+      "context": "在坠机点和峰顶发现。在峰顶使用时召唤救援直升机",
       "stateDescriptions": {
         "cooked": "烹饪会使其爆炸，对小范围内的侦察兵造成受伤效果。"
       },
@@ -798,8 +798,8 @@
     },
     "Fortified Milk": {
       "type": "CONSUMABLE",
-      "description": "清除使用者的炎热",
-      "context": "在行李箱中发现。",
+      "description": "在行李箱中发现；饮用后清除使用者的炎热。",
+      "context": "在行李箱中发现；饮用后清除使用者的炎热。",
       "stateDescriptions": {
         "cooked": "首次烹饪会使无敌时间延长10秒；继续烹饪不会再增加时间。"
       },
@@ -971,7 +971,7 @@
     "Guidebook": {
       "type": "EQUIPMENT",
       "description": "在海岸坠机点发现。教授基础玩法",
-      "context": "教授基础玩法。",
+      "context": "在海岸坠机点发现。教授基础玩法",
       "stateDescriptions": {
         "incinerated": "烧毁后无法使用。",
         "unusable": "该物品已烧毁，无法继续使用。"
@@ -988,7 +988,7 @@
     "Heat Pack": {
       "type": "CONSUMABLE",
       "description": "在雪山发现。清除使用者的寒冷",
-      "context": "清除使用者的寒冷。",
+      "context": "在雪山发现。清除使用者的寒冷",
       "stateDescriptions": {
         "cooked": "烹饪会使其爆炸，对小范围内的侦察兵造成受伤效果。"
       },
@@ -1040,7 +1040,7 @@
     "Lantern": {
       "type": "EQUIPMENT",
       "description": "在雨林和雪山发现。提供光线并清除寒冷",
-      "context": "提供光线并清除寒冷。",
+      "context": "在雨林和雪山发现。提供光线并清除寒冷",
       "stateDescriptions": {
         "cooked": "烹饪会使其爆炸，对小范围内的侦察兵造成受伤效果。"
       },
@@ -1096,8 +1096,8 @@
     },
     "Medicinal Root": {
       "type": "CONSUMABLE",
-      "description": "在海岸、雨林、森蕈和方山发现。清除中毒和孢子，并治愈受伤",
-      "context": "在海岸、热带雨林、树根和方山发现。",
+      "description": "在海岸、热带雨林、树根和方山发现；使用可清除中毒和孢子，并治愈受伤。",
+      "context": "在海岸、热带雨林、树根和方山发现；使用可清除中毒和孢子，并治愈受伤。",
       "stateDescriptions": {
         "cooked": "烹饪后会额外消除中毒和孢子。"
       },
@@ -1199,7 +1199,7 @@
     "Portable Stove": {
       "type": "DEPLOYABLE",
       "description": "放置后用于烹饪物品。放置后持续60秒",
-      "context": "放置后可用于烹饪物品。",
+      "context": "放置后用于烹饪物品。放置后持续60秒",
       "stateDescriptions": {
         "cooked": "烹饪会使其爆炸，对小范围内的侦察兵造成受伤效果。"
       },
@@ -1262,7 +1262,7 @@
     },
     "Red Crispberry": {
       "type": "CONSUMABLE",
-      "description": "在大多数生物群系发现",
+      "description": "在多个生物群系的灌木上发现的天然莓果。",
       "context": "在多个生物群系的灌木上发现的天然莓果。",
       "stateDescriptions": {
         "cooked": "烹饪一次会使恢复的饥饿值翻倍并增加额外耐力；具体数值以实时数值行为准。"
@@ -1339,7 +1339,7 @@
     "Rescue Claw": {
       "type": "EQUIPMENT",
       "description": "可使用3次。将使用者拉向地形，或将其他侦察兵拉向使用者",
-      "context": "将使用者拉向地形，或将其他侦察兵拉向使用者。",
+      "context": "可使用3次。将使用者拉向地形，或将其他侦察兵拉向使用者",
       "stateDescriptions": {
         "incinerated": "烧毁后无法使用。",
         "unusable": "该物品已烧毁，无法继续使用。"
@@ -1397,7 +1397,7 @@
     "rope spool": {
       "type": "DEPLOYABLE",
       "description": "部署最长10米的可攀爬绳索，可附着在任何可攀爬表面",
-      "context": "部署最长10米的可攀爬绳索。",
+      "context": "部署最长10米的可攀爬绳索，可附着在任何可攀爬表面",
       "stateDescriptions": {
         "incinerated": "烧毁后无法使用。",
         "unusable": "该物品已烧毁，无法继续使用。"
@@ -1425,7 +1425,7 @@
     },
     "Scorpion": {
       "type": "MISC",
-      "description": "在方山发现。可以持有但不能放入物品栏位，也不能生吃",
+      "description": "在方山的峡谷和峭壁发现；可以持有但无法存入物品栏或背包，不能生吃。",
       "context": "在方山的峡谷和峭壁发现；可以持有但无法存入物品栏或背包，不能生吃。",
       "stateDescriptions": {
         "cooked": "烹饪后可以食用，也会停止移动和攻击；仍不能存入物品栏或背包。"
@@ -1442,7 +1442,7 @@
     "Scout Cannon": {
       "type": "DEPLOYABLE",
       "description": "放置一门大炮，将侦察兵发射到地图各处。发射时造成受伤",
-      "context": "将侦察兵发射到地图各处。",
+      "context": "放置一门大炮，将侦察兵发射到地图各处。发射时造成受伤",
       "stateDescriptions": {
         "cooked": "烹饪会使其以类似炸药的方式爆炸。"
       },
@@ -1469,7 +1469,7 @@
     },
     "Scout Effigy": {
       "type": "MYSTICAL",
-      "description": "在目标位置复活一名死亡的侦察兵。单人游戏中不会生成",
+      "description": "一次性神秘道具，可在目标位置复活死亡或昏迷的侦察兵；单人游戏中不会生成。",
       "context": "一次性神秘道具，可在目标位置复活死亡或昏迷的侦察兵；单人游戏中不会生成。",
       "stateDescriptions": {
         "cooked": "烹饪后使用图腾还会提供额外耐力。",
@@ -1486,8 +1486,8 @@
     },
     "Scoutmaster's Bugle": {
       "type": "MYSTICAL",
-      "description": "为使用者及附近侦察兵提供额外耐力，并召唤侦察队长两分钟",
-      "context": "一次性神秘道具，可从远古行李箱或远古雕像中获得；吹奏会为附近侦察兵提供额外耐力并召来侦察队长。",
+      "description": "一次性神秘道具，可从远古行李箱或远古雕像中获得；吹奏会为使用者及附近侦察兵提供额外耐力，并召来侦察队长两分钟。",
+      "context": "一次性神秘道具，可从远古行李箱或远古雕像中获得；吹奏会为使用者及附近侦察兵提供额外耐力，并召来侦察队长两分钟。",
       "stateDescriptions": {
         "incinerated": "烧毁后再吹奏还会使使用者中毒。"
       },
@@ -1506,7 +1506,7 @@
     },
     "ScoutsHonor": {
       "type": "MYSTICAL",
-      "description": "由峰顶的石像侦察兵持有。使用后将所有玩家传送至天底",
+      "description": "将四枚侦察兵护符交给峰顶的石像侦察兵后获得；启动后会把所有侦察兵传送至天底。",
       "context": "将四枚侦察兵护符交给峰顶的石像侦察兵后获得；启动后会把所有侦察兵传送至天底。",
       "stateDescriptions": {
         "cooked": "烹饪会触发半径40米的反重力球爆炸，并召来追击烹饪者的侦察队长。"
@@ -1570,8 +1570,8 @@
     },
     "SNOWBALL": {
       "type": "MISC",
-      "description": "在雪山发现。可以扔向其他侦察兵",
-      "context": "从雪堆中拾取；雪球越大，击退越强，达到一定大小后无法拾起。",
+      "description": "在雪山的雪堆中拾取，可投向其他侦察兵；雪球越大，击退越强，达到一定大小后无法拾起。",
+      "context": "在雪山的雪堆中拾取，可投向其他侦察兵；雪球越大，击退越强，达到一定大小后无法拾起。",
       "stateDescriptions": {
         "cooked": "烹饪后的雪球命中目标时会施加寒冷，但不会将目标击倒。"
       },
@@ -1586,8 +1586,8 @@
     },
     "Sports Drink": {
       "type": "CONSUMABLE",
-      "description": "清除使用者的大量炎热",
-      "context": "在行李箱中发现。",
+      "description": "在行李箱中发现；饮用后清除使用者的大量炎热。",
+      "context": "在行李箱中发现；饮用后清除使用者的大量炎热。",
       "stateDescriptions": {
         "cooked": "首次烹饪会增加额外耐力；继续烹饪不会改变效果。",
         "burnt": "这种饮料烧焦后没有额外惩罚。",
@@ -1612,7 +1612,7 @@
     },
     "Strange Gem": {
       "type": "MYSTICAL",
-      "description": "由峰顶的石像侦察兵持有。可以开关，但没有什么实际用途",
+      "description": "由峰顶石像侦察兵持有；点击可切换屏幕上的激活提示。",
       "context": "由峰顶石像侦察兵持有；点击可切换屏幕上的激活提示。",
       "stateDescriptions": {
         "cooked": "交给石像侦察兵后会为使用者提供额外耐力。",
@@ -1629,8 +1629,8 @@
     },
     "Sunscreen": {
       "type": "CONSUMABLE",
-      "description": "可使用3次。每次喷雾提供90秒防晒",
-      "context": "喷洒后可提供防晒效果。",
+      "description": "最多可使用3次；未烹饪时，每次喷雾提供90秒防晒。",
+      "context": "最多可使用3次；未烹饪时，每次喷雾提供90秒防晒。",
       "stateDescriptions": {
         "cooked": "烹饪后使用会爆炸并释放大范围防晒云雾，不会造成击退。",
         "burnt": "烹饪后使用会爆炸并释放大范围防晒云雾，不会造成击退。",
@@ -1709,7 +1709,7 @@
         "DEPLOYABLE"
       ],
       "description": "在远古行李和雕像中发现。发射一颗最远40米的虚空球，在其落点反转重力",
-      "context": "发射反重力球，落点会出现反转重力的区域。",
+      "context": "在远古行李和雕像中发现。发射一颗最远40米的虚空球，在其落点反转重力",
       "stateDescriptions": {
         "cooked": "烹饪会使其爆炸，并在原地生成更大的反重力球。"
       },

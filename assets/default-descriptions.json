@@ -98,7 +98,7 @@
         "DEPLOYABLE"
       ],
       "description": "Attaches a 7.25 metre anti-rope which spools upwards. It has zero weight and will float when dropped",
-      "context": "Deploys a floating anti-gravity rope.",
+      "context": "Attaches a 7.25 metre anti-rope which spools upwards. It has zero weight and will float when dropped",
       "stateDescriptions": {
         "incinerated": "Incinerating this item makes it unusable.",
         "unusable": "This item has been incinerated and can no longer be used."
@@ -118,7 +118,7 @@
         "DEPLOYABLE"
       ],
       "description": "Provides a total of 12.5 metres climbable anti gravity rope, placeable in custom lengths from 0.75m to 10m long. The rope will float upwards. It has negative weight and will float when dropped",
-      "context": "Deploys a climbable anti-gravity rope.",
+      "context": "Provides a total of 12.5 metres climbable anti gravity rope, placeable in custom lengths from 0.75m to 10m long. The rope will float upwards. It has negative weight and will float when dropped",
       "stateDescriptions": {
         "incinerated": "Incinerating this item makes it unusable.",
         "unusable": "This item has been incinerated and can no longer be used."
@@ -156,7 +156,7 @@
     "Backpack": {
       "type": "EQUIPMENT",
       "description": "Occupies the player's fourth inventory slot and provides four additional storage slots",
-      "context": "Provides four additional storage slots.",
+      "context": "Occupies the player's fourth inventory slot and provides four additional storage slots",
       "stateDescriptions": {
         "cooked": "Cooking changes its appearance only; it can still hold items, even after repeated incineration.",
         "burnt": "Cooking changes its appearance only; it can still hold items, even after repeated incineration.",
@@ -206,7 +206,7 @@
     "Bandages": {
       "type": "CONSUMABLE",
       "description": "Single-use. Heals injury on the user",
-      "context": "Single-use healing item.",
+      "context": "Single-use. Heals injury on the user",
       "stateDescriptions": {
         "cooked": "Cooking changes its appearance only; its use effect is unchanged.",
         "burnt": "Cooking changes its appearance only; its use effect is unchanged.",
@@ -263,8 +263,8 @@
     },
     "Big Lollipop": {
       "type": "CONSUMABLE",
-      "description": "Grants infinite stamina to the user while being eaten",
-      "context": "Found in luggage.",
+      "description": "Found in luggage; grants infinite stamina while being eaten.",
+      "context": "Found in luggage; grants infinite stamina while being eaten.",
       "stateDescriptions": {
         "cooked": "Cooking removes the Drowsy penalty that follows its infinite-stamina effect."
       },
@@ -307,7 +307,7 @@
     },
     "Bird": {
       "type": "CONSUMABLE",
-      "description": "Found in the caldera, hatched from eggs. Spawns pre-cooked",
+      "description": "A rare result from cracking Big Eggs or Small Eggs; it spawns pre-cooked.",
       "context": "A rare result from cracking Big Eggs or Small Eggs; it spawns pre-cooked.",
       "stateDescriptions": {
         "cooked": "It already spawns as Cooked; cooking it again makes it Well-Done, with the same effect as Cooked.",
@@ -338,7 +338,7 @@
     "Blowgun": {
       "type": "MISC",
       "description": "Fires darts at other scouts. Does not spawn in solo play",
-      "context": "Fires darts at other scouts.",
+      "context": "Fires darts at other scouts. Does not spawn in solo play",
       "stateDescriptions": {
         "cooked": "Cooking changes its effect from Drowsy to Heat.",
         "burnt": "Its cooked effect applies Heat instead of Drowsy.",
@@ -416,7 +416,7 @@
     "Bugle": {
       "type": "EQUIPMENT",
       "description": "Found at the photobooth and crash site. Plays a musical note when used",
-      "context": "Plays a musical note when used.",
+      "context": "Found at the photobooth and crash site. Plays a musical note when used",
       "stateDescriptions": {
         "cooked": "Each cooking makes its pitch wobble more.",
         "burnt": "Each cooking makes its pitch wobble more.",
@@ -445,7 +445,7 @@
     },
     "Bugle Shroom": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds",
+      "description": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
       "context": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
       "stateDescriptions": {
         "cooked": "Cooking does not remove Poison from poisonous mushroom varieties."
@@ -461,7 +461,7 @@
     },
     "Button Shroom": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds",
+      "description": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
       "context": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
       "stateDescriptions": {
         "cooked": "Cooking does not remove Poison from poisonous mushroom varieties."
@@ -562,7 +562,7 @@
     },
     "Cluster Shroom": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics and mesa. Some variants afflict poison after 10 seconds",
+      "description": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
       "context": "Found in the Shore, Tropics, Roots, and Mesa; some varieties are poisonous.",
       "stateDescriptions": {
         "cooked": "Cooking does not remove Poison from poisonous mushroom varieties."
@@ -594,7 +594,7 @@
     },
     "Coconut Half": {
       "type": "CONSUMABLE",
-      "description": "Created by breaking a Coconut",
+      "description": "Made by splitting a Coconut; eating a half also removes Heat.",
       "context": "Made by splitting a Coconut; eating a half also removes Heat.",
       "stateDescriptions": {
         "cooked": "Cooking once doubles its Hunger restoration and adds Bonus stamina; the current amounts remain in the live modifier row."
@@ -682,7 +682,7 @@
     },
     "EARLYWORM": {
       "type": "CONSUMABLE",
-      "description": "Found in the gloom. Removes drowsiness from the user",
+      "description": "Found moving on the ground in the Gloom; eating it clears Drowsy and grants the Well Rested badge.",
       "context": "Found moving on the ground in the Gloom; eating it clears Drowsy and grants the Well Rested badge.",
       "stateDescriptions": {
         "cooked": "Cooking stops the worm moving but adds no Bonus stamina.",
@@ -712,8 +712,8 @@
     },
     "Energy Drink": {
       "type": "CONSUMABLE",
-      "description": "Grants a temporary speed boost and afflicts drowsiness",
-      "context": "Found in luggage.",
+      "description": "Found in luggage; drinking it temporarily increases movement speed. When uncooked, it also causes Drowsy after the boost ends.",
+      "context": "Found in luggage; drinking it temporarily increases movement speed. When uncooked, it also causes Drowsy after the boost ends.",
       "stateDescriptions": {
         "cooked": "When consumed, a cooked drink explodes and knocks back nearby players; its speed effect lasts 4 seconds longer and adds no new Drowsy afterward."
       },
@@ -765,7 +765,7 @@
     "First Aid Kit": {
       "type": "CONSUMABLE",
       "description": "Takes 5 seconds to use. Removes poison and spores, and heals injury",
-      "context": "Removes Poison and Spores and heals Injury.",
+      "context": "Takes 5 seconds to use. Removes poison and spores, and heals injury",
       "stateDescriptions": {
         "cooked": "Cooking changes its appearance only; its use effect is unchanged.",
         "burnt": "Cooking changes its appearance only; its use effect is unchanged.",
@@ -783,7 +783,7 @@
     "Flare": {
       "type": "EQUIPMENT",
       "description": "Found at the crash site and peak. Summons the rescue helicopter when used at the PEAK",
-      "context": "Summons the rescue helicopter when used at the Peak.",
+      "context": "Found at the crash site and peak. Summons the rescue helicopter when used at the PEAK",
       "stateDescriptions": {
         "cooked": "Cooking makes it explode, injuring scouts in a small radius."
       },
@@ -798,8 +798,8 @@
     },
     "Fortified Milk": {
       "type": "CONSUMABLE",
-      "description": "Removes heat from the user",
-      "context": "Found in luggage.",
+      "description": "Found in luggage; drinking it removes Heat from the user.",
+      "context": "Found in luggage; drinking it removes Heat from the user.",
       "stateDescriptions": {
         "cooked": "The first cooking stage adds 10 seconds of invulnerability; further cooking adds no more time."
       },
@@ -971,7 +971,7 @@
     "Guidebook": {
       "type": "EQUIPMENT",
       "description": "Found at the shore crash site. Teaches basic gameplay",
-      "context": "Teaches basic gameplay.",
+      "context": "Found at the shore crash site. Teaches basic gameplay",
       "stateDescriptions": {
         "incinerated": "Incinerating this item makes it unusable.",
         "unusable": "This item has been incinerated and can no longer be used."
@@ -988,7 +988,7 @@
     "Heat Pack": {
       "type": "CONSUMABLE",
       "description": "Found in the alpine. Removes cold from the user",
-      "context": "Removes Cold from the user.",
+      "context": "Found in the alpine. Removes cold from the user",
       "stateDescriptions": {
         "cooked": "Cooking makes it explode, injuring scouts in a small radius."
       },
@@ -1040,7 +1040,7 @@
     "Lantern": {
       "type": "EQUIPMENT",
       "description": "Found in the tropics and alpine. Provides light and removes cold",
-      "context": "Provides light and removes Cold.",
+      "context": "Found in the tropics and alpine. Provides light and removes cold",
       "stateDescriptions": {
         "cooked": "Cooking makes it explode, injuring scouts in a small radius."
       },
@@ -1096,8 +1096,8 @@
     },
     "Medicinal Root": {
       "type": "CONSUMABLE",
-      "description": "Found on the shore, tropics, roots and mesa. Removes poison and spores, and heals injury",
-      "context": "Found in the Shore, Tropics, Roots, and Mesa.",
+      "description": "Found in the Shore, Tropics, Roots, and Mesa; using it removes Poison and Spores and heals Injury.",
+      "context": "Found in the Shore, Tropics, Roots, and Mesa; using it removes Poison and Spores and heals Injury.",
       "stateDescriptions": {
         "cooked": "Cooking removes additional Poison and Spores."
       },
@@ -1218,7 +1218,7 @@
     "Portable Stove": {
       "type": "DEPLOYABLE",
       "description": "Placed to cook items. Lasts 60 seconds after being placed",
-      "context": "Can be placed to cook items.",
+      "context": "Placed to cook items. Lasts 60 seconds after being placed",
       "stateDescriptions": {
         "cooked": "Cooking makes it explode, injuring scouts in a small radius."
       },
@@ -1281,7 +1281,7 @@
     },
     "Red Crispberry": {
       "type": "CONSUMABLE",
-      "description": "Found across most biomes",
+      "description": "A natural berry found on bushes across several biomes.",
       "context": "A natural berry found on bushes across several biomes.",
       "stateDescriptions": {
         "cooked": "Cooking once doubles Hunger restoration and adds Bonus stamina; current values remain in the live modifier rows."
@@ -1358,7 +1358,7 @@
     "Rescue Claw": {
       "type": "EQUIPMENT",
       "description": "Can be used 3 times. Pulls the wielder toward terrain, or pulls other scouts toward them",
-      "context": "Pulls the wielder toward terrain or pulls other scouts toward them.",
+      "context": "Can be used 3 times. Pulls the wielder toward terrain, or pulls other scouts toward them",
       "stateDescriptions": {
         "incinerated": "Incinerating this item makes it unusable.",
         "unusable": "This item has been incinerated and can no longer be used."
@@ -1416,7 +1416,7 @@
     "rope spool": {
       "type": "DEPLOYABLE",
       "description": "Deploys climbable rope up to 10 metres long, attachable to any climbable surface",
-      "context": "Deploys climbable rope up to 10 metres long.",
+      "context": "Deploys climbable rope up to 10 metres long, attachable to any climbable surface",
       "stateDescriptions": {
         "incinerated": "Incinerating this item makes it unusable.",
         "unusable": "This item has been incinerated and can no longer be used."
@@ -1444,7 +1444,7 @@
     },
     "Scorpion": {
       "type": "MISC",
-      "description": "Found in the mesa. Can be held but not stored in an inventory slot, and cannot be eaten raw",
+      "description": "Found in Mesa canyons and cliffs; it can be held but not stored, and it cannot be eaten raw.",
       "context": "Found in Mesa canyons and cliffs; it can be held but not stored, and it cannot be eaten raw.",
       "stateDescriptions": {
         "cooked": "Cooking makes it edible and stops it moving or attacking; it still cannot be stored in an inventory slot or Backpack."
@@ -1461,7 +1461,7 @@
     "Scout Cannon": {
       "type": "DEPLOYABLE",
       "description": "Places a cannon that launches scouts across the map. Afflicts injury on launch",
-      "context": "Launches scouts across the map.",
+      "context": "Places a cannon that launches scouts across the map. Afflicts injury on launch",
       "stateDescriptions": {
         "cooked": "Cooking makes it explode in a manner similar to Dynamite."
       },
@@ -1488,7 +1488,7 @@
     },
     "Scout Effigy": {
       "type": "MYSTICAL",
-      "description": "Resurrects a dead scout at a target location. Does not spawn in solo play",
+      "description": "A one-use mystical item that can revive a dead or unconscious Scout at the target location; it does not spawn in solo play.",
       "context": "A one-use mystical item that can revive a dead or unconscious Scout at the target location; it does not spawn in solo play.",
       "stateDescriptions": {
         "cooked": "Cooking grants Bonus stamina when the effigy is used.",
@@ -1505,8 +1505,8 @@
     },
     "Scoutmaster's Bugle": {
       "type": "MYSTICAL",
-      "description": "Grants the user and nearby scouts bonus stamina, and summons the Scoutmaster for two minutes",
-      "context": "A one-use mystical item from Ancient Luggage or an Ancient Statue; playing it grants nearby Scouts Bonus stamina and summons the Scoutmaster.",
+      "description": "A single-use mystical item found in Ancient Luggage or at Ancient Statues; blowing it grants Bonus Stamina to the user and nearby scouts and summons the Scoutmaster for two minutes.",
+      "context": "A single-use mystical item found in Ancient Luggage or at Ancient Statues; blowing it grants Bonus Stamina to the user and nearby scouts and summons the Scoutmaster for two minutes.",
       "stateDescriptions": {
         "incinerated": "Playing it after Incineration also inflicts Poison on the user."
       },
@@ -1525,7 +1525,7 @@
     },
     "ScoutsHonor": {
       "type": "MYSTICAL",
-      "description": "Held by the Stone Scout at the PEAK. On use, transports all players to Nadir",
+      "description": "Created when four Scout Amulets are bestowed on the Stone Scout at the Peak; activating it sends all Scouts to Nadir.",
       "context": "Created when four Scout Amulets are bestowed on the Stone Scout at the Peak; activating it sends all Scouts to Nadir.",
       "stateDescriptions": {
         "cooked": "Cooking triggers a 40-meter Anti-Sphere explosion and summons the Scoutmaster to chase the player who cooked it."
@@ -1589,8 +1589,8 @@
     },
     "SNOWBALL": {
       "type": "MISC",
-      "description": "Found in the alpine. Can be thrown at other scouts",
-      "context": "Collected from snow piles; larger snowballs hit harder and eventually become too large to pick up.",
+      "description": "Picked up from snow piles in the Alpine and throwable at other scouts; larger snowballs cause stronger knockback, and become too large to pick up beyond a certain size.",
+      "context": "Picked up from snow piles in the Alpine and throwable at other scouts; larger snowballs cause stronger knockback, and become too large to pick up beyond a certain size.",
       "stateDescriptions": {
         "cooked": "A cooked Snowball inflicts Cold when it hits but does not knock the target down."
       },
@@ -1605,8 +1605,8 @@
     },
     "Sports Drink": {
       "type": "CONSUMABLE",
-      "description": "Removes a large amount of heat from the user",
-      "context": "Found in luggage.",
+      "description": "Found in luggage; drinking it removes a large amount of Heat from the user.",
+      "context": "Found in luggage; drinking it removes a large amount of Heat from the user.",
       "stateDescriptions": {
         "cooked": "The first cooking stage adds Bonus Stamina; further cooking has no effect.",
         "burnt": "This drink has no Burnt-stage penalty.",
@@ -1631,7 +1631,7 @@
     },
     "Strange Gem": {
       "type": "MYSTICAL",
-      "description": "Held by the Stone Scout at the PEAK. Can be toggled on and off, but serves no practical purpose",
+      "description": "Found in the Stone Scout’s hands at the Peak; clicking it toggles its activation message.",
       "context": "Found in the Stone Scout’s hands at the Peak; clicking it toggles its activation message.",
       "stateDescriptions": {
         "cooked": "If bestowed on the Stone Scout, it grants Bonus stamina to the user.",
@@ -1648,8 +1648,8 @@
     },
     "Sunscreen": {
       "type": "CONSUMABLE",
-      "description": "Can be used 3 times. Each spray grants sun protection for 90 seconds",
-      "context": "Provides sun protection when sprayed.",
+      "description": "Up to three uses; each uncooked spray provides 90 seconds of Sun Protection.",
+      "context": "Up to three uses; each uncooked spray provides 90 seconds of Sun Protection.",
       "stateDescriptions": {
         "cooked": "When used after cooking, it explodes into a large sunscreen cloud without knockback.",
         "burnt": "When used after cooking, it explodes into a large sunscreen cloud without knockback.",
@@ -1728,7 +1728,7 @@
         "DEPLOYABLE"
       ],
       "description": "Found in ancient luggage and statues. Shoots an anti-sphere up to 40 metres away that reverses gravity where it lands",
-      "context": "Shoots an Anti-Sphere that reverses gravity where it lands.",
+      "context": "Found in ancient luggage and statues. Shoots an anti-sphere up to 40 metres away that reverses gravity where it lands",
       "stateDescriptions": {
         "cooked": "Cooking makes it explode and creates a larger Anti-Sphere at its location."
       },
