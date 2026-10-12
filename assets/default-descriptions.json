@@ -368,7 +368,7 @@
     "Blue Shroomberry": {
       "type": "CONSUMABLE",
       "description": "Found in the roots. Releases spores, and produces a harmful effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten.",
+      "context": "Found in the Roots; releases Spores when eaten raw.",
       "stateDescriptions": {
         "raw": "Eating it can cause a random harmful effect.",
         "cooked": "Cooking removes its Spores effect."
@@ -947,7 +947,7 @@
     "Green Shroomberry": {
       "type": "CONSUMABLE",
       "description": "Found in the roots. Releases spores, and produces a harmful effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten.",
+      "context": "Found in the Roots; releases Spores when eaten raw.",
       "stateDescriptions": {
         "raw": "Eating it can cause a random harmful effect.",
         "cooked": "Cooking removes its Spores effect."
@@ -1169,7 +1169,7 @@
     },
     "Pink Berrynana": {
       "type": "CONSUMABLE",
-      "description": "Found on vines in the tropics. Eating it drops a Berrynana Peel; eating it raw causes Poison, while cooking removes Poison.",
+      "description": "Found on vines in the tropics. Eating it drops a Berrynana Peel; eating it raw causes Poison, while the cooked or well-done stage removes its original Poison effect.",
       "wiki": {
         "title": "Pink Berrynana",
         "revision": 10041,
@@ -1246,7 +1246,7 @@
     "Purple Shroomberry": {
       "type": "CONSUMABLE",
       "description": "Found in the roots. Releases spores, and produces a random good or bad effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten.",
+      "context": "Found in the Roots; releases Spores when eaten raw.",
       "stateDescriptions": {
         "raw": "Eating it can cause a random good or bad effect.",
         "cooked": "Cooking removes its Spores effect."
@@ -1322,7 +1322,7 @@
     "Red Shroomberry": {
       "type": "CONSUMABLE",
       "description": "Found in the roots. Releases spores, and produces a beneficial effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten.",
+      "context": "Found in the Roots; releases Spores when eaten raw.",
       "stateDescriptions": {
         "raw": "Eating it can cause a random beneficial effect.",
         "cooked": "Cooking removes its Spores effect."
@@ -1848,7 +1848,7 @@
     "Yellow Shroomberry": {
       "type": "CONSUMABLE",
       "description": "Found in the roots. Releases spores, and produces a beneficial effect when eaten",
-      "context": "Found in the Roots; releases Spores when eaten.",
+      "context": "Found in the Roots; releases Spores when eaten raw.",
       "stateDescriptions": {
         "raw": "Eating it can cause a random beneficial effect.",
         "cooked": "Cooking removes its Spores effect."

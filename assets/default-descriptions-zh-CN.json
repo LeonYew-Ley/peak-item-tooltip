@@ -368,7 +368,7 @@
     "Blue Shroomberry": {
       "type": "CONSUMABLE",
       "description": "在森蕈发现。释放孢子，食用后产生有害效果",
-      "context": "在树根区域发现；食用后会释放孢子。",
+      "context": "在树根区域发现；生食时会释放孢子。",
       "stateDescriptions": {
         "raw": "食用后可能触发随机负面效果。",
         "cooked": "烹饪会消除其孢子效果。"
@@ -947,7 +947,7 @@
     "Green Shroomberry": {
       "type": "CONSUMABLE",
       "description": "在森蕈发现。释放孢子，食用后产生有害效果",
-      "context": "在树根区域发现；食用后会释放孢子。",
+      "context": "在树根区域发现；生食时会释放孢子。",
       "stateDescriptions": {
         "raw": "食用后可能触发随机负面效果。",
         "cooked": "烹饪会消除其孢子效果。"
@@ -1227,7 +1227,7 @@
     "Purple Shroomberry": {
       "type": "CONSUMABLE",
       "description": "在森蕈发现。释放孢子，食用后产生随机的有益或有害效果",
-      "context": "在树根区域发现；食用后会释放孢子。",
+      "context": "在树根区域发现；生食时会释放孢子。",
       "stateDescriptions": {
         "raw": "食用后可能触发随机正面或负面效果。",
         "cooked": "烹饪会消除其孢子效果。"
@@ -1303,7 +1303,7 @@
     "Red Shroomberry": {
       "type": "CONSUMABLE",
       "description": "在森蕈发现。释放孢子，食用后产生有益效果",
-      "context": "在树根区域发现；食用后会释放孢子。",
+      "context": "在树根区域发现；生食时会释放孢子。",
       "stateDescriptions": {
         "raw": "食用后可能触发随机正面效果。",
         "cooked": "烹饪会消除其孢子效果。"
@@ -1829,7 +1829,7 @@
     "Yellow Shroomberry": {
       "type": "CONSUMABLE",
       "description": "在森蕈发现。释放孢子，食用后产生有益效果",
-      "context": "在树根区域发现；食用后会释放孢子。",
+      "context": "在树根区域发现；生食时会释放孢子。",
       "stateDescriptions": {
         "raw": "食用后可能触发随机正面效果。",
         "cooked": "烹饪会消除其孢子效果。"
@@ -1864,7 +1864,7 @@
     },
     "Pink Berrynana": {
       "type": "CONSUMABLE",
-      "description": "在热带雨林的藤蔓上发现。食用后会留下莓蕉皮；生食会中毒，烹饪会消除中毒。",
+      "description": "在热带雨林的藤蔓上发现。食用后会留下莓蕉皮；生食会中毒，烤熟或全熟时会消除原有的中毒效果。",
       "wiki": {
         "title": "Pink Berrynana",
         "revision": 10041,
