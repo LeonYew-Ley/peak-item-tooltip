@@ -114,6 +114,16 @@ namespace PeakItemTooltip
 
             AppendActionAfflictions(sb, ref first, item);
 
+            foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
+            {
+                if (!EffectEnabled(action, item) || action.GetType().Name != "Action_ApplyInfiniteStamina"
+                    || !TryReadFloatField(action, "buffTime", out float buffTime) || !ValidDuration(buffTime)) continue;
+                // This action constructs an InfiniteStamina payload without an end affliction.
+                // Its serialized drowsyAmount field is not used by RunAction in PEAK 2.6.b.
+                AppendEffectNote(sb, ref first, QualifyActionLabel(action,
+                    BuffDurationLabel(Zh.IsActive() ? "无限耐力" : "Infinite Stamina", buffTime)));
+            }
+
             // thorns are applied directly to the character rather than through a STATUSTYPE component
             foreach (MonoBehaviour action in item.GetComponentsInChildren<MonoBehaviour>(true))
             {
@@ -202,6 +212,11 @@ namespace PeakItemTooltip
                 if (!EffectEnabled(action, item)) continue;
                 string typeName = action.GetType().Name;
                 if (!(action is ItemActionBase) && !typeName.StartsWith("Action_", StringComparison.Ordinal)) continue;
+                if (typeName == "Action_ApplyInfiniteStamina")
+                {
+                    if (TryReadFloatField(action, "buffTime", out float buffTime) && ValidDuration(buffTime)) continue;
+                    return false;
+                }
                 if (IsApplyAfflictionAction(action))
                 {
                     if (!IsMassAfflictionAction(action)
@@ -272,6 +287,29 @@ namespace PeakItemTooltip
                         if (staminaDuration > 0f) label = TimedStatusLabel(label, staminaDuration);
                         AppendLine(sb, ref first, StaminaColour, staminaAmount, QualifyActionLabel(action, label));
                     }
+                    else if (TryReadTimedBuff(affliction, out string buffLabel, out float buffDuration))
+                    {
+                        AppendEffectNote(sb, ref first, QualifyActionLabel(action, BuffDurationLabel(buffLabel, buffDuration)));
+                    }
+                    else if (TryReadInfiniteStamina(affliction, out float infiniteDuration, out float climbDelay,
+                        out object drowsy))
+                    {
+                        string label = Zh.IsActive()
+                            ? "无限耐力（基础时长 " + FormatSeconds(infiniteDuration) + " 秒"
+                            : "Infinite Stamina (base " + FormatSeconds(infiniteDuration) + "s";
+                        if (climbDelay > 0f) label += Zh.IsActive()
+                            ? "，攀爬前最多额外 " + FormatSeconds(climbDelay) + " 秒"
+                            : ", up to " + FormatSeconds(climbDelay) + "s grace before climbing";
+                        label += Zh.IsActive() ? "）" : ")";
+                        AppendEffectNote(sb, ref first, QualifyActionLabel(action, label));
+                        if (drowsy != null && TryReadInfiniteStaminaEnd(drowsy, out float endDuration, out float endRate))
+                        {
+                            string endLabel = TimedStatusLabel(CharacterAfflictions.STATUSTYPE.Drowsy, endDuration)
+                                + (Zh.IsActive() ? "（无限耐力结束后）" : " (after Infinite Stamina ends)");
+                            AppendLine(sb, ref first, ColourFor(CharacterAfflictions.STATUSTYPE.Drowsy),
+                                endRate * endDuration, QualifyActionLabel(action, endLabel));
+                        }
+                    }
                 }
             }
         }
@@ -301,10 +339,68 @@ namespace PeakItemTooltip
                 if (typeName == "Affliction_AddBonusStamina"
                     && TryReadFloatField(affliction, "totalTime", out float _)
                     && TryReadFloatField(affliction, "staminaAmount", out float _)) continue;
+                if (TryReadTimedBuff(affliction, out string _, out float _)) continue;
+                if (TryReadInfiniteStamina(affliction, out float _, out float _, out object end)
+                    && (end == null || TryReadInfiniteStaminaEnd(end, out float _, out float _))) continue;
                 return false;
             }
 
             return true;
+        }
+
+        private static bool TryReadTimedBuff(object affliction, out string label, out float duration)
+        {
+            label = null;
+            duration = 0f;
+            if (affliction == null) return false;
+            switch (affliction.GetType().Name)
+            {
+                case "Affliction_Invincibility": label = Zh.IsActive() ? "无敌" : "Invincibility"; break;
+                case "Affliction_Sunscreen": label = Zh.IsActive() ? "防晒" : "Sun Protection"; break;
+                case "Affliction_Numb": label = Zh.IsActive() ? "麻木（隐藏耐力条）" : "Numb (Stamina bar hidden)"; break;
+                case "Affliction_Blind": label = Zh.IsActive() ? "失明" : "Blind"; break;
+                case "Affliction_Glowing": label = Zh.IsActive() ? "发光" : "Glowing"; break;
+                default: return false;
+            }
+            return TryReadFloatField(affliction, "totalTime", out duration) && ValidDuration(duration);
+        }
+
+        private static bool TryReadInfiniteStamina(object affliction, out float duration, out float climbDelay,
+            out object drowsy)
+        {
+            duration = climbDelay = 0f;
+            drowsy = null;
+            if (affliction == null || affliction.GetType().Name != "Affliction_InfiniteStamina"
+                || !TryReadFloatField(affliction, "totalTime", out duration) || !ValidDuration(duration)
+                || !TryReadFloatField(affliction, "climbDelay", out climbDelay) || !ValidDuration(climbDelay)) return false;
+            FieldInfo endField = affliction.GetType().GetField("drowsyAffliction", BindingFlags.Public | BindingFlags.Instance);
+            if (endField == null) return false;
+            drowsy = endField.GetValue(affliction);
+            return true;
+        }
+
+        private static bool TryReadInfiniteStaminaEnd(object drowsy, out float duration, out float rate)
+        {
+            duration = rate = 0f;
+            // The game's Deserialize constructs this exact type for the end payload, not a general nested affliction.
+            return drowsy != null && drowsy.GetType().Name == "Affliction_AdjustDrowsyOverTime"
+                && TryReadFloatField(drowsy, "totalTime", out duration) && ValidDuration(duration)
+                && TryReadFloatField(drowsy, "statusPerSecond", out rate)
+                && !float.IsNaN(rate) && !float.IsInfinity(rate);
+        }
+
+        private static bool ValidDuration(float duration) =>
+            !float.IsNaN(duration) && !float.IsInfinity(duration) && duration >= 0f;
+
+        private static string BuffDurationLabel(string label, float duration) => Zh.IsActive()
+            ? label + "（持续 " + FormatSeconds(duration) + " 秒）"
+            : label + " (duration " + FormatSeconds(duration) + "s)";
+
+        private static void AppendEffectNote(StringBuilder sb, ref bool first, string label)
+        {
+            if (!first) sb.Append('\n');
+            first = false;
+            sb.Append(label);
         }
 
         private static bool TryGetAppliedAfflictions(MonoBehaviour action, out List<object> afflictions)
@@ -393,6 +489,10 @@ namespace PeakItemTooltip
             else if (typeName == "Affliction_AddBonusStamina"
                 && TryReadFloatField(affliction, "staminaAmount", out float staminaAmount) && staminaAmount > 0f)
                 statuses.Add("ExtraStamina");
+            else if (TryReadInfiniteStamina(affliction, out float _, out float _, out object drowsy) && drowsy != null
+                && TryReadInfiniteStaminaEnd(drowsy, out float endDuration, out float endRate)
+                && endDuration > 0f && endRate > 0f)
+                statuses.Add(CharacterAfflictions.STATUSTYPE.Drowsy.ToString());
         }
 
         /**
@@ -526,7 +626,7 @@ namespace PeakItemTooltip
             {
                 string range = radius.ToString("0.###", CultureInfo.InvariantCulture);
                 (qualifiers ??= new List<string>()).Add(Zh.IsActive()
-                    ? "物品周围 " + range + " 米内的玩家" : "characters within " + range + "m of item");
+                    ? "施加时在物品周围 " + range + " 米内的玩家" : "characters within " + range + "m of item on application");
                 if (ignoreCaster) qualifiers.Add(Zh.IsActive() ? "排除持有者" : "holder excluded");
             }
             if (action != null && TryReadBoolField(action, "ifSkeleton", out bool ifSkeleton) && ifSkeleton)

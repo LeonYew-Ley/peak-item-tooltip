@@ -94,6 +94,7 @@ public class Action_ApplyAffliction : ItemAction
 }
 public class Action_ApplyMassAffliction : Action_ApplyAffliction { public float radius; public bool ignoreCaster; }
 public class Action_RandomMushroomEffect : ItemAction { }
+public class Action_ApplyInfiniteStamina : ItemAction { public float buffTime; public float drowsyAmount = .25f; }
 public class PetrifySource : UnityEngine.MonoBehaviour { public int petrifyPerJump; }
 public class CharacterAfflictions
 {
@@ -128,7 +129,13 @@ namespace Peak.Afflictions
         public float staminaAmount;
         public float totalTime;
     }
-    public class Affliction_InfiniteStamina : Affliction { }
+    public class Affliction_InfiniteStamina : Affliction { public float totalTime; public float climbDelay; public Affliction drowsyAffliction; }
+    public class Affliction_Invincibility : Affliction { public float totalTime; }
+    public class Affliction_Sunscreen : Affliction { public float totalTime; }
+    public class Affliction_Numb : Affliction { public float totalTime; }
+    public class Affliction_Blind : Affliction { public float totalTime; }
+    public class Affliction_Glowing : Affliction { public float totalTime; }
+    public class Affliction_Chaos : Affliction { }
 }
 namespace Peak
 {

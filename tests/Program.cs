@@ -98,7 +98,7 @@ static class Program
             "Found here. Cooking removes poison.", "known consumption action does not suppress a verified safety claim");
 
         var afflictionItem = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
-        afflictionItem.Add(new Action_ApplyAffliction { affliction = new Peak.Afflictions.Affliction_InfiniteStamina() });
+        afflictionItem.Add(new Action_ApplyAffliction { affliction = new Peak.Afflictions.Affliction_Chaos() });
         var afflictionSnapshot = TooltipItemSnapshot.Capture(afflictionItem);
         Equal(afflictionSnapshot.SafetySourcesComplete, false, "unparsed affliction action marks safety coverage incomplete");
         Equal(ItemDescription.FormatSnapshot(afflictionSnapshot, completeBerryDescription, "", null, cookedPoisonCheck),
@@ -236,7 +236,7 @@ static class Program
         };
         Has(ItemModifiers.Format(massAffliction), "characters within 2.125m of item", "area radius follows the live action value");
         Lacks(ItemModifiers.Format(massAffliction), "holder excluded", "changed area eligibility removes the old qualifier");
-        Has(ItemModifiers.Format(massAffliction), "+20 Extra Stamina (over 6s) [characters within 2.125m of item]",
+        Has(ItemModifiers.Format(massAffliction), "+20 Extra Stamina (over 6s) [characters within 2.125m of item on application]",
             "extra affliction inherits the same area target condition");
         Has(massSnapshot.Modifiers, "characters within 4.8m of item", "captured area rows do not change with a later mutation");
         massAction.radius = -1f;
@@ -261,6 +261,77 @@ static class Program
             new System.Collections.Generic.Dictionary<string, string> { ["cooked"] = "Cooking removes poison." }, cookedPoisonCheck),
             "Found here. This effect note could not be checked against every effect source and target condition.",
             "mass action cannot bypass the safety-claim fallback");
+
+        var milk = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
+        var invincibility = new Peak.Afflictions.Affliction_Invincibility { totalTime = 10f };
+        var milkAction = milk.Add(new Action_ApplyAffliction { affliction = invincibility });
+        Has(ItemModifiers.Format(milk), "Invincibility (duration 10s)", "buff duration reads the actual payload");
+        var milkSnapshot = TooltipItemSnapshot.Capture(milk);
+        invincibility.totalTime = 20f;
+        Has(ItemModifiers.Format(milk), "Invincibility (duration 20s)", "cooking-mutated buff duration refreshes");
+        Has(milkSnapshot.Modifiers, "duration 10s", "buff snapshot retains its original duration");
+        Equal(ItemModifiers.HasCompleteSafetyCoverage(milk), true, "known pure buff is fully accounted for");
+        milkAction.extraAfflictions = new Peak.Afflictions.Affliction[]
+        {
+            new Peak.Afflictions.Affliction_Sunscreen { totalTime = 90f },
+            new Peak.Afflictions.Affliction_Numb { totalTime = 60f },
+            new Peak.Afflictions.Affliction_Blind { totalTime = 2f },
+            new Peak.Afflictions.Affliction_Glowing { totalTime = 30f }
+        };
+        Has(ItemModifiers.Format(milk), "Sun Protection (duration 90s)", "sun protection extra payload renders");
+        Has(ItemModifiers.Format(milk), "Numb (Stamina bar hidden) (duration 60s)", "numb extra payload explains its effect");
+        Has(ItemModifiers.Format(milk), "Blind (duration 2s)", "blind extra payload renders");
+        Has(ItemModifiers.Format(milk), "Glowing (duration 30s)", "glowing extra payload renders");
+        invincibility.totalTime = float.NaN;
+        Lacks(ItemModifiers.Format(milk), "Invincibility", "invalid buff duration is not displayed as a promise");
+        Equal(ItemModifiers.HasCompleteSafetyCoverage(milk), false, "invalid buff data retains incomplete-coverage notice");
+        invincibility.totalTime = 20f;
+        milkAction.enabled = false;
+        Equal(ItemModifiers.Format(milk), "", "disabled timed buffs are omitted");
+        milkAction.enabled = true;
+
+        var lollipop = new Item();
+        var endDrowsy = new Peak.Afflictions.Affliction_AdjustDrowsyOverTime { totalTime = 8f, statusPerSecond = .025f };
+        var infinite = new Peak.Afflictions.Affliction_InfiniteStamina
+            { totalTime = 6f, climbDelay = 4f, drowsyAffliction = endDrowsy };
+        var lollipopAction = lollipop.Add(new Action_ApplyAffliction { affliction = infinite });
+        Has(ItemModifiers.Format(lollipop), "Infinite Stamina (base 6s, up to 4s grace before climbing)", "infinite stamina preserves its conditional grace time");
+        Has(ItemModifiers.Format(lollipop), "+20 Drowsy (over 8s) (after Infinite Stamina ends)", "end-of-buff penalty is separately qualified");
+        Has(string.Join(",", ItemModifiers.ActivePositiveStatuses(lollipop)), "Drowsy", "known end penalty participates in risk detection");
+        Equal(ItemModifiers.HasCompleteSafetyCoverage(lollipop), true, "known infinite-stamina and end payload are accounted for");
+        infinite.totalTime = 12f;
+        infinite.climbDelay = 0f;
+        infinite.drowsyAffliction = null;
+        Has(ItemModifiers.Format(lollipop), "Infinite Stamina (base 12s)", "changed infinite duration refreshes");
+        Lacks(ItemModifiers.Format(lollipop), "Drowsy", "removing the end penalty removes its numeric row");
+        Lacks(string.Join(",", ItemModifiers.ActivePositiveStatuses(lollipop)), "Drowsy", "removed end penalty no longer counts as risk");
+        infinite.drowsyAffliction = infinite;
+        Has(ItemModifiers.Format(lollipop), "Infinite Stamina (base 12s)", "unsupported or cyclic end payload does not hide the known primary buff");
+        Equal(ItemModifiers.HasCompleteSafetyCoverage(lollipop), false, "unsupported end payload remains incomplete without recursion");
+        infinite.drowsyAffliction = endDrowsy;
+        endDrowsy.statusPerSecond = -.025f;
+        Has(ItemModifiers.Format(lollipop), "-20 Drowsy", "negative end payload stays a reduction");
+        Lacks(string.Join(",", ItemModifiers.ActivePositiveStatuses(lollipop)), "Drowsy", "negative end payload is not a positive risk");
+        Zh.Active = true;
+        Has(ItemModifiers.Format(lollipop), "无限耐力（基础时长 12 秒）", "infinite-stamina duration is localized");
+        Has(ItemModifiers.Format(lollipop), "无限耐力结束后", "end-payload timing is localized");
+        Has(ItemModifiers.Format(milk), "无敌（持续 20 秒）", "simple buff duration is localized");
+        Zh.Active = false;
+        massAction.affliction = infinite;
+        Has(ItemModifiers.Format(massAffliction), "Infinite Stamina (base 12s) [characters within 4.8m of item on application, holder excluded]",
+            "area buff retains initial target eligibility");
+        Has(ItemModifiers.Format(massAffliction), "after Infinite Stamina ends) [characters within 4.8m of item on application, holder excluded]",
+            "area end penalty belongs to the initial target, not a new area hit");
+
+        var directInfiniteItem = new Item();
+        var directInfinite = directInfiniteItem.Add(new Action_ApplyInfiniteStamina { buffTime = 5f, drowsyAmount = 99f });
+        Has(ItemModifiers.Format(directInfiniteItem), "Infinite Stamina (duration 5s)", "direct infinite-stamina action reads buffTime");
+        Lacks(ItemModifiers.Format(directInfiniteItem), "Drowsy", "unused serialized drowsyAmount is not reported as an effect");
+        Equal(ItemModifiers.HasCompleteSafetyCoverage(directInfiniteItem), true, "verified direct infinite action is accounted for");
+        directInfinite.buffTime = 10f;
+        Has(ItemModifiers.Format(directInfiniteItem), "duration 10s", "direct infinite duration follows the live component");
+        directInfinite.enabled = false;
+        Equal(ItemModifiers.Format(directInfiniteItem), "", "disabled direct infinite action contributes no buff");
 
         var randomMushroom = new Item { cooking = new ItemCooking { timesCookedLocal = 1 } };
         randomMushroom.Add(new Action_RandomMushroomEffect());
